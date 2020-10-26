@@ -1,0 +1,12 @@
+{% include 'header.html' %}
+<div class="container">
+    <div class="pro-box">
+        <form method="post" action="" enctype="multipart/form-data">
+            {% csrf_token %}
+            <img src="{{request.user.userprofile.profile_pic.url}}" height="50" width="50"><br>
+            {{form.as_p}}
+            <input type="submit">
+        </form>
+    </div>
+</div>
+{% include 'footer.html' %}

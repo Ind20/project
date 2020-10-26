@@ -1,0 +1,26 @@
+{% include 'header.html' %}
+{%load static%}
+<div class="login-container">
+    <div>
+        {%for message in messages%}
+        <h3 class="msg">{{ message}}</h3>
+        {%endfor%}
+    </div>
+    <div class="login-image">
+        <img src="{% static 'images/login.jpg' %}" height="400px" width="100%">
+    </div>
+    <div class="login-box">
+        <h1>Login Here</h1>
+        <form action="login" method="post">
+            {% csrf_token %}
+            <input type="text" name="username" placeholder="Username"><br>
+            <input type="password" name="password" placeholder="Password"><br>
+            <input type="submit">
+        </form>
+        <br>
+        <a href="/">Forgot username?</a><br>
+        <a href="/">Forgot password?</a>
+        <p>Not a member yet ?<a href="/register">Join us</a></p>
+    </div>
+</div>
+{% include 'footer.html' %}
