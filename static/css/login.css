@@ -1,0 +1,8 @@
+section div ul li a {
+    color: #fff !important;
+}
+
+section div ul li a:hover { 
+    text-decoration: none;
+    color: rgb(16, 55, 165) !important;
+}
