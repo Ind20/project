@@ -3,6 +3,7 @@
 }
 html, body {
     height: 100%;
+    background-color: #c6d3da !important;
 }
 header {
     height: 20%;
@@ -11,15 +12,15 @@ header {
     min-height: 60%;
 }
 .footer {
-    height: 30%;
+    min-height: 30%;
 }
 
 section div ul li a {
-    color: #fff !important;
+    color: rgba(255,255,255,.5) !important;
 }
 
 section div p {
-    color: #fff !important;
+    color: rgba(255,255,255,.5) !important;
     margin-bottom: 1px !important;
 }
 
