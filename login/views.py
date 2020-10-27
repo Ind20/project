@@ -70,10 +70,10 @@ def register(request):
 
         if password1==password2:
             if User.objects.filter(username=username).exists():
-                messages.info(request,'Username not available')
+                messages.info(request,'Username is not available')
                 return redirect('register')
             elif User.objects.filter(email=email).exists():
-                messages.info(request,'Email has registered')
+                messages.info(request,'Email is alreday registered')
                 return redirect('register')
             else:
                 user = User.objects.create_user(username=username, password=password1,
@@ -83,7 +83,7 @@ def register(request):
                 newuserProfile = userProfile(phone_num=phone_num, age=age, user=user)
                 newuserProfile.save()
                 messages.info(request,'Account created.')
-                return redirect('register')
+                return redirect('login')
         else:
             messages.info(request,'Password is not matching')
             return redirect('register')
@@ -94,4 +94,5 @@ def register(request):
 
 def logout(request):
     auth.logout(request)
+    messages.info(request,'You are successfully logged out.')
     return redirect('/login')
