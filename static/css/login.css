@@ -1,4 +1,8 @@
-section div ul li a, p {
+section div ul li a {
+    color: #fff !important;
+}
+
+section div p {
     color: #fff !important;
     margin-bottom: 1px !important;
 }
