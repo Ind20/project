@@ -1,10 +1,11 @@
 {% include 'header.html' %}
+{% load crispy_forms_tags %}
 <div class="container">
     <div class="pro-box">
         <form method="post" action="" enctype="multipart/form-data">
             {% csrf_token %}
             <img src="{{request.user.userprofile.profile_pic.url}}" height="50" width="50"><br>
-            {{form.as_p}}
+            {{form|crispy}}
             <input type="submit">
         </form>
     </div>
