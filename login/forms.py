@@ -13,4 +13,4 @@ class userProfileForm(forms.ModelForm):
     phone_num   = forms.CharField(max_length = 15, required=False)
     class Meta:
         model   = userProfile
-        fields  = ["age", "phone_num", "profile_pic", 'user']
+        fields  = ["age", "phone_num", "profile_pic"]

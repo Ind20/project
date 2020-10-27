@@ -31,10 +31,12 @@ def profile (request):
 
 
 def editprofile(request):
-    form = userProfileForm(request.POST, request.FILES)
+    form = userProfileForm(request.POST or None, request.FILES or None, instance=request.user.userprofile)
     if form.is_valid():
-        userProfile = form.save()
-        return render(request, 'profile.html')
+        userProfile = form.save(commit=False)
+        userProfile.user = request.user
+        userProfile.save()
+        return redirect('/profile')
     else:
         context = {'form':form }
         return render(request, 'editprofile.html', context)
