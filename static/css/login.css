@@ -1,5 +1,6 @@
-section div ul li a {
+section div ul li a, p {
     color: #fff !important;
+    margin-bottom: 1px !important;
 }
 
 section div ul li a:hover { 
