@@ -31,7 +31,7 @@ def profile (request):
 
 
 def editprofile(request):
-    form = userProfileForm(request.POST or None, request.FILES or None, instance=request.user.userprofile)
+    form = userProfileForm(request.POST or None, request.FILES or None)
     if form.is_valid():
         userProfile = form.save(commit=False)
         userProfile.user = request.user
