@@ -1,21 +1,22 @@
-{% include 'header.html' %}
-{%load static%}
+{% include 'header.html' %} {%load static%}
 <div class="container">
-    <div>
-        {%for message in messages%}
-        <h3 class="msg">{{ message}}</h3>
-        {%endfor%}
-    </div>
-    <div class="contact-box">
-        <h1>Contact Us</h1>
-        <form action="contactus" method="post">
-            {% csrf_token %}
-            <input type="text" name="fullname" placeholder="Fullname">
-            <input type="text" name="phone_num" placeholder="Phone No.">
-            <input type="email" name="email" placeholder="Email"><br>
-            <textarea type="text" name="message" rows="8" cols="95">Leave your message here</textarea><br>
-            <input type="submit">
-        </form>
-    </div>
+  <div>
+    {%for message in messages%}
+    <h3 class="msg">{{ message}}</h3>
+    {%endfor%}
+  </div>
+  <div class="contact-box">
+    <h1>Contact Us</h1>
+    <form action="contactus" method="post">
+      {% csrf_token %}
+      <input type="text" name="fullname" placeholder="Fullname" />
+      <input type="text" name="phone_num" placeholder="Phone No." />
+      <input type="email" name="email" placeholder="Email" /><br />
+      <textarea type="text" name="message" rows="8" cols="95">
+Leave your message here...</textarea
+      ><br />
+      <input type="submit" />
+    </form>
+  </div>
 </div>
 {% include 'footer.html' %}
