@@ -37,6 +37,14 @@ ul li a:hover {
     color: darkgreen !important;
 }
 
+.dropdown-menu {
+    background-color: #343a40 !important;
+}
+
+.dropdown-item {
+    background-color: #343a40 !important;
+}
+
 .login-box {
     border: 1px dashed #9C9C9C;
     border-radius: 10px;
