@@ -5,10 +5,12 @@
 html, body {
     height: 100%;
     background-color: #c6d3da !important;
+    margin: 0 !important;
 }
 
 header {
     height: 20%;
+    width: 100%;
 }
 
 .container {
