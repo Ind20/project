@@ -29,9 +29,19 @@ section div ul li a:hover {
     color: rgb(16, 55, 165) !important;
 }
 
-#login-box {
-    border: 1px solid #9C9C9C;
+.login-box {
+    border: 1px dashed #9C9C9C;
     border-radius: 10px;
     margin: 50px 0 50px 0;
     padding: 10px;
+    height: 320px;
+}
+
+.remember-me {
+    display: inline-block;
+    margin-left: 25px;
+}
+
+.submit-btn {
+    float: right;
 }
