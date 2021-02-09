@@ -38,7 +38,7 @@ section div ul li a:hover {
     border-radius: 10px;
     margin: 50px 0 50px 0;
     padding: 10px;
-    height: 320px;
+    height: 290px;
 }
 
 .reg-box {
@@ -46,14 +46,19 @@ section div ul li a:hover {
     border-radius: 10px;
     margin: 50px 0 50px 0;
     padding: 10px;
-    height: 520px;
+    height: 600px;
 }
 
 .remember-me {
     display: inline-block;
     margin-left: 25px;
+    margin-top: 10px;
 }
 
 .submit-btn {
     float: right;
+}
+
+.form-group {
+    margin-bottom: 0rem !important;
 }
