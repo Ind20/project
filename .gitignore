@@ -10,3 +10,5 @@ cpython
 __pycache__
 migrations
 images/
+.idea
+phpliteadmin.php
