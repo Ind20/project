@@ -3,36 +3,38 @@
 }
 
 html, body {
+    width: 100%;
     height: 100%;
+    margin: 0px;
+    padding: 0px;
     background-color: #c6d3da !important;
-    margin: 0 !important;
 }
 
-header {
-    height: 20%;
-    width: 100%;
+.header {
+    height: 70px;
 }
 
 .container {
     min-height: 60%;
 }
 
-.footer {
-    min-height: 30%;
+.link {
+    font-size: 25px;
+    margin: 0 10px 0 10px;
 }
 
-section div ul li a {
+ul li a {
     color: rgba(255, 255, 255, .5) !important;
 }
 
-section div p {
+p {
     color: rgba(255, 255, 255, .5) !important;
     margin-bottom: 1px !important;
 }
 
-section div ul li a:hover {
+ul li a:hover {
     text-decoration: none;
-    color: rgb(16, 55, 165) !important;
+    color: darkgreen !important;
 }
 
 .login-box {
@@ -63,4 +65,8 @@ section div ul li a:hover {
 
 .form-group {
     margin-bottom: 0rem !important;
+}
+
+.footer {
+    min-height: 30%;
 }
