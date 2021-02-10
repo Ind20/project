@@ -113,6 +113,8 @@ para {
 
 .footer {
     min-height: 30%;
+    width: 100%;
+    margin-left: 0 !important;
 }
 
 .quote {
@@ -133,6 +135,7 @@ para {
 
 .course {
     cursor: pointer;
+    padding-left: 30px !important;
 }
 
 .contactus-box {
