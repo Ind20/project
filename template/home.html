@@ -1,29 +1,41 @@
 {% include 'header.html' %}
 
 <div class="container pt-3">
-
+    {%for message in messages%}
+    <div class="message alert alert-success alert-dismissible fade show" role="alert">
+        <strong>{{ message}}</strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    {%endfor%}
     <div class="slider">
         <img src="http://teachingsimulator.org/assets/img/index/banner.png" alt="image" width="100%">
     </div>
     <div class="content">
         <h1 class="intro">Available courses</h1>
-        <p class="para">These are the lessons available for your professional field. Below are the basis of each game and informative video.</p>
+        <p class="para">These are the lessons available for your professional field. Below are the basis of each game
+            and informative video.</p>
     </div>
     <div class="c-rap">
         <div class="c-blocks">
-            <img src="https://www.homecareinsight.co.uk/wp-content/uploads/2020/07/connected-technology.jpg" alt="image" width="220" height="250">
+            <img src="https://www.homecareinsight.co.uk/wp-content/uploads/2020/07/connected-technology.jpg" alt="image"
+                 width="220" height="250">
             <p>Empowerment Technology</p>
         </div>
         <div class="c-blocks">
-            <img src="https://www.universal-rights.org/wp-content/uploads/2019/09/30212411048_2a1d7200e2_z-1.jpg" alt="image" width="220" height="250">
+            <img src="https://www.universal-rights.org/wp-content/uploads/2019/09/30212411048_2a1d7200e2_z-1.jpg"
+                 alt="image" width="220" height="250">
             <p class="title">Earth & Life</p>
         </div>
         <div class="c-blocks">
-            <img src="https://analyticsindiamag.com/wp-content/uploads/2020/01/top-10-DS-projects.png" alt="image" width="220" height="250">
+            <img src="https://analyticsindiamag.com/wp-content/uploads/2020/01/top-10-DS-projects.png" alt="image"
+                 width="220" height="250">
             <p>General Mathematics</p>
         </div>
         <div class="c-blocks">
-            <img src="https://cdn.totally.tech/prod/uploads/2019/04/how-to-define-the-scope-of-a-project-2-630x385.jpg" alt="image" width="220" height="250">
+            <img src="https://cdn.totally.tech/prod/uploads/2019/04/how-to-define-the-scope-of-a-project-2-630x385.jpg"
+                 alt="image" width="220" height="250">
             <p>Reading & Writing</p>
         </div>
     </div>

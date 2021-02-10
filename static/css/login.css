@@ -18,6 +18,11 @@ html, body {
     min-height: 60%;
 }
 
+.message {
+    margin-top: 10px;
+    text-align: center;
+}
+
 .link {
     font-size: 25px;
     margin: 0 10px 0 10px;

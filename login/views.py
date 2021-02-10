@@ -18,11 +18,17 @@ def footer(request):
     return render(request, 'footer.html')
 
 def contactus(request):
+
     form= contactusMessageForm(request.POST or None)
-    if form.is_valid():
-        form.save()
-    context= {'form': form }
-    return render(request, 'contactus.html', context)
+    if request.method=='POST':
+        if form.is_valid():
+            form.save()
+        messages.info(request,'Form submitted successfully')
+        return redirect('/contactus')
+    else:
+        context= {'form': form }
+        return render(request, 'contactus.html', context)
+
 
         
 def profile (request):
@@ -36,6 +42,7 @@ def editprofile(request):
         userProfile = form.save(commit=False)
         userProfile.user = request.user
         userProfile.save()
+        messages.info(request,'Profile saved successfully')
         return redirect('/profile')
     else:
         context = {'form':form }
@@ -51,6 +58,7 @@ def login(request):
         user = auth.authenticate(username=username, password=password)
         if user is not None:
             auth.login(request, user)
+            messages.info(request,'You are successfully logged in.')
             return redirect('/')
         else:
             messages.info(request,"Invalid username/password")
