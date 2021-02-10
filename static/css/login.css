@@ -142,3 +142,13 @@ para {
     margin-top: 50px;
     margin-bottom: 50px;
 }
+
+.copyright {
+    font-size: 10px;
+    padding-bottom: 2px;
+}
+
+.quick-links {
+    margin-bottom: 0;
+    margin-top: 20px;
+}
