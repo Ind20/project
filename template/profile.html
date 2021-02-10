@@ -8,31 +8,35 @@
         </button>
     </div>
     {%endfor%}
-    <div class="pro-box">
-        <a class="submit-btn btn btn-info btn-md" href="/editprofile">Edit Profile</a>
-        <form>
-            {% csrf_token %}
-            {% if user.is_authenticated %}
-            <img src="{{request.user.userprofile.profile_pic.url}}" height="80" width="80"><br>
-            <label for="username">Username: </label>
-            <output type="text">{{user.username}}</output>
-            <br>
-            <label for="first_name">Name: </label>
-            <output type="text">{{user.first_name}}</output>
-            <br>
-            {% for d in data %}
-            <label for="phone_num">Phone: </label>
-            <output type="text">{{d.phone_num}}</output>
-            <br>
-            <label for="age">Age: </label>
-            <output type="text">{{d.age}}</output>
-            <br>
-            {% endfor %}
-            <label for="email">E-mail: </label>
-            <output type="text">{{user.email}}</output>
-            <br><br><br>
-            {% endif %}
-        </form>
+    <div class="row pro-box">
+        <div class="col-2" style="height: 400px"></div>
+        <div class="col-8" style="height: 400px">
+            <a class="submit-btn btn btn-info btn-md" href="/editprofile">Edit Profile</a>
+            <form>
+                {% csrf_token %}
+                {% if user.is_authenticated %}
+                <img src="{{request.user.userprofile.profile_pic.url}}" height="80" width="80"><br>
+                <label for="username">Username: </label>
+                <output type="text">{{user.username}}</output>
+                <br>
+                <label for="first_name">Name: </label>
+                <output type="text">{{user.first_name}}</output>
+                <br>
+                {% for d in data %}
+                <label for="phone_num">Phone: </label>
+                <output type="text">{{d.phone_num}}</output>
+                <br>
+                <label for="age">Age: </label>
+                <output type="text">{{d.age}}</output>
+                <br>
+                {% endfor %}
+                <label for="email">E-mail: </label>
+                <output type="text">{{user.email}}</output>
+                <br><br><br>
+                {% endif %}
+            </form>
+        </div>
+        <div class="col-2" style="height: 400px"></div>
     </div>
 </div>
 {% include 'footer.html' %}

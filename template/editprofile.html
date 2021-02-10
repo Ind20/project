@@ -2,7 +2,7 @@
 {% load crispy_forms_tags %}
 
 <div class="row pro-box">
-    <div class="col-2" style="height: 400px"></div>
+    <div class="col-3" style="height: 400px"></div>
     <form method="post" action="editprofile" enctype="multipart/form-data">
         {% csrf_token %}
         <div class="col-12" style="height: 400px">
@@ -18,7 +18,7 @@
             <div class=""></div>
         </div>
     </form>
-    <div class="col-2" style="height: 400px"></div>
+    <div class="col-3" style="height: 400px"></div>
 </div>
 
 {% include 'footer.html' %}
