@@ -1,6 +1,4 @@
-settings.py/
 db.sqlite3
-settings.py
 __init__.py
 drf_react_blog/__pycache__/__init__.cpython-38.pyc
 drf_react_blog/__pycache__/settings.cpython-38.pyc
@@ -12,3 +10,5 @@ migrations
 images/
 .idea
 phpliteadmin.php
+core/settings.py
+ngrok
