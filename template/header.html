@@ -17,7 +17,8 @@
 <body>
 <nav class="header sticky-top navbar navbar-expand-sm bg-dark navbar-dark">
     <!-- Brand -->
-    <img class="navbar-brand" src="https://storage.googleapis.com/pr-newsroom-wp/1/2018/11/Spotify_Logo_RGB_Green.png" class="rounded" alt="Cinque Terre"
+    <img class="navbar-brand" src="https://storage.googleapis.com/pr-newsroom-wp/1/2018/11/Spotify_Logo_RGB_Green.png"
+         class="rounded" alt="Cinque Terre"
          width="200" height="70">
 
     <!-- Links -->
@@ -39,6 +40,7 @@
                 {{user.username}}</a>
             <div class="dropdown-menu">
                 <a class="dropdown-item" href="/profile">My profile</a>
+                <a class="dropdown-item" href="/editprofile">Edit Profile</a>
                 <a class="dropdown-item" href="/logout">Logout</a>
             </div>
         </li>
@@ -52,7 +54,7 @@
         {% endif %}
     </ul>
     <form class="form-inline">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" >
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
     </form>
 </nav>
 </body>

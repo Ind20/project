@@ -1,13 +1,24 @@
 {% include 'header.html' %}
 {% load crispy_forms_tags %}
-<div class="container">
-    <div class="pro-box">
-        <form method="post" action="" enctype="multipart/form-data">
-            {% csrf_token %}
-            <img src="{{request.user.userprofile.profile_pic.url}}" height="50" width="50"><br>
-            {{form|crispy}}
-            <input type="submit">
-        </form>
-    </div>
+
+<div class="row pro-box">
+    <div class="col-2" style="height: 400px"></div>
+    <form method="post" action="editprofile" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="col-12" style="height: 400px">
+            <div class="propic-box">
+                <img src="{{request.user.userprofile.profile_pic.url}}" height="80" width="80"><br>
+            </div>
+            <div class="">
+                {{form|crispy}}
+                <div class="submit-btn">
+                    <input type="submit" name="submit" class="btn btn-info btn-md" value="submit">
+                </div>
+            </div>
+            <div class=""></div>
+        </div>
+    </form>
+    <div class="col-2" style="height: 400px"></div>
 </div>
+
 {% include 'footer.html' %}
