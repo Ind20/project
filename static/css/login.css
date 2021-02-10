@@ -103,6 +103,8 @@ para {
 
 .submit-btn {
     float: right;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 
 .form-group {
@@ -127,4 +129,13 @@ para {
 
 .desc {
     color: black !important;
+}
+
+.course {
+    cursor: pointer;
+}
+
+.contactus-box {
+    margin-top: 50px;
+    margin-bottom: 50px;
 }
