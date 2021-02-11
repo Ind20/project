@@ -1,4 +1,5 @@
-{% include 'header.html' %} {%load static%}
+{% include 'header.html' %}
+{% load crispy_forms_tags %}
 <div class="container">
     {%for message in messages%}
     <div class="message alert alert-success alert-dismissible fade show" role="alert">
@@ -14,22 +15,8 @@
             <h1>Contact Us</h1>
             <form action="contactus" method="post">
                 {% csrf_token %}
-                <div class="form-inline">
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Name" name="fullname">
-                    </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Phone No." name="phone_num">
-                    </div>
-                    <div class="form-group">
-                        <input style="width: 343px" type="email" class="form-control" placeholder="Enter email"
-                               name="email">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <textarea class="form-control" placeholder="Enter your text here..." rows="8"></textarea>
-                </div>
-                <input class=" submit-btn btn btn-info btn-md" type="submit" name="submit" value="submit">
+                {{form|crispy}}
+                <input class=" submit-btn btn btn-info btn-md" type="submit" name="submit">
             </form>
         </div>
         <div class="col-sm-2"></div>

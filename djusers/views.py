@@ -17,8 +17,8 @@ def header(request):
 def footer(request):
     return render(request, 'footer.html')
 
-def contactus(request):
 
+def contactus(request):
     form= contactusMessageForm(request.POST or None)
     if request.method=='POST':
         if form.is_valid():
@@ -30,7 +30,6 @@ def contactus(request):
         return render(request, 'contactus.html', context)
 
 
-        
 def profile (request):
     profiledatas = userProfile.objects.filter(user = request.user)
     return render(request, 'profile.html', {'data': profiledatas})
@@ -47,8 +46,6 @@ def editprofile(request):
     else:
         context = {'form':form }
         return render(request, 'editprofile.html', context)
-
-    
 
 
 def login(request):
