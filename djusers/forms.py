@@ -5,7 +5,9 @@ class contactusMessageForm(forms.ModelForm):
     class Meta:
         model= contactusMessage
         fields= ["fullname", "phone_num", "email", "message"]
-
+        widgets = {
+            'message': forms.Textarea(attrs={'rows':10, 'cols':66}),
+        }
 
 class userProfileForm(forms.ModelForm):
     profile_pic = forms.ImageField(required=False,widget=forms.FileInput)

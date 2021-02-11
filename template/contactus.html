@@ -1,5 +1,4 @@
 {% include 'header.html' %}
-{% load crispy_forms_tags %}
 <div class="container">
     {%for message in messages%}
     <div class="message alert alert-success alert-dismissible fade show" role="alert">
@@ -12,11 +11,26 @@
     <div class="row contactus-box">
         <div class="col-sm-2"></div>
         <div class="col-sm-8">
-            <h1>Contact Us</h1>
+            <h2>Contact Us</h2>
             <form action="contactus" method="post">
                 {% csrf_token %}
-                {{form|crispy}}
-                <input class=" submit-btn btn btn-info btn-md" type="submit" name="submit">
+                <div class="form-inline">
+                <p class="text-info w25p text-left">Full Name</p>
+                    <p class="w100p">{{ form.fullname }}</p>
+                </div>
+                <div class="form-inline">
+                    <p class="text-info w25p text-left">Phone</p>
+                    <p class="w100p">{{ form.phone_num }}</p>
+                </div>
+                <div class="form-inline">
+                    <p class="text-info w25p text-left">Email</p>
+                    <p class="w100p">{{ form.email }}</p>
+                </div>
+                <div class="form-inline ">
+                    <p class="text-info w25p text-left">Message</p>
+                    <p class="w100p">{{ form.message }}</p>
+                </div>
+                <input class="submit-btn btn btn-info btn-md" type="submit" name="submit">
             </form>
         </div>
         <div class="col-sm-2"></div>

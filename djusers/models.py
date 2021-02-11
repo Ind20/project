@@ -14,4 +14,4 @@ class contactusMessage(models.Model):
     fullname        = models.CharField(max_length=35)
     phone_num       = models.CharField(max_length=15)
     email           = models.EmailField()
-    message         = models.CharField(max_length=254)
+    message         = models.TextField(max_length=1000)

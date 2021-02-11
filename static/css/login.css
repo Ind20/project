@@ -156,3 +156,14 @@ para {
 .pro-box {
     margin-top: 50px;
 }
+
+.w100p {
+    width: 400px !important;
+    float: right;
+    margin-top: 5px;
+}
+
+.w25p {
+    width: 25%;
+    float: left;
+}
