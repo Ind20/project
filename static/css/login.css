@@ -141,6 +141,9 @@ para {
 .contactus-box {
     margin-top: 50px;
     margin-bottom: 50px;
+    border: 1px dashed #9C9C9C;
+    border-radius: 10px;
+    padding: 5px;
 }
 
 .copyright {
