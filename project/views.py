@@ -4,11 +4,11 @@ from .models import project
 
 def projects(request):
     projects = project.objects.all()
-    return render(request,'project/projects.html',
-                  {'projects': projects})
+    return render(request,'project/projects.html', {'projects': projects})
 
-def project_detail(request,productID):
-    pd = project.objects.raw('SELECT * FROM project_project WHERE id =%s',[productID])
-    for x in pd:
-        x
-    return render(request,'project/project.html',{'project':project})
+def project_detail(request, id):
+    proj = project.objects.get(id=id)
+    context = {
+             'proj':proj,
+            }
+    return render(request, 'project/project.html', context)

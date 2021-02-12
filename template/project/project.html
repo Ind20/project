@@ -1,6 +1,11 @@
 {% include 'djlogin/header.html' %}
 <div class="container">
     <h3>Project Detail Page</h3>
-    <h3>Name:{{project.id}}</h3>
+    <h3>ID:{{proj.id}}</h3>
+    <h3>Category:{{proj.Project_Category}}</h3>
+    <h3>Name:{{proj.Project_Name}}</h3>
+    <h3>Student:{{proj.Student_Name}}</h3>
+    <h3>mentor:{{proj.Mentor_Name}}</h3>
+    <h3>Desc:{{proj.Project_Description}}</h3>
 </div>
 {% include 'djlogin/footer.html' %}
