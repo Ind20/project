@@ -26,29 +26,25 @@
             <a class="nav-link link" href="/">Home</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link link" href="contactus">Contact Us</a>
+            <a class="nav-link link" href="/djlogin/contactus">Contact Us</a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link link" href="#">Projects</a>
-        </li>
-
         <!-- Dropdown -->
         <li class="nav-item dropdown">
             {% if user.is_authenticated %}
             <a class="nav-link dropdown-toggle link" href="#" id="navbardrop" data-toggle="dropdown">Hi,
                 {{user.username}}</a>
             <div class="dropdown-menu">
-                <a class="dropdown-item" href="/profile">My profile</a>
-                <a class="dropdown-item" href="/editprofile">Edit Profile</a>
-                <a class="dropdown-item" href="/logout">Logout</a>
+                <a class="dropdown-item" href="/user/profile">My profile</a>
+                <a class="dropdown-item" href="/user/editprofile">Edit Profile</a>
+                <a class="dropdown-item" href="/user/logout">Logout</a>
             </div>
         </li>
         {% else %}
         <li class="nav-item">
-            <a class="nav-link link" href="/register">Register</a>
+            <a class="nav-link link" href="/user/register">Register</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link link" href="/login">Login</a>
+            <a class="nav-link link" href="/user/login">Login</a>
         </li>
         {% endif %}
     </ul>
