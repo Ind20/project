@@ -155,7 +155,7 @@ para {
     margin-top: 20px;
 }
 
-.pro-box {
+.pro-box  {
     margin-top: 50px;
 }
 
@@ -181,4 +181,12 @@ para {
     overflow: hidden;
     text-overflow: ellipsis;
     margin: 10px;
+}
+.p-description {
+    margin-top: 15px;
+    color: black !important;
+}
+
+.img-detail {
+    margin-bottom: 30px;
 }
