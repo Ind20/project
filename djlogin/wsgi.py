@@ -1,5 +1,5 @@
 """
-WSGI config for mylogin project.
+WSGI config for djlogin project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
