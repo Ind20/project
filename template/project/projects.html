@@ -1,7 +1,12 @@
 {% include 'djlogin/header.html' %}
 <div class="container">
-    <div class="product-container">
-        <h3>Projects Page</h3>
+    <div class="row">
+        {% for project in projects %}
+        <div class="col-sm-3">
+            <img src="{{project.Project_Image_url}}" alt="no image" width="200" height="250"><br>
+            <a href=products/{{project.id}} class="title">{{project.Project_Name}}</a>
+        </div>
+        {% endfor %}
     </div>
 </div>
 {% include 'djlogin/footer.html' %}
