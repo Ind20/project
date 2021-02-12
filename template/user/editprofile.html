@@ -1,24 +1,24 @@
 {% include 'djlogin/header.html' %}
 {% load crispy_forms_tags %}
-
-<div class="row pro-box">
-    <div class="col-3" style="height: 400px"></div>
-    <form method="post" action="editprofile" enctype="multipart/form-data">
-        {% csrf_token %}
-        <div class="col-12" style="height: 400px">
-            <div class="propic-box">
-                <img src="{{request.user.userprofile.profile_pic.url}}" height="80" width="80"><br>
-            </div>
-            <div class="">
-                {{form|crispy}}
-                <div class="submit-btn">
-                    <input type="submit" name="submit" class="btn btn-info btn-md" value="submit">
+<div class="container">
+    <div class="row">
+        <div class="col-3" style="height: 400px"></div>
+        <form method="post" action="editprofile" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="col-12" style="height: 400px">
+                <div class="propic-box">
+                    <img src="{{request.user.userprofile.profile_pic.url}}" height="80" width="80"><br>
                 </div>
+                <div class="">
+                    {{form|crispy}}
+                    <div class="submit-btn">
+                        <input type="submit" name="submit" class="btn btn-info btn-md" value="submit">
+                    </div>
+                </div>
+                <div class=""></div>
             </div>
-            <div class=""></div>
-        </div>
-    </form>
-    <div class="col-3" style="height: 400px"></div>
+        </form>
+        <div class="col-3" style="height: 400px"></div>
+    </div>
 </div>
-
 {% include 'djlogin/footer.html' %}
