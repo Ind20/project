@@ -87,7 +87,7 @@ div .nav-link {
 
 .container {
     min-height: 60%;
-    margin: 30px 100px 30px 100px;
+    margin: 25px 100px 30px 100px;
 }
 
 .message {
@@ -215,6 +215,10 @@ para {
 .footer-link:hover {
     color: darkgreen !important;
     text-decoration: none !important;
+}
+
+.pro-box {
+    margin-top: 50px;
 }
 
 .w100p {

@@ -1,5 +1,12 @@
 {% include 'djlogin/header.html' %}
 <div class="container">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">Home</a></li>
+            <li class="breadcrumb-item"><a href="#">User</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Register</li>
+        </ol>
+    </nav>
     {%for message in messages%}
     <div class="message alert alert-success alert-dismissible fade show" role="alert">
         <strong>{{ message}}</strong>
