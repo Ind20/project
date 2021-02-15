@@ -13,13 +13,19 @@ html, body {
 /* Topnav css */
 
 .nav-bar {
-    height: 60px;
+    height: 70px;
     background-color: #333;
 }
 
+@media screen and (max-width: 600px) {
+    .nav-bar {
+        height: 60px;
+    }
+}
+
 .logo {
-    height: 55px;
-    width: 55px;
+    height: 65px;
+    width: 65px;
 }
 
 @media screen and (max-width: 600px) {
@@ -208,6 +214,15 @@ para {
     margin-top: 20px;
 }
 
+.footer-link {
+    color: white !important;
+    text-decoration: none;
+}
+
+.footer-link:hover {
+    color: darkgreen !important;
+    text-decoration: none !important;
+}
 .pro-box {
     margin-top: 50px;
 }
@@ -221,4 +236,8 @@ para {
 .w25p {
     width: 25%;
     float: left;
+}
+
+div p {
+    margin-bottom: 0;
 }
