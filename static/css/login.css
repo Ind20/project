@@ -85,17 +85,6 @@ div .nav-link {
     }
 }
 
-
-.dropdown-menu {
-    background-color: #343a40 !important;
-    flot: right;
-}
-
-.dropdown-item {
-    background-color: #343a40 !important;
-}
-
-
 .container {
     min-height: 60%;
     margin: 30px 100px 30px 100px;
