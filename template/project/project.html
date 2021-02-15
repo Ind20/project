@@ -1,5 +1,12 @@
 {% include 'djlogin/header.html' %}
 <div class="container">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">Home</a></li>
+            <li class="breadcrumb-item"><a href="#">Projects</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{proj.Project_Name}}</li>
+        </ol>
+    </nav>
     <div class="row img-detail">
         <div class="col-sm-6">
             <div class="p-video">
