@@ -85,17 +85,6 @@ div .nav-link {
     }
 }
 
-
-.dropdown-menu {
-    background-color: #343a40 !important;
-    flot: right;
-}
-
-.dropdown-item {
-    background-color: #343a40 !important;
-}
-
-
 .container {
     min-height: 60%;
     margin: 25px 100px 30px 100px;
@@ -214,6 +203,10 @@ para {
     margin-top: 20px;
 }
 
+.pro-box  {
+   margin-top: 50px;
+}
+
 .footer-link {
     color: white !important;
     text-decoration: none;
@@ -239,6 +232,26 @@ para {
     float: left;
 }
 
+.project-block {
+    box-shadow:20px 20px 50px 15px grey;
+    padding-top: 15px;
+}
+
+.project-title {
+    white-space: nowrap;
+    width: 250px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin: 10px;
+}
+.p-description {
+    margin-top: 15px;
+    color: black !important;
+}
+
+.img-detail {
+    margin-bottom: 30px;
+}
 div p {
     margin-bottom: 0;
 }

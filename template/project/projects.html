@@ -1,0 +1,12 @@
+{% include 'djlogin/header.html' %}
+<div class="container">
+    <div class="row">
+        {% for project in projects %}
+        <div class="col-sm-3 project-block">
+            <img src="{{project.Project_Image_url}}" alt="no image" width="250" height="350"><br>
+            <div class="project-title"><a href=projects/{{project.id}} class="title">{{project.Project_Name}}</a></div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% include 'djlogin/footer.html' %}

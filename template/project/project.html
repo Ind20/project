@@ -1,0 +1,24 @@
+{% include 'djlogin/header.html' %}
+<div class="container">
+    <div class="row img-detail">
+        <div class="col-sm-6">
+            <div class="p-video">
+                <video width="520" height="240" controls>
+                    <source src="{{proj.Project_Video_url}}" type="video/mp4">
+                </video>
+            </div>
+        </div>
+        <div class="col-sm-6 details">
+            <div>Project ID:{{proj.id}}</div>
+            <div>Category:{{proj.Project_Category}}</div>
+            <div>Title:{{proj.Project_Name}}</div>
+            <div>By:{{proj.Student_Name}}</div>
+            <div>Mentor:{{proj.Mentor_Name}}</div>
+        </div>
+    </div>
+    <div class="col-sm-12">
+        <h3>Project Description</h3>
+        <p class="p-description">{{proj.Project_Description}}</p>
+    </div>
+</div>
+{% include 'djlogin/footer.html' %}
