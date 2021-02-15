@@ -21,7 +21,7 @@
         <a class="nav-link link" href="/">Home</a>
         <a class="nav-link link" href="/djlogin/contactus">Contact Us</a>
         <div class="btn-group">
-            <a class="nav-link link" type="button" class="dropdown-toggle dropdown-toggle-split" data-toggle="dropdown">Projects</a>
+            <a class="nav-link drop-link" type="button" class="dropdown-toggle dropdown-toggle-split" data-toggle="dropdown">Categories</a>
             <div class="dropdown-menu">
                 <a class="dropdown-item" href="/projects">Category1</a>
                 <a class="dropdown-item" href="#">Link 2</a>
@@ -29,12 +29,12 @@
         </div>
         {% if user.is_authenticated %}
         <div class="btn-group">
-            <a class="nav-link link" type="button" class="dropdown-toggle dropdown-toggle-split" data-toggle="dropdown">Hi,
+            <a class="nav-link drop-link" type="button" class="dropdown-toggle dropdown-toggle-split" data-toggle="dropdown">Hi,
                 {{user.username}}</a>
             <div class="dropdown-menu">
-                <a class="dropdown-item link" href="/user/profile">My profile</a>
-                <a class="dropdown-item link" href="/user/editprofile">Edit Profile</a>
-                <a class="dropdown-item link" href="/user/logout">Logout</a>
+                <a class="dropdown-item" href="/user/profile">My profile</a>
+                <a class="dropdown-item" href="/user/editprofile">Edit Profile</a>
+                <a class="dropdown-item" href="/user/logout">Logout</a>
             </div>
         </div>
         {% else %}

@@ -40,10 +40,14 @@ div .nav-link {
     display: inline-block !important;
 }
 
-.link {
+.link, .drop-link {
     font-size: 20px;
     margin: 0 10px 0 10px;
     color: white;
+}
+
+.link:hover, .drop-link:hover {
+    color: #e1ffab;
 }
 
 .topnav {
