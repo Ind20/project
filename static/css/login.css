@@ -104,6 +104,12 @@ div .nav-link {
     height: 400px;
 }
 
+@media screen and (max-width: 600px) {
+    .slider {
+        height: 180px;
+    }
+}
+
 .content {
     width: 100%;
     height: 300px;
