@@ -89,11 +89,6 @@ div .nav-link {
     }
 }
 
-.container {
-    min-height: 60%;
-    margin: 25px 100px 30px 100px;
-}
-
 .message {
     margin-top: 10px;
     text-align: center;
