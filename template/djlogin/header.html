@@ -21,7 +21,7 @@
         <a class="nav-link link" href="/">Home</a>
         <a class="nav-link link" href="/djlogin/contactus">Contact Us</a>
         <div class="btn-group">
-            <a class="nav-link drop-link" type="button" class="dropdown-toggle dropdown-toggle-split" data-toggle="dropdown">Categories</a>
+                <a class="nav-link drop-link" type="button" class="dropdown-toggle dropdown-toggle-split" data-toggle="dropdown">Categories<i class="fa fa-caret-down white" style="padding-left: 3px"></i></a>
             <div class="dropdown-menu">
                 <a class="dropdown-item" href="/projects">Category1</a>
                 <a class="dropdown-item" href="#">Link 2</a>
@@ -30,7 +30,7 @@
         {% if user.is_authenticated %}
         <div class="btn-group">
             <a class="nav-link drop-link" type="button" class="dropdown-toggle dropdown-toggle-split" data-toggle="dropdown">Hi,
-                {{user.username}}</a>
+                {{user.username}}<i class="fa fa-caret-down white" style="padding-left: 3px"></i></a>
             <div class="dropdown-menu">
                 <a class="dropdown-item" href="/user/profile">My profile</a>
                 <a class="dropdown-item" href="/user/editprofile">Edit Profile</a>
