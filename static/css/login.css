@@ -105,12 +105,6 @@ div .nav-link {
     }
 }
 
-.content {
-    width: 100%;
-    height: 300px;
-
-}
-
 .heading {
     margin: 20px;
     color: black !important;
@@ -131,8 +125,14 @@ para {
 }
 
 .courses {
-    margin-bottom: 50px;
+    margin: 30px 0 30px 0;
 }
+
+.course-box {
+    margin: 10px 0 10px 0;
+    cursor: pointer;
+}
+
 
 .login-box {
     border: 1px dashed #9C9C9C;
