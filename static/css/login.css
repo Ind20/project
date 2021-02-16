@@ -157,7 +157,7 @@ para {
 
 .submit-btn {
     float: right;
-    margin-top: 5px;
+    margin-top: 10px;
     margin-bottom: 5px;
 }
 
@@ -190,12 +190,6 @@ para {
 .course {
     cursor: pointer;
     padding-left: 30px !important;
-}
-
-.contactus-box {
-    border: 1px dashed #9C9C9C;
-    border-radius: 10px;
-    padding: 5px;
 }
 
 .copyright {

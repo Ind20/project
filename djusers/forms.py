@@ -6,7 +6,10 @@ class contactusMessageForm(forms.ModelForm):
         model   = contactusMessage
         fields  = ["fullname", "phone_num", "email", "message"]
         widgets = {
-            'message': forms.Textarea(attrs={'rows':10, 'cols':66}),
+            'fullname': forms.TextInput(attrs={'class' : 'form-control'}),
+            'phone_num': forms.NumberInput(attrs={'class' : 'form-control'}),
+            'email' : forms.EmailInput(attrs={'class' : 'form-control'}),
+            'message': forms.Textarea(attrs={'class' : 'form-control'}),
         }
 
 class userProfileForm(forms.ModelForm):
