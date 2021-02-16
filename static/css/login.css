@@ -202,8 +202,8 @@ para {
     margin-top: 20px;
 }
 
-.pro-box  {
-   margin-top: 50px;
+.pro-box {
+    margin-top: 50px;
 }
 
 .footer-link {
@@ -216,28 +216,11 @@ para {
     text-decoration: none !important;
 }
 
-.pro-box {
-    margin-top: 50px;
-}
-
-.w100p {
-    width: 300px !important;
-    float: right;
-    margin-top: 5px;
-}
-
-.w25p {
-    width: 25%;
-    float: left;
-}
-
-.project-wrapper {
-}
 .project-block {
     padding-top: 15px;
     margin: 5px;
     width: 300px;
-    height: 335px!important;
+    height: 335px !important;
     max-width: 24% !important;
 }
 
@@ -260,6 +243,7 @@ para {
     text-overflow: ellipsis;
     margin: 10px;
 }
+
 .p-description {
     margin-top: 15px;
     color: black !important;
@@ -268,6 +252,7 @@ para {
 .img-detail {
     margin-bottom: 30px;
 }
+
 div p {
     margin-bottom: 0;
 }
