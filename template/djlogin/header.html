@@ -14,10 +14,11 @@
 </head>
 
 <body>
-<div class="nav-bar sticky-top navbar navbar-expand-sm bg-dark navbar-dark">
-    <img class="logo" src="https://www.upi.edu/assets/img/logo.png"
-         class="rounded" alt="Cinque Terre">
-    <div class="topnav" id="myTopnav">
+<div class="nav-bar sticky-top bg-dark navbar-dark clearfix">
+    <div class="float-left">
+        <img class="logo" src="https://www.upi.edu/assets/img/logo.png" class="rounded" alt="Cinque Terre">
+    </div>
+    <div class="topnav float-right" id="myTopnav">
         <a class="nav-link link" href="/">Home</a>
         <a class="nav-link link" href="/">About</a>
         <a class="nav-link link" href="/djlogin/contactus">Contact Us</a>
@@ -46,9 +47,6 @@
         {% endif %}
         <a href="javascript:void(0);" class="icon" onclick="myFunction()"><i class="fa fa-bars"></i></a>
     </div>
-</div>
-<div class="progress">
-    <div class="progress-bar progress-bar-striped progress-bar-animated" style="width:40%">40%</div>
 </div>
 </body>
 <script>

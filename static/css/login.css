@@ -24,15 +24,15 @@ html, body {
 }
 
 .logo {
-    height: 65px;
-    width: 65px;
+    height: 70px;
+    width: 70px;
+    margin-left: 5px;
 }
 
 @media screen and (max-width: 600px) {
     .logo {
         height: 40px;
         width: 40px;
-        top: 0 !important;
     }
 }
 
@@ -40,9 +40,15 @@ div .nav-link {
     display: inline-block !important;
 }
 
-.link, .drop-link {
+.link {
     font-size: 20px;
-    margin: 0 10px 0 10px;
+    margin: 10px 10px 0 10px;
+    color: white;
+}
+
+.drop-link {
+    font-size: 20px;
+    margin: 10px 10px 15px 10px;
     color: white;
 }
 
