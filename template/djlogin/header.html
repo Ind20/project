@@ -1,5 +1,6 @@
 {%load static%}
 <html lang="en">
+
 <head>
     <title>Home</title>
     <meta charset="UTF-8">
@@ -14,40 +15,41 @@
 </head>
 
 <body>
-<div class="nav-bar sticky-top bg-dark navbar-dark clearfix">
-    <div class="float-left">
-        <img class="logo" src="https://www.upi.edu/assets/img/logo.png" class="rounded" alt="Cinque Terre">
-    </div>
-    <div class="topnav float-right" id="myTopnav">
-        <a class="nav-link link" href="/">Home</a>
-        <a class="nav-link link" href="/">About</a>
-        <a class="nav-link link" href="/djlogin/contactus">Contact Us</a>
-        <div class="btn-group drop">
-            <a class="nav-link drop-link" type="button" class="dropdown-toggle dropdown-toggle-split"
-               data-toggle="dropdown">Categories<i class="fa fa-caret-down white" style="padding-left: 3px"></i></a>
-            <div class="dropdown-menu">
-                <a class="dropdown-item" href="/projects">Category1</a>
-                <a class="dropdown-item" href="#">Link 2</a>
-            </div>
+    <div class="nav-bar sticky-top bg-dark navbar-dark clearfix">
+        <div class="float-left">
+            <img class="logo" src="https://www.upi.edu/assets/img/logo.png" class="rounded" alt="Cinque Terre">
         </div>
-        {% if user.is_authenticated %}
-        <div class="btn-group drop">
-            <a class="nav-link drop-link" type="button" class="dropdown-toggle dropdown-toggle-split"
-               data-toggle="dropdown">Hi,
-                {{user.username}}<i class="fa fa-caret-down white" style="padding-left: 3px"></i></a>
-            <div class="dropdown-menu">
-                <a class="dropdown-item" href="/user/profile">My profile</a>
-                <a class="dropdown-item" href="/user/editprofile">Edit Profile</a>
-                <a class="dropdown-item" href="/user/logout">Logout</a>
+        <div class="topnav float-right" id="myTopnav">
+            <a class="nav-link link" href="/">Home</a>
+            <a class="nav-link link" href="/">About</a>
+            <a class="nav-link link" href="/djlogin/contactus">Contact Us</a>
+            <div class="btn-group drop">
+                <a class="nav-link drop-link" type="button" class="dropdown-toggle dropdown-toggle-split"
+                    data-toggle="dropdown">Categories<i class="fa fa-caret-down white"
+                        style="padding-left: 3px"></i></a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="/projects">Category1</a>
+                    <a class="dropdown-item" href="#">Link 2</a>
+                </div>
             </div>
+            {% if user.is_authenticated %}
+            <div class="btn-group drop">
+                <a class="nav-link drop-link" type="button" class="dropdown-toggle dropdown-toggle-split"
+                    data-toggle="dropdown">Hi,
+                    {{user.username}}<i class="fa fa-caret-down white" style="padding-left: 3px"></i></a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="/user/profile">My profile</a>
+                    <a class="dropdown-item" href="/user/editprofile">Edit Profile</a>
+                    <a class="dropdown-item" href="/user/logout">Logout</a>
+                </div>
+            </div>
+            {% else %}
+            <a class="nav-link link" href="/user/register">Register</a>
+            <a class="nav-link link" href="/user/login">Login</a>
+            {% endif %}
+            <a href="javascript:void(0);" class="icon" onclick="myFunction()"><i class="fa fa-bars"></i></a>
         </div>
-        {% else %}
-        <a class="nav-link link" href="/user/register">Register</a>
-        <a class="nav-link link" href="/user/login">Login</a>
-        {% endif %}
-        <a href="javascript:void(0);" class="icon" onclick="myFunction()"><i class="fa fa-bars"></i></a>
     </div>
-</div>
 </body>
 <script>
     function myFunction() {
@@ -59,4 +61,5 @@
         }
     }
 </script>
+
 </html>
