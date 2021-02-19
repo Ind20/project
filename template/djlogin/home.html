@@ -9,8 +9,29 @@
         </button>
     </div>
     {%endfor%}
-    <div class="slider">
-        <img src="http://teachingsimulator.org/assets/img/index/banner.png" alt="image" width="100%">
+    <div id="demo" class="carousel slide" data-ride="carousel">
+        <ul class="carousel-indicators">
+            <li data-target="#demo" data-slide-to="0" class="active"></li>
+            <li data-target="#demo" data-slide-to="1"></li>
+            <li data-target="#demo" data-slide-to="2"></li>
+        </ul>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="https://www.w3schools.com/bootstrap4/la.jpg" alt="Los Angeles" width="1100" height="500">
+            </div>
+            <div class="carousel-item">
+                <img src="https://www.w3schools.com/bootstrap4/chicago.jpg" alt="Chicago" width="1100" height="500">
+            </div>
+            <div class="carousel-item">
+                <img src="https://www.w3schools.com/bootstrap4/ny.jpg" alt="New York" width="1100" height="500">
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#demo" data-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </a>
+        <a class="carousel-control-next" href="#demo" data-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </a>
     </div>
     <p class="quote center">With the dynamic game-based teaching simulator you can choose the way you want to learn
         anywhere at any time.
@@ -21,22 +42,22 @@
     <div class="row courses">
         <div class="col-sm-3 col-12 course-box">
             <img src="https://www.homecareinsight.co.uk/wp-content/uploads/2020/07/connected-technology.jpg" alt="image"
-                 width="100%" height="280">
+                width="100%" height="280">
             <p class="title center">Empowerment Technology</p>
         </div>
         <div class="col-sm-3 col-12 course-box">
             <img src="https://www.universal-rights.org/wp-content/uploads/2019/09/30212411048_2a1d7200e2_z-1.jpg"
-                 alt="image" width="100%" height="280">
+                alt="image" width="100%" height="280">
             <p class="title center">Earth & Life</p>
         </div>
         <div class="col-sm-3 col-12 course-box">
             <img src="https://analyticsindiamag.com/wp-content/uploads/2020/01/top-10-DS-projects.png" alt="image"
-                 width="100%" height="280">
+                width="100%" height="280">
             <p class="title center course">General Mathematics</p>
         </div>
         <div class="col-sm-3 col-12 course-box">
             <img src="https://cdn.totally.tech/prod/uploads/2019/04/how-to-define-the-scope-of-a-project-2-630x385.jpg"
-                 alt="image" width="100%" height="280">
+                alt="image" width="100%" height="280">
             <p class="title center">Reading & Writing</p>
         </div>
     </div>
