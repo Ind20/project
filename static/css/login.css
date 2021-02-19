@@ -284,9 +284,13 @@ div p {
     .p-detail {
         margin: 13px;
     }
+    .carousel-inner img {
+        width: 100%;
+        height: 250px !important;
+      }
 }
 
 .carousel-inner img {
     width: 100%;
-    height: 100%;
+    height: 500px;
   }
