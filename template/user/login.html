@@ -16,35 +16,54 @@
         </button>
     </div>
     {%endfor%}
-    <div id="login-row" class="row justify-content-center align-items-center">
-        <div class="col-md-4">
-            <div class="login-box">
-                <form id="login-form" class="form" action="" method="post">
-                    {% csrf_token %}
-                    <h3 class="text-center text-info">Login Here</h3>
-                    <div class="form-group">
-                        <label class="text-info">Username:test</label><br>
-                        <input type="text" name="username" placeholder="Username" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label class="text-info">Password:12345</label><br>
-                        <input type="text" name="password" placeholder="Password" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <div class="remember-me">
-                            <label class="text-info"><span>Remember me</span>
-                                <span><input id="remember-me" name="remember-me" type="checkbox"></span></label>
-                        </div>
-                        <div id="register-link" class="text-right remember-me">
-                            <a href="/user/register" class="text-info">Register here</a>
-                        </div>
-                    </div>
-                    <div class="submit-btn">
-                        <input type="submit" name="submit" class="btn btn-info btn-md" value="submit">
-                    </div>
-                </form>
-            </div>
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4 login-box">
+            <form id="login-form" action="login" class="form needs-validation" method="post" novalidate>
+                {% csrf_token %}
+                <h3 class="text-center text-info">Login Here</h3>
+                <div class="form-group">
+                    <label class="text-info">Username:</label>
+                    <input type="text" class="form-control" id="uname" placeholder="Enter username" name="username"
+                        required>
+                    <div class="invalid-feedback">Please fill out this field.</div>
+                </div>
+                <div class="form-group">
+                    <label class="text-info">Password:</label>
+                    <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="password"
+                        required>
+                    <div class="invalid-feedback">Please fill out this field.</div>
+                </div>
+                <div class="remember-me">
+                    <label class="text-info"><span>Remember me</span>
+                        <span><input id="remember-me" name="remember-me" type="checkbox"></span></label>
+                </div>
+                <div id="register-link" class="text-right remember-me">
+                    <a href="/user/register" class="text-info">Register here</a>
+                </div>
+                <div class="submit-btn">
+                    <input type="submit" name="submit" class="btn btn-info btn-md" value="submit">
+                </div>
+            </form>
         </div>
+        <div class="col-md-4"></div>
     </div>
 </div>
+<script>
+    (function () {
+        'use strict';
+        window.addEventListener('load', function () {
+            var forms = document.getElementsByClassName('needs-validation');
+            var validation = Array.prototype.filter.call(forms, function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (form.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        }, false);
+    })();
+</script>
 {% include 'djlogin/footer.html' %}
