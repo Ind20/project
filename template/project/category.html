@@ -10,7 +10,7 @@
     </nav>
     <div class="row">
         <div class="card col category-wrapper">
-            <img class="card-img-top cat-img" src="{% static 'assets/category.png' %}" alt="Card image">
+            <img class="card-img-top cat-img" src="{{cat.Category_Image.url}}" alt="Category image">
             <div class="card-img-overlay">
                 <h2 class="card-title">{{cat.Category_Name}}</h2>
                 <p class="card-text">{{cat.Category_Description}}</p>
