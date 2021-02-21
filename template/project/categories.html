@@ -3,19 +3,16 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="/">Home</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Projects</li>
+            <li class="breadcrumb-item"><a href="/">Project</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Categories</li>
         </ol>
     </nav>
-    <div class="row project-wrapper">
-        {% for project in projects %}
-        <div class="card img-fluid col-sm-3 project-block shadow-lg">
-            <img class="card-img-top Card-image" src="{{project.Project_Image}}" alt="Card image"
-                style="width:100%">
-            <h4 class="card-title">{{project.Project_Name}}</h4>
-            <a href="project/{{project.id}}" class="btn btn-info btn-md">DETAILS</a>
-        </div>
+    <ul class="list-group list-group-flush">
+        {% for category in categories %}
+        <li class="list-group-item"><a href="category/{{category.id}}">{{category.Category_Name}}</a>
+        </li>
         {% endfor %}
-    </div>
+    </ul>
     <ul class="pagination justify-content-center">
         <li class="page-item"><a class="page-link" href="javascript:void(0);">Previous</a></li>
         <li class="page-item active"><a class="page-link" href="javascript:void(0);">1</a></li>
