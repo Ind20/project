@@ -6,9 +6,12 @@ def projects(request):
     projects = project.objects.all()
     return render(request,'project/projects.html', {'projects': projects})
 
-def category(request):
-    projects = project.objects.all()
-    return render(request,'project/category.html', {'projects': projects})
+def category(request, id):
+    cat = projectCategory.objects.get(id=id)
+    context = {
+             'cat':cat,
+            }
+    return render(request, 'project/category.html', context)
 
 def categories(request):
     categories = projectCategory.objects.all()
