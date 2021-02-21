@@ -18,7 +18,7 @@
     <div class="row pro-box">
         <div class="col-2" style="height: 400px"></div>
         <div class="col-8" style="height: 400px">
-            <a class="submit-btn btn btn-info btn-md" href="/editprofile">Edit Profile</a>
+            <a class="submit-btn btn btn-info btn-md" href="/user/editprofile">Edit Profile</a>
             <form>
                 {% csrf_token %}
                 {% if user.is_authenticated %}
