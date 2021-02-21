@@ -294,3 +294,7 @@ div p {
     width: 100%;
     height: 500px;
   }
+
+  .pagination {
+      margin-top: 15px;
+  }
