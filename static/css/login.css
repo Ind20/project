@@ -25,7 +25,7 @@ html, body {
 
 .logo {
     height: 70px;
-    width: 70px;
+    width: 90px;
     margin-left: 5px;
 }
 
@@ -297,4 +297,14 @@ div p {
 
   .pagination {
       margin-top: 15px;
+  }
+
+  .category-wrapper {
+      width: 100%;
+      height: 350px;
+  }
+
+  .cat-img {
+      width: 100%;
+      height: 340px;
   }
