@@ -34,5 +34,5 @@ def addproject(request):
         messages.info(request,'Project submitted successfully')
         return redirect('/project/addproject')
     else:
-        context= {'form': form1 }
+        context= {'form': form }
     return render(request, 'project/addproject.html')
