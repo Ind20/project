@@ -7,6 +7,9 @@ class projectCategory(models.Model):
     Category_Description   = models.CharField( max_length=2000)
     Category_Image          = models.ImageField(default='assets/category.png', upload_to='images/category/', null='true', blank='true')
 
+    def __str__(self):
+        return self.Category_Name
+
 class project(models.Model):
     Project_Name            = models.CharField(max_length=350)
     Project_Category        = models.ForeignKey(projectCategory, on_delete=models.CASCADE)
