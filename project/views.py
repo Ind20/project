@@ -35,4 +35,4 @@ def addproject(request):
         return redirect('/project/addproject')
     else:
         context= {'form': form }
-    return render(request, 'project/addproject.html')
+    return render(request, 'project/addproject.html', context)

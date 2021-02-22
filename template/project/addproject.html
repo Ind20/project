@@ -20,7 +20,7 @@
         <div class="col-sm-8 col-12">
             <h2 class="text-info">Add Project</h2>
             <div class="form-group">
-                <form action="addproject" method="post">
+                <form action="addproject" method="post" enctype="multipart/form-data">
                     {% csrf_token %}
                     {{ form.as_p}}
                     <input class="submit-btn btn btn-info btn-md" type="submit" name="submit">
