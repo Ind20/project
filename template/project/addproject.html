@@ -22,7 +22,7 @@
             <div class="form-group">
                 <form action="addproject" method="post">
                     {% csrf_token %}
-                    {{ form1.as_p}}
+                    {{ form.as_p}}
                     <input class="submit-btn btn btn-info btn-md" type="submit" name="submit">
                 </form>
             </div>

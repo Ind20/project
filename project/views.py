@@ -27,12 +27,12 @@ def project_detail(request, id):
 
 
 def addproject(request):
-    form1= projectForm(request.POST or None, request.FILES or None)
+    form= projectForm(request.POST or None, request.FILES or None)
     if request.method=='POST':
         if form.is_valid():
             form.save()
         messages.info(request,'Project submitted successfully')
         return redirect('/project/addproject')
     else:
-        context= {'form1': form1 }
+        context= {'form': form1 }
     return render(request, 'project/addproject.html')
