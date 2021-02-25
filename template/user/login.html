@@ -16,37 +16,40 @@
         </button>
     </div>
     {%endfor%}
-    <div class="row">
-        <div class="col-md-4"></div>
-        <div class="col-md-4 login-box">
-            <form id="login-form" action="login" class="form needs-validation" method="post" novalidate>
-                {% csrf_token %}
-                <h3 class="text-center text-info">Login Here</h3>
-                <div class="form-group">
-                    <label class="text-info">Username:</label>
-                    <input type="text" class="form-control" id="uname" placeholder="Enter username" name="username"
-                        required>
-                    <div class="invalid-feedback">Please fill out this field.</div>
+    <div class="row justify-content-center login-box">
+        <div class="col-lg-5">
+            <div class="card shadow-lg border-0 rounded-lg mt-5">
+                <div class="card-header">
+                    <h3 class="text-center font-weight-light my-4">Login</h3>
                 </div>
-                <div class="form-group">
-                    <label class="text-info">Password:</label>
-                    <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="password"
-                        required>
-                    <div class="invalid-feedback">Please fill out this field.</div>
+                <div class="card-body">
+                    <form id="login-form" action="login" class="form needs-validation" method="post" novalidate>
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label class="small mb-1 " for="inputEmailAddress">Username</label>
+                            <input class="form-control py-4" id="inputEmailAddress" type="text"
+                                placeholder="Enter Username" name="username"
+                                required>
+                            <div class="invalid-feedback">Please fill out this field.</div>
+                        </div>
+                        <div class="form-group">
+                            <label class="small mb-1" for="inputPassword">Password</label>
+                            <input class="form-control py-4" id="inputPassword" type="password"
+                                placeholder="Enter password" name="password"
+                                required>
+                            <div class="invalid-feedback">Please fill out this field.</div>
+                        </div>
+                        <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
+                            <a class="small" href="">Forgot Password?</a>
+                            <button type="submit" name="submit" class="btn btn-info" href="">Login</a>
+                        </div>
+                    </form>
                 </div>
-                <div class="remember-me">
-                    <span><input id="remember-me" name="remember-me" type="checkbox"></span>
-                    <label class="text-info"><span>Remember me</span></label>
+                <div class="card-footer text-center">
+                    <div class="small"><a href="/user/register">Need an account? Sign up!</a></div>
                 </div>
-                <div id="register-link" class="text-right remember-me">
-                    <a href="/user/register" class="text-info">Register here</a>
-                </div>
-                <div class="submit-btn">
-                    <input type="submit" name="submit" class="btn btn-info btn-md" value="submit">
-                </div>
-            </form>
+            </div>
         </div>
-        <div class="col-md-4"></div>
     </div>
 </div>
 <script>
