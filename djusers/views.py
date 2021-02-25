@@ -18,6 +18,9 @@ def footer(request):
     return render(request, 'djlogin/footer.html')
 
 
+def dashboard(request):
+    return render(request, 'user/dashboard.html')
+
 def contactus(request):
     form= contactusMessageForm(request.POST or None)
     if request.method=='POST':
