@@ -8,12 +8,13 @@
     </nav>
     <div class="row project-wrapper">
         {% for project in projects %}
-        <div class="card img-fluid col-sm-3 project-block shadow-lg">
-            <img class="card-img-top Card-image" src="{{project.Project_Image.url}}" alt="Card image"
-                style="width:100%">
-            <h4 class="card-title">{{project.Project_Name}}</h4>
-            <a href="project/{{project.id}}" class="btn btn-info btn-md">DETAILS</a>
-        </div>
+        <a href="project/{{project.id}}">
+            <div class="card img-fluid col-sm-4 project-block shadow-lg">
+                <img class="card-img-top Card-image" src="{{project.Project_Image.url}}" alt="Card image" style="width:100%">
+                <h4 class="project-title">{{project.Project_Name}}</h4>
+                <a class="btn btn-info btn-md">DETAILS</a>
+            </div>
+        </a>
         {% endfor %}
     </div>
     <ul class="pagination justify-content-center">

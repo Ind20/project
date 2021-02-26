@@ -36,22 +36,31 @@
                     <a class="dropdown-item" href="/project/categories">All Categories</a>
                 </div>
             </div>
-            {% if user.is_authenticated %}
-            <div class="btn-group drop">
-                <a class="nav-link drop-link" type="button" class="dropdown-toggle dropdown-toggle-split"
-                    data-toggle="dropdown">Hi,
-                    {{user.username}}<i class="fa fa-caret-down white" style="padding-left: 3px"></i></a>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" href="/user/profile">My profile</a>
-                    <a class="dropdown-item" href="/user/editprofile">Edit Profile</a>
-                    <a class="dropdown-item" href="/project/addproject">Add Project</a>
-                    <a class="dropdown-item" href="/user/logout">Logout</a>
+            <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
+                <div class="input-group">
+                    <input class="form-control" type="text" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2" />
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" type="button"><i class="fa fa-search"></i></button>
+                    </div>
+                </div>
+            </form>
+            <div class="d-md-inline-block ml-auto ml-md-0 drop-link">
+                <div class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user fa-fw"></i></a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+                        {% if user.is_authenticated %}
+                        <a class="dropdown-item" href="/user/profile">My profile</a>
+                        <a class="dropdown-item" href="/user/editprofile">Edit Profile</a>
+                        <a class="dropdown-item" href="/user/dashboard">Dashboard</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="/user/logout">Logout</a>
+                        {% else %}
+                        <a class="dropdown-item" href="/user/login">Login</a>
+                        <a class="dropdown-item" href="/user/register">Register</a>
+                        {% endif %}
+                    </div>
                 </div>
             </div>
-            {% else %}
-            <a class="nav-link link" href="/user/register">Register</a>
-            <a class="nav-link link" href="/user/login">Login</a>
-            {% endif %}
             <a href="javascript:void(0);" class="icon" onclick="myFunction()"><i class="fa fa-bars"></i></a>
         </div>
     </div>
