@@ -292,3 +292,7 @@ div p {
   .tnc {
       margin-top: 15px;
   }
+
+.white {
+    color: white !important;
+}
