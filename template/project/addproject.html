@@ -1,0 +1,33 @@
+{% include 'djlogin/header.html' %}
+<div class="container pt-3 pb-3">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">Home</a></li>
+            <li class="breadcrumb-item"><a href="/">User</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Add Project</li>
+        </ol>
+    </nav>
+    {%for message in messages%}
+    <div class="message alert alert-success alert-dismissible fade show" role="alert">
+        <strong>{{ message}}</strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    {%endfor%}
+    <div class="row ">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-8 col-12">
+            <h2 class="text-info">Add Project</h2>
+            <div class="form-group">
+                <form action="addproject" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form.as_p}}
+                    <input class="submit-btn btn btn-info btn-md" type="submit" name="submit">
+                </form>
+            </div>
+        </div>
+        <div class="col-sm-2"></div>
+    </div>
+</div>
+{% include 'djlogin/footer.html' %}
