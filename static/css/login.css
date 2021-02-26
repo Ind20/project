@@ -11,6 +11,10 @@ html, body {
     background-color: #c6d3da !important;
 }
 
+.container {
+    min-height: 60%;
+}
+
 /* Topnav css */
 
 
