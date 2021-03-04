@@ -38,13 +38,13 @@ def profile (request):
 
 
 def editprofile(request):
-    form = userProfileForm(request.POST or None, request.FILES or None)
+    form = userProfileForm(request.POST or None, request.FILES or None, instance=request.user)
     if form.is_valid():
         userProfile = form.save(commit=False)
         userProfile.user = request.user
         userProfile.save()
         messages.info(request,'Profile saved successfully')
-        return redirect('user/profile')
+        return redirect('profile')
     else:
         context = {'form':form }
         return render(request, 'user/editprofile.html', context)
