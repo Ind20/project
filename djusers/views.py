@@ -3,10 +3,13 @@ from django.contrib import messages
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User, auth
 from .models import userProfile
+from project.models import projectCategory, project
 from .forms import contactusMessageForm, userProfileForm
 
 def home(request):
-    return render(request, 'djlogin/home.html')
+    categories = projectCategory.objects.all().order_by('id')[:4]
+    projects = project.objects.all().order_by('-id')[:4]
+    return render(request, 'djlogin/home.html', {'categories': categories, 'projects': projects})
 
 
 def header(request):
