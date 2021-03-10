@@ -12,6 +12,8 @@ To run project follow these steps-
 7. $ pip install django-crispy-forms
 8. $ pip install Pillow
 9. install and configure mysql pkg if not using sqlite
-10. makemigrations, migrate 
-11. create superuser 
-12. run server
+10. $ python manage.py
+11. $ python manage.py migrate 
+12. $ python manage.py createsuperuser 
+13. $ python manage.py runserver
+
