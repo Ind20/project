@@ -300,3 +300,7 @@ div p {
 .white {
     color: white !important;
 }
+
+.mega-menu {
+	width: 500px;
+}
