@@ -5,27 +5,34 @@
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="/">Home</a></li>
             <li class="breadcrumb-item"><a href="/">Category</a></li>
-            <li class="breadcrumb-item active" aria-current="page">category1</li>
+            <li class="breadcrumb-item active" aria-current="page">{{category.Category_Name}}</li>
         </ol>
     </nav>
-    <div class="row">
-        <div class="card col category-wrapper">
-            <img class="card-img-top cat-img" src="{{cat.Category_Image.url}}" alt="Category image">
-            <div class="card-img-overlay">
-                <h2 class="card-title">{{cat.Category_Name}}</h2>
-                <p class="card-text">{{cat.Category_Description}}</p>
-                <a href="#" class="btn submit-btn btn-primary">See All Projects</a>
-            </div>
+    <div class="row category-wrapper">
+        <div class="col-sm-6 col-12">
+            <img class="cat-img" src="{{category.Category_Image.url}}" alt="Category image">
+        </div>
+        <div class="col-sm-6 col-12">
+            <h2 class="card-title">{{category.Category_Name}}</h2>
+            <p class="card-text">{{category.Category_Description}}</p>
         </div>
     </div>
-    <div class="row project-wrapper">
-        {% for project in projects %}
-        <div class="card img-fluid col-sm-3 project-block shadow-lg">
-            <img class="card-img-top Card-image" src="{{project.Project_Image}}" alt="Card image" style="width:100%">
-            <h4 class="card-title">{{project.Project_Name}}</h4>
-            <a href="projects/{{project.id}}" class="btn btn-info btn-md">DETAILS</a>
+    <div class="project-wrapper">
+        <div class="bg-info">
+            <h2>Top Projects in this category</h2>
         </div>
-        {% endfor %}
+        <div class="row">
+            {% for project in projects %}
+            <div class="card img-fluid col-sm-4 project-block shadow-lg">
+                <img class="card-img-top Card-image" src="{{project.Project_Image.url}}" alt="Card image" style="width:100%">
+                <h4 class="project-title">{{project.Project_Name}}</h4>
+                <a href="project/{{project.id}}" class="btn btn-info btn-md">DETAILS</a>
+            </div>
+            {% endfor %}
+        </div>
+        <div>
+            <a href="#" class="btn submit-btn btn-primary">See All Projects in this category</a>
+        </div>
     </div>
 </div>
 {% include 'djlogin/footer.html' %}
