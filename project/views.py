@@ -121,6 +121,10 @@ def category(request, id):
     projects = project.objects.filter(Project_Category_id=id)[:8]
     category = projectCategory.objects.get(id=id)
     return render(request, 'project/category.html', {'category':category, 'projects': projects})
+    
+def category_project(request, cat_id, id):
+    proj = project.objects.get(id=id)
+    return render(request, 'project/project.html', {'proj': proj})
 
 def addproject(request):
     form= projectForm(request.POST or None, request.FILES or None)
@@ -128,7 +132,7 @@ def addproject(request):
         if form.is_valid():
             form.save()
         messages.info(request,'Project submitted successfully')
-        return redirect('/project/addproject')
+        return redirect('/addproject')
     else:
         context= {'form': form }
     return render(request, 'project/addproject.html', context)

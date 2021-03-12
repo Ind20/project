@@ -15,6 +15,7 @@ urlpatterns =[
     path('contactus', views.contactus, name='contactus'),
     path('categories', views.categories, name="categories"),
     path('category/<int:id>/', views.category, name='category'),
+    path('category/<int:cat_id>/project/<int:id>', views.category_project, name='category_project'),
     path('projects', views.projects, name="projects"),
     path('project/<int:id>/', views.project_detail, name='project_detail'),
     path('addproject', views.addproject, name="addproject") 
