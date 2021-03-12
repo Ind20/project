@@ -28,7 +28,7 @@ def contactus(request):
         if form.is_valid():
             form.save()
         messages.info(request,'Form submitted successfully')
-        return redirect('/main/contactus')
+        return redirect('contactus')
     else:
         context= {'form': form }
         return render(request, 'main/contactus.html', context)
