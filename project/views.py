@@ -8,15 +8,15 @@ from .forms import projectForm, contactusMessageForm, userProfileForm
 def home(request):
     categories = projectCategory.objects.all().order_by('id')[:4]
     projects = project.objects.all().order_by('-id')[:4]
-    return render(request, 'djlogin/home.html', {'categories': categories, 'projects': projects})
+    return render(request, 'main/home.html', {'categories': categories, 'projects': projects})
 
 
 def header(request):
-    return render(request, 'djlogin/header.html')
+    return render(request, 'main/header.html')
 
 
 def footer(request):
-    return render(request, 'djlogin/footer.html')
+    return render(request, 'main/footer.html')
 
 
 def dashboard(request):
@@ -28,10 +28,10 @@ def contactus(request):
         if form.is_valid():
             form.save()
         messages.info(request,'Form submitted successfully')
-        return redirect('/djlogin/contactus')
+        return redirect('/main/contactus')
     else:
         context= {'form': form }
-        return render(request, 'djlogin/contactus.html', context)
+        return render(request, 'main/contactus.html', context)
 
 
 def profile (request):
