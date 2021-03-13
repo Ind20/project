@@ -23,6 +23,7 @@ def footer(request):
 def dashboard(request):
     return render(request, 'user/dashboard.html')
 
+
 def contactus(request):
     form= contactusMessageForm(request.POST or None)
     if request.method=='POST':
@@ -37,6 +38,7 @@ def contactus(request):
 def profile (request):
     profile = userProfile.objects.filter(user = request.user)
     return render(request, 'user/profile.html', {'profile': profile})
+
 
 def login(request):
     if request.method=='POST':
@@ -85,6 +87,7 @@ def register(request):
     else:
         return render(request,"user/register.html")
 
+
 def editprofile(request):
     if request.method=='POST':
         first_name = request.POST['first_name']
@@ -125,22 +128,27 @@ def projects(request):
         placeholder = "Search Projects"
     return render(request,'project/projects.html', {'projects': projects, 'placeholder': placeholder})
 
+
 def project_detail(request, id):
     proj = project.objects.get(id=id)
     return render(request, 'project/project.html', {'proj': proj})
+
 
 def categories(request):
     categories = projectCategory.objects.all()
     return render(request,'project/categories.html', {'categories': categories})
 
+
 def category(request, id):
     projects = project.objects.filter(Project_Category_id=id)[:8]
     category = projectCategory.objects.get(id=id)
     return render(request, 'project/category.html', {'category':category, 'projects': projects})
-    
+
+
 def category_project(request, cat_id, id):
     proj = project.objects.get(id=id)
     return render(request, 'project/project.html', {'proj': proj})
+
 
 def addproject(request):
     form= projectForm(request.POST or None, request.FILES or None)
