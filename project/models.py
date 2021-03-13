@@ -31,3 +31,6 @@ class project(models.Model):
     Project_Image           = models.ImageField(default='assets/project.png', upload_to='images/project/', null='true', blank='true')
     Project_Video_url       = models.CharField(max_length=2085)
     Project_Description     = models.CharField( max_length=10000)
+
+    def __str__(self):
+        return self.Project_Name

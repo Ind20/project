@@ -8,23 +8,30 @@
         </ol>
     </nav>
     <div class="row">
-        <div class="col-3" style="height: 400px"></div>
-        <form method="post" action="editprofile" enctype="multipart/form-data">
-            {% csrf_token %}
-            <div class="col-12" style="height: 400px">
+        <div class="col-3"></div>
+        <div class="col-6">
+            <form method="post" action="editprofile" enctype="multipart/form-data">
+                {% csrf_token %}
                 <div class="propic-box">
-                    <img src="{{request.user.userprofile.profile_pic.url}}" height="80" width="80"><br>
+                    <img src="{{request.user.userprofile.profile_pic.url}}" height="80" width="80"><br><br>
                 </div>
-                <div class="">
-                    {{form}}
+                <div class="form-group">
+                    <label for="user_name">Userame: </label>
+                    <input type="text" name="username" value="{{user.username}}"></input><br>
+                    <label for="first_name">First Name: </label>
+                    <input type="text" name="first_name" value="{{user.first_name}}"></input><br>
+                    <label for="last_name">Last Name: </label>
+                    <input type="text" name="last_name" value="{{user.last_name}}"></input><br>
+                    <label for="email">Email: </label>
+                    <input type="text" name="email" value="{{user.email}}"></input><br>
+                    {{form.as_p}}
                     <div class="submit-btn">
                         <input type="submit" name="submit" class="btn btn-info btn-md" value="submit">
                     </div>
                 </div>
-                <div class=""></div>
-            </div>
-        </form>
-        <div class="col-3" style="height: 400px"></div>
+            </form>
+        </div>
+        <div class="col-3"></div>
     </div>
 </div>
 {% include 'main/footer.html' %}

@@ -4,6 +4,7 @@ from django.contrib import messages
 from django.contrib.auth.models import User, auth
 from .models import userProfile, projectCategory, project
 from .forms import projectForm, contactusMessageForm, userProfileForm
+from django.views.generic import TemplateView, ListView
 
 def home(request):
     categories = projectCategory.objects.all().order_by('id')[:4]
@@ -30,27 +31,12 @@ def contactus(request):
         messages.info(request,'Form submitted successfully')
         return redirect('contactus')
     else:
-        context= {'form': form }
-        return render(request, 'main/contactus.html', context)
+        return render(request, 'main/contactus.html', {'form': form})
 
 
 def profile (request):
-    profiledatas = userProfile.objects.filter(user = request.user)
-    return render(request, 'user/profile.html', {'data': profiledatas})
-
-
-def editprofile(request):
-    form = userProfileForm(request.POST or None, request.FILES or None, instance=request.user)
-    if form.is_valid():
-        userProfile = form.save(commit=False)
-        userProfile.user = request.user
-        userProfile.save()
-        messages.info(request,'Profile saved successfully')
-        return redirect('profile')
-    else:
-        context = {'form':form }
-        return render(request, 'user/editprofile.html', context)
-
+    profile = userProfile.objects.filter(user = request.user)
+    return render(request, 'user/profile.html', {'profile': profile})
 
 def login(request):
     if request.method=='POST':
@@ -71,6 +57,7 @@ def login(request):
 def register(request):
     if request.method =='POST':
         first_name = request.POST['first_name']
+        last_name = request.POST['last_name']
         phone_num = request.POST['phone_num']
         username = request.POST['username']
         email = request.POST['email']
@@ -86,7 +73,7 @@ def register(request):
                 return redirect('register')
             else:
                 user = User.objects.create_user(username=username, password=password1,
-                                      email=email, first_name=first_name)
+                                      email=email, first_name=first_name, last_name=last_name)
                 user.save()
                 newuserProfile = userProfile(phone_num=phone_num, user=user)
                 newuserProfile.save()
@@ -98,6 +85,29 @@ def register(request):
     else:
         return render(request,"user/register.html")
 
+def editprofile(request):
+    if request.method=='POST':
+        first_name = request.POST['first_name']
+        last_name = request.POST['last_name']
+        username = request.POST['username']
+        email = request.POST['email']
+        if User.objects.filter(username=username).exists():
+            messages.info(request,'Username is not available')
+            return redirect('register')
+        elif User.objects.filter(email=email).exists():
+            messages.info(request,'Email is alreday registered')
+            return redirect('register')
+        else:
+            user = User.objects.create_user(username=username, email=email, first_name=first_name, last_name=last_name)
+            user.save()
+    form = userProfileForm(request.POST or None, request.FILES or None, instance=request.user)          
+    if form.is_valid():
+        userProfile = form.save()
+        messages.info(request,'Profile saved successfully')
+        return redirect('profile')
+    else:
+        return render(request, 'user/editprofile.html', {'form': form})
+
 
 def logout(request):
     auth.logout(request)
@@ -106,8 +116,14 @@ def logout(request):
 
 
 def projects(request):
-    projects = project.objects.all()
-    return render(request,'project/projects.html', {'projects': projects})
+    if 'key' in request.GET:
+        key = request.GET['key']
+        placeholder = "Showing results for " + key
+        projects= project.objects.filter(Project_Name__icontains=key)
+    else:
+        projects = project.objects.all()
+        placeholder = "Search Projects"
+    return render(request,'project/projects.html', {'projects': projects, 'placeholder': placeholder})
 
 def project_detail(request, id):
     proj = project.objects.get(id=id)
@@ -134,5 +150,4 @@ def addproject(request):
         messages.info(request,'Project submitted successfully')
         return redirect('/addproject')
     else:
-        context= {'form': form }
-    return render(request, 'project/addproject.html', context)
+        return render(request, 'project/addproject.html', {'form': form})
