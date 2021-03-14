@@ -121,14 +121,17 @@ def logout(request):
 def projects(request):
     if 'key' in request.GET:
         key = request.GET['key']
-        placeholder = "Showing results for "'"%s"' % key
         projects= project.objects.filter(Project_Name__icontains=key)
-        if len(projects) < 1:
-            messages.info(request,'No projects found for this search')
+        n = len(projects)
+        msg = "Showing "'%s' % n + " results for "'"%s"' % key
+        if n < 1:
+            msg = "No results found for "'"%s"' % key 
+            messages.info(request, msg)
+        else:
+            messages.info(request, msg)
     else:
         projects = project.objects.all()
-        placeholder = "Search Projects"
-    return render(request,'project/projects.html', {'projects': projects, 'placeholder': placeholder})
+    return render(request,'project/projects.html', {'projects': projects})
 
 
 def project_detail(request, id):
