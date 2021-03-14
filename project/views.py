@@ -121,8 +121,10 @@ def logout(request):
 def projects(request):
     if 'key' in request.GET:
         key = request.GET['key']
-        placeholder = "Showing results for " + key
+        placeholder = "Showing results for "'"%s"' % key
         projects= project.objects.filter(Project_Name__icontains=key)
+        if len(projects) < 1:
+            messages.info(request,'No projects found for this search')
     else:
         projects = project.objects.all()
         placeholder = "Search Projects"
