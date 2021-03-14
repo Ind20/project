@@ -150,6 +150,23 @@ def category(request, id):
     return render(request, 'project/category.html', {'category':category, 'projects': projects})
 
 
+def category_projects(request, id):
+    category = projectCategory.objects.get(id=id)
+    if 'key' in request.GET:
+        key = request.GET['key']
+        projects= project.objects.filter(Project_Name__icontains=key, Project_Category_id=id)
+        n = len(projects)
+        msg = "Showing "'%s' % n + " results for "'"%s"' % key
+        if n < 1:
+            msg = "No results found for "'"%s"' % key +" in this category"
+            messages.info(request, msg)
+        else:
+            messages.info(request, msg)
+    else:
+        projects = project.objects.filter(Project_Category_id=id)
+    return render(request, 'project/category-projects.html', {'category':category, 'projects': projects})
+
+
 def category_project(request, cat_id, id):
     proj = project.objects.get(id=id)
     return render(request, 'project/project.html', {'proj': proj})
