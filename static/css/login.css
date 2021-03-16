@@ -213,6 +213,11 @@ div .nav-link {
     margin-top: 50px;
 }
 
+.profile-box {
+    padding: 15px !important;
+    margin-bottom: 50px;
+}
+
 .footer-link {
     color: white !important;
     text-decoration: none;
@@ -305,4 +310,16 @@ div p {
 
 .white {
     color: white !important;
+}
+
+.dp {
+    border-radius: 50%;
+}
+
+.pro-head {
+    padding-bottom: 30px !important;
+}
+
+#id_Project_Category {
+    margin-top: 15px;
 }

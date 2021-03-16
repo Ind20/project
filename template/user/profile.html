@@ -15,33 +15,56 @@
         </button>
     </div>
     {%endfor%}
-    <div class="row pro-box">
-        <div class="col-2" style="height: 400px"></div>
-        <div class="col-8" style="height: 400px">
-            <a class="submit-btn btn btn-info btn-md" href="/editprofile">Edit Profile</a>
-            <form>
-                {% csrf_token %}
-                <img src="{{request.user.userprofile.profile_pic.url}}" height="80" width="80"><br>
-                <label for="first_name">Name: </label>
-                <output type="text">{{user.first_name}} {{user.last_name}}</output>
-                <br>
-                <label for="username">Username: </label>
-                <output type="text">{{user.username}}</output>
-                <br>
-                {% for my in profile %}
-                <label for="phone_num">Phone: </label>
-                <output type="text">{{my.phone_num}}</output>
-                <br>
-                <label for="age">Age: </label>
-                <output type="text">{{my.age}}</output>
-                <br>
-                {% endfor %}
-                <label for="email">E-mail: </label>
-                <output type="text">{{user.email}}</output>
-                <br>
-            </form>
+    <div class="row justify-content-center">
+        <div class="col-sm-6 col-12 card shadow-lg border-0 rounded-lg mt-5 profile-box">
+            <div class="row pro-head">
+                <div class="col">
+                    <img class="dp" src="{{request.user.userprofile.profile_pic.url}}" width="150" height="150">
+                </div>
+                <div class="col">
+                    <h1>{{ request.user.username}}</h1>
+                    <p>{{ request.user.userprofile.phone_num }}</p>
+                    <p>{{ request.user.email }}</p>
+                </div>
+                <div class="col">
+                    <a class="submit-btn btn btn-info btn-md" href="/editprofile">Edit Profile</a>
+                </div>
+            </div>
+            <div class="justify-content-center">
+                <div class="row">
+                    <div class="col-sm-3">
+                        <h6 class="mb-0">Full Name</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                        {{request.user.first_name}} {{request.user.last_name}}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3">
+                        <h6 class="mb-0">Email</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                        {{request.user.email}}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3">
+                        <h6 class="mb-0">Age</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                        {{request.user.userprofile.age}}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3">
+                        <h6 class="mb-0">Phone</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                        {{request.user.userprofile.phone_num}}
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="col-2" style="height: 400px"></div>
     </div>
 </div>
 {% include 'main/footer.html' %}
