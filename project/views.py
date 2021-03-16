@@ -6,6 +6,7 @@ from django.contrib.auth.decorators import login_required
 from .models import userProfile, projectCategory, project
 from .forms import projectForm, contactusMessageForm, userProfileForm, userUpdateForm, userProfileUpdateForm
 from django.views.generic import TemplateView, ListView
+from django.contrib.auth.decorators import user_passes_test
 
 
 
@@ -23,7 +24,7 @@ def footer(request):
     return render(request, 'main/footer.html')
 
 
-@login_required
+@user_passes_test(lambda u: u.is_superuser)
 def dashboard(request):
     return render(request, 'user/dashboard.html')
 
@@ -46,19 +47,19 @@ def please_login(request):
 
 
 def login(request):
-    if request.method=='POST':
-        username = request.POST['username']
-        password = request.POST['password']
-        user = auth.authenticate(username=username, password=password)
-        if user is not None:
-            auth.login(request, user)
-            messages.info(request,'You are successfully logged in.')
-            return redirect('/')
+        if request.method=='POST':
+            username = request.POST['username']
+            password = request.POST['password']
+            user = auth.authenticate(username=username, password=password)
+            if user is not None:
+                auth.login(request, user)
+                messages.info(request,'You are successfully logged in.')
+                return redirect('/')
+            else:
+                messages.info(request,"Invalid username/password")
+                return redirect('login')
         else:
-            messages.info(request,"Invalid username/password")
-            return redirect('login')
-    else:
-        return render(request,"user/login.html")
+            return render(request,"user/login.html")
 
 
 def register(request):
