@@ -47,6 +47,10 @@ def please_login(request):
 
 
 def login(request):
+    if request.user.is_authenticated:
+        messages.info(request,'You are alredy logged in.')
+        return redirect('/')
+    else:
         if request.method=='POST':
             username = request.POST['username']
             password = request.POST['password']
@@ -63,6 +67,9 @@ def login(request):
 
 
 def register(request):
+    if request.user.is_authenticated:
+        messages.info(request,'You are alredy registered.')
+        return redirect('/')
     if request.method =='POST':
         first_name = request.POST['first_name']
         last_name = request.POST['last_name']
@@ -85,7 +92,7 @@ def register(request):
                 user.save()
                 newuserProfile = userProfile(phone_num=phone_num, user=user)
                 newuserProfile.save()
-                messages.info(request,'Account created.')
+                messages.info(request,'Account created successfully.')
                 return redirect('login')
         else:
             messages.info(request,'Password is not matching')
