@@ -2,9 +2,12 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib import messages
 from django.contrib.auth.models import User, auth
+from django.contrib.auth.decorators import login_required
 from .models import userProfile, projectCategory, project
-from .forms import projectForm, contactusMessageForm, userProfileForm
+from .forms import projectForm, contactusMessageForm, userProfileForm, userUpdateForm, userProfileUpdateForm
 from django.views.generic import TemplateView, ListView
+
+
 
 def home(request):
     categories = projectCategory.objects.all().order_by('id')[:4]
@@ -20,12 +23,13 @@ def footer(request):
     return render(request, 'main/footer.html')
 
 
+@login_required
 def dashboard(request):
     return render(request, 'user/dashboard.html')
 
 
 def contactus(request):
-    form= contactusMessageForm(request.POST or None)
+    form = contactusMessageForm(request.POST or None)
     if request.method=='POST':
         if form.is_valid():
             form.save()
@@ -35,9 +39,10 @@ def contactus(request):
         return render(request, 'main/contactus.html', {'form': form})
 
 
-def profile (request):
-    profile = userProfile.objects.filter(user = request.user)
-    return render(request, 'user/profile.html', {'profile': profile})
+def please_login(request):
+    msg = "You need to be logged-in to view this page"
+    messages.info(request, msg)
+    return render(request, 'user/login.html')
 
 
 def login(request):
@@ -88,28 +93,27 @@ def register(request):
         return render(request,"user/register.html")
 
 
+
+@login_required
+def profile (request):
+    p_form = userProfileForm(instance=request.user.userprofile)
+    return render(request, 'user/profile.html', {'p_form': p_form})
+
+
+@login_required
 def editprofile(request):
-    if request.method=='POST':
-        first_name = request.POST['first_name']
-        last_name = request.POST['last_name']
-        username = request.POST['username']
-        email = request.POST['email']
-        if User.objects.filter(username=username).exists():
-            messages.info(request,'Username is not available')
-            return redirect('register')
-        elif User.objects.filter(email=email).exists():
-            messages.info(request,'Email is alreday registered')
-            return redirect('register')
-        else:
-            user = User.objects.create_user(username=username, email=email, first_name=first_name, last_name=last_name)
-            user.save()
-    form = userProfileForm(request.POST or None, request.FILES or None, instance=request.user)          
-    if form.is_valid():
-        userProfile = form.save()
-        messages.info(request,'Profile saved successfully')
+    if request.method =='POST':
+        u_form = userUpdateForm(request.POST or None, instance=request.user)
+        p_form = userProfileUpdateForm(request.POST or None, request.FILES or None, instance=request.user.userprofile)
+        if u_form.is_valid() and p_form.is_valid():
+            u_form.save()
+            p_form.save()
+        messages.info(request,'Your profile successfully saved.')
         return redirect('profile')
     else:
-        return render(request, 'user/editprofile.html', {'form': form})
+        u_form = userUpdateForm(instance=request.user)
+        p_form = userProfileUpdateForm(instance=request.user.userprofile)
+        return render(request, 'user/editprofile.html', {'u_form': u_form, 'p_form': p_form})
 
 
 def logout(request):
@@ -171,7 +175,7 @@ def category_project(request, cat_id, id):
     proj = project.objects.get(id=id)
     return render(request, 'project/project.html', {'proj': proj})
 
-
+@login_required
 def addproject(request):
     form= projectForm(request.POST or None, request.FILES or None)
     if request.method=='POST':

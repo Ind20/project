@@ -19,5 +19,6 @@ urlpatterns =[
     path('category/<int:id>/projects', views.category_projects, name='category_projects'),
     path('projects', views.projects, name="projects"),
     path('project/<int:id>/', views.project_detail, name='project_detail'),
-    path('addproject', views.addproject, name="addproject") 
+    path('addproject', views.addproject, name="addproject"),
+    path('accounts/login/', views.please_login, name='please_login')
 ]

@@ -15,19 +15,17 @@
         </button>
     </div>
     {%endfor%}
-    <div class="row ">
-        <div class="col-sm-2"></div>
-        <div class="col-sm-8 col-12">
-            <h2 class="text-info">Add Project</h2>
+    <div class="row justify-content-center">
+        <div class="col-sm-8 col-12 card shadow-lg border-0 rounded-lg mt-5 profile-box">
+            <h2 class="text-info text-center">Add Project</h2>
             <div class="form-group">
                 <form action="addproject" method="post" enctype="multipart/form-data">
                     {% csrf_token %}
                     {{ form.as_p}}
-                    <input class="submit-btn btn btn-info btn-md" type="submit" name="submit">
+                    <br><input class="submit-btn btn btn-info btn-md" type="submit" name="submit" value="Add Project">
                 </form>
             </div>
         </div>
-        <div class="col-sm-2"></div>
     </div>
 </div>
 {% include 'main/footer.html' %}

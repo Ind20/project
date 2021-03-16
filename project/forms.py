@@ -1,6 +1,6 @@
 from django import forms
-from .models import project
-from .models import contactusMessage, userProfile
+from django.contrib.auth.models import User
+from .models import contactusMessage, userProfile, project
 
 class contactusMessageForm(forms.ModelForm):
     class Meta:
@@ -10,17 +10,37 @@ class contactusMessageForm(forms.ModelForm):
             'fullname': forms.TextInput(attrs={'class' : 'form-control'}),
             'phone_num': forms.NumberInput(attrs={'class' : 'form-control'}),
             'email' : forms.EmailInput(attrs={'class' : 'form-control'}),
-            'message': forms.Textarea(attrs={'class' : 'form-control'}),
+            'message': forms.Textarea(attrs={'class' : 'form-control'})
         }
 
 class userProfileForm(forms.ModelForm):
-    profile_pic = forms.ImageField(required=False,widget=forms.FileInput)
-    age         = forms.IntegerField(required=False)
-    phone_num   = forms.CharField(max_length = 15, required=False)
     class Meta:
         model   = userProfile
-        fields  = ["age", "phone_num", "profile_pic"]
+        fields  = ['age', 'phone_num']
+        widgets = {
+            'age': forms.TextInput(attrs={'class' : 'form-control'}),
+            'phone_num': forms.TextInput(attrs={'class' : 'form-control'})
+        }
 
+class userProfileUpdateForm(forms.ModelForm):
+    class Meta:
+        model   = userProfile
+        fields  = ['age', 'phone_num', 'profile_pic']
+        widgets = {
+            'age': forms.TextInput(attrs={'class' : 'form-control'}),
+            'phone_num': forms.TextInput(attrs={'class' : 'form-control'}),
+            'profile_pic': forms.FileInput(attrs={'style' : 'margin-top:15px'}),
+        }
+
+class userUpdateForm(forms.ModelForm):
+    class Meta:
+        model   = User
+        fields  = ['first_name', 'last_name', 'email']
+        widgets = {
+            'first_name': forms.TextInput(attrs={'class' : 'form-control'}),
+            'last_name': forms.TextInput(attrs={'class' : 'form-control'}),
+            'email' : forms.EmailInput(attrs={'class' : 'form-control'})
+        }
 
 class projectForm(forms.ModelForm):
     class Meta:
@@ -32,7 +52,7 @@ class projectForm(forms.ModelForm):
             'Mentor_Name': forms.TextInput(attrs={'class' : 'form-control'}),
             'Project_Image': forms.FileInput(attrs={'style' : 'margin-top:15px'}),
             'Project_Video_url': forms.TextInput(attrs={'class' : 'form-control'}),
-            'Project_Description': forms.Textarea(attrs={'class' : 'form-control'}),
+            'Project_Description': forms.Textarea(attrs={'class' : 'form-control'})
         }
 
 class Project_CategorySelect(forms.Select):
