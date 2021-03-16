@@ -17,6 +17,9 @@ html, body {
 
 /* Topnav css */
 
+.nav-bar {
+    height: 70px !important;
+}
 
 @media screen and (max-width: 600px) {
     .nav-bar {
