@@ -13,7 +13,7 @@
                 {% csrf_token %}
                 <div class="row pro-head">
                     <div class="col dp-box">
-                        <img class="dp" src="{{request.user.userprofile.profile_pic.url}}" width="150" height="150">
+                        <img class="dp" src="{{request.user.userprofile.get_profile_pic}}" width="150" height="150">
                     </div>
                     <div class="col dp-box">
                         <h1>{{ request.user.username}}</h1>
