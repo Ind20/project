@@ -6,7 +6,12 @@ class userProfile(models.Model):
     phone_num       = models.CharField(max_length = 15)
     age             = models.IntegerField(null=True)
     profile_pic     = models.ImageField(default='assets/profile.png', upload_to='images/profile/', null='true', blank='true')
-    
+    @property
+    def get_profile_pic(self):
+        if self.profile_pic and hasattr(self.profile_pic, 'url'):
+            return self.profile_pic.url
+        else:
+         return "images/assets/profile.png"
 
 class contactusMessage(models.Model):
     fullname        = models.CharField(max_length=35)
