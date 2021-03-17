@@ -1,1 +1,328 @@
-/* mega menu css */
+/* Universal css */
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    background-color: #c6d3da !important;
+}
+
+.container {
+    min-height: 60%;
+}
+
+/* Topnav css */
+
+.nav-bar {
+    height: 70px !important;
+}
+
+@media screen and (max-width: 600px) {
+    .nav-bar {
+        height: 50px !important;
+    }
+}
+
+.logo {
+    height: 70px;
+    width: 70px;
+    margin-left: 5px;
+}
+
+@media screen and (max-width: 600px) {
+    .logo {
+        height: 40px;
+        width: 40px;
+    }
+}
+
+div .nav-link {
+    display: inline-block !important;
+}
+
+.link {
+    font-size: 20px;
+    margin: 10px 10px 0 10px;
+    color: white;
+}
+
+.drop-link {
+    font-size: 20px;
+    margin: 10px 10px 15px 10px;
+    color: white;
+}
+
+@media screen and (max-width: 600px) {
+    .drop-link, .link {
+        margin: 0;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .drop {
+        display: block !important;
+    }
+}
+
+.link:hover, .drop-link:hover {
+    color: #e1ffab;
+}
+
+.topnav {
+    margin-left: 20%;
+}
+
+.topnav .icon {
+    display: none;
+}
+
+@media screen and (max-width: 600px) {
+    .topnav a.nav-link {
+        display: none !important;
+    }
+
+    .topnav a.icon {
+        float: right;
+        display: block;
+        font-size: 30px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .topnav.responsive {
+        position: relative;
+    }
+
+    .topnav.responsive .icon {
+        position: absolute;
+        right: 0;
+        top: 7px;
+    }
+
+    .topnav.responsive a {
+        float: none;
+        display: block !important;
+        text-align: left;
+        background-color: #333;
+    }
+
+    .dropdown-item {
+        background-color: white !important;
+    }
+}
+
+
+.message {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.slider {
+    width: 100%;
+    height: 400px;
+}
+
+@media screen and (max-width: 600px) {
+    .slider {
+        height: 180px;
+    }
+}
+
+.heading {
+    margin: 20px;
+    color: black !important;
+    font-family: WorkSans-ExtraBold, Arial;
+    font-size: 50px;
+}
+
+.title {
+    margin-top: 10px;
+    color: black !important;
+    font-family: WorkSans-Bold, Arial;
+    font-size: 20px;
+}
+.courses {
+    margin: 30px 0 30px 0;
+}
+
+.course-box {
+    margin: 10px 0 10px 0;
+    cursor: pointer;
+}
+
+
+.login-box, .reg-box {
+    margin-bottom: 50px;
+}
+
+.remember-me {
+    display: inline-block;
+    margin-left: 25px;
+    margin-top: 10px;
+}
+
+.submit-btn {
+    float: right;
+}
+
+.form-group {
+    margin-bottom: 0rem !important;
+}
+
+.footer {
+    min-height: 30%;
+    width: 100%;
+    margin-left: 0 !important;
+    background-color: slategrey;
+}
+
+.quote {
+    border-bottom: 1px solid black;
+    font-family: WorkSans-Medium, Arial;
+    font-size: 20px;
+    padding-bottom: 50px;
+    color: black !important;
+}
+
+.center {
+    text-align: center;
+}
+
+.desc {
+    color: black !important;
+}
+
+.course {
+    cursor: pointer;
+    padding-left: 30px !important;
+}
+
+.copyright {
+    font-size: 10px;
+    padding-bottom: 2px;
+    background-color: slategrey;
+}
+
+.quick-links {
+    margin-bottom: 0;
+    margin-top: 20px;
+}
+
+.pro-box {
+    margin-top: 50px;
+}
+
+.profile-box {
+    padding: 15px !important;
+    margin-bottom: 50px;
+}
+
+.footer-link {
+    color: white !important;
+    text-decoration: none;
+}
+
+.footer-link:hover {
+    color: darkgreen !important;
+    text-decoration: none !important;
+}
+
+.project-block {
+    padding-top: 15px;
+    margin: 5px;
+    width: 300px;
+    height: 315px !important;
+    max-width: 24% !important;
+}
+
+@media screen and (max-width: 600px) {
+    .project-block {
+        max-width: unset !important;
+        margin: 15px;
+    }
+}
+
+.Card-image {
+    width: 150px;
+    height: 200px;
+}
+
+.project-title {
+    white-space: nowrap;
+    width: 250px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin: 10px;
+}
+
+.p-description {
+    margin-top: 15px;
+    color: black !important;
+}
+
+.img-detail {
+    margin-bottom: 30px;
+}
+
+div p {
+    margin-bottom: 0;
+}
+
+@media screen and (max-width: 600px) {
+    .p-detail {
+        margin: 13px;
+    }
+    .carousel-inner img {
+        width: 100%;
+        height: 250px !important;
+      }
+}
+
+.carousel-inner img {
+    width: 100%;
+    height: 500px;
+  }
+
+  .pagination {
+      margin-top: 15px;
+  }
+
+.category-wrapper {
+    width: 100%;
+    height: auto;
+}
+.project-wrapper {
+    width: 100%;
+    height: auto;
+    margin: 50px 0 50px 0;
+}
+
+
+  .cat-img {
+      width: 100%;
+      height: 450px;
+  }
+
+  .tnc {
+      margin-top: 15px;
+  }
+
+.white {
+    color: white !important;
+}
+
+.dp {
+    border-radius: 50%;
+}
+
+.pro-head {
+    padding-bottom: 30px !important;
+}
+
+#id_Project_Category {
+    margin-top: 15px;
+}
