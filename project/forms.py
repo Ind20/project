@@ -2,6 +2,7 @@ from django import forms
 from django.contrib.auth.models import User
 from .models import contactusMessage, userProfile, project
 
+
 class contactusMessageForm(forms.ModelForm):
     class Meta:
         model   = contactusMessage
@@ -13,6 +14,8 @@ class contactusMessageForm(forms.ModelForm):
             'message': forms.Textarea(attrs={'class' : 'form-control'})
         }
 
+
+
 class userProfileForm(forms.ModelForm):
     class Meta:
         model   = userProfile
@@ -21,6 +24,8 @@ class userProfileForm(forms.ModelForm):
             'age': forms.TextInput(attrs={'class' : 'form-control'}),
             'phone_num': forms.TextInput(attrs={'class' : 'form-control'})
         }
+
+
 
 class userProfileUpdateForm(forms.ModelForm):
     class Meta:
@@ -32,6 +37,8 @@ class userProfileUpdateForm(forms.ModelForm):
             'profile_pic': forms.FileInput(attrs={'style' : 'margin-top:15px'}),
         }
 
+
+
 class userUpdateForm(forms.ModelForm):
     class Meta:
         model   = User
@@ -41,6 +48,8 @@ class userUpdateForm(forms.ModelForm):
             'last_name': forms.TextInput(attrs={'class' : 'form-control'}),
             'email' : forms.EmailInput(attrs={'class' : 'form-control'})
         }
+
+
 
 class projectForm(forms.ModelForm):
     class Meta:
@@ -52,8 +61,11 @@ class projectForm(forms.ModelForm):
             'Mentor_Name': forms.TextInput(attrs={'class' : 'form-control'}),
             'Project_Image': forms.FileInput(attrs={'style' : 'margin-top:15px'}),
             'Project_Video_url': forms.TextInput(attrs={'class' : 'form-control'}),
-            'Project_Description': forms.Textarea(attrs={'class' : 'form-control'})
+            'Project_Description': forms.Textarea(attrs={'class' : 'form-control'}),
+            'Attachment': forms.FileInput(attrs={'style' : 'margin-top:15px'})
         }
+
+
 
 class Project_CategorySelect(forms.Select):
     def create_option(self, name, value, label, selected, index, subindex=None, attrs=None):
