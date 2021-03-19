@@ -148,7 +148,32 @@ def projects(request):
 
 def project_detail(request, id):
     proj = project.objects.get(id=id)
-    return render(request, 'project/project.html', {'proj': proj})
+    user1 = request.user.id
+    p_user = proj.user_id
+    context = {
+        'proj': proj,
+        'user1': user1,
+        'p_user': p_user
+    }
+    return render(request, 'project/project.html', context)
+
+
+
+def user_projects(request, id):
+    projects = project.objects.filter(user_id=id)
+    return render(request,'project/userprojects.html', {'projects': projects})
+
+
+def user_project(request, u_id, id):
+    proj = project.objects.get(id=id)
+    user1 = request.user.id
+    p_user = proj.user_id
+    context = {
+        'proj': proj,
+        'user1': user1,
+        'p_user': p_user
+    }
+    return render(request, 'project/project.html', context)
 
 
 def categories(request):
@@ -181,7 +206,14 @@ def category_projects(request, id):
 
 def category_project(request, cat_id, id):
     proj = project.objects.get(id=id)
-    return render(request, 'project/project.html', {'proj': proj})
+    user1 = request.user.id
+    p_user = proj.user_id
+    context = {
+        'proj': proj,
+        'user1': user1,
+        'p_user': p_user
+    }
+    return render(request, 'project/project.html', context)
 
 
 @login_required
@@ -189,7 +221,9 @@ def addproject(request):
     form= projectForm(request.POST or None, request.FILES or None)
     if request.method=='POST':
         if form.is_valid():
-            form.save()
+           project = form.save(commit=False)
+           project.user = request.user
+           project.save()
         messages.info(request,'Project submitted successfully')
         return redirect('/addproject')
     else:
@@ -201,10 +235,16 @@ def addproject(request):
 def editproject(request, id):
     proj = project.objects.get(id=id)
     form= projectEditForm(request.POST or None, request.FILES or None, instance=proj)
-    if request.method=='POST':
-        if form.is_valid():
-            form.save()
-        messages.info(request,'Project edited successfully')
-        return redirect('/')
+    user1 = request.user.id
+    p_user = proj.user_id
+    if user1 != p_user:
+        messages.info(request,'You do not have permisson to edit this item')
+        return redirect('/') 
     else:
-        return render(request, 'project/editproject.html', {'form': form, 'proj': proj})
+        if request.method=='POST':
+            if form.is_valid():
+                form.save()
+            messages.info(request,'Project edited successfully')
+            return redirect('/')
+        else:
+            return render(request, 'project/editproject.html', {'form': form, 'proj': proj})

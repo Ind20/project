@@ -54,7 +54,7 @@ class userUpdateForm(forms.ModelForm):
 class projectForm(forms.ModelForm):
     class Meta:
         model   = project
-        fields  = '__all__'
+        fields  = ['Project_Category', 'Project_Name', 'Student_Name', 'Mentor_Name', 'Project_Video_url', 'Project_Description', 'Project_Image', 'Attachment']
         widgets = {
             'Project_Name': forms.TextInput(attrs={'class' : 'form-control'}),
             'Student_Name' : forms.TextInput(attrs={'class' : 'form-control'}),
@@ -71,7 +71,7 @@ class projectForm(forms.ModelForm):
 class projectEditForm(forms.ModelForm):
     class Meta:
         model   = project
-        fields  = '__all__'
+        fields  = ['Project_Category', 'Project_Name', 'Student_Name', 'Mentor_Name', 'Project_Video_url', 'Project_Description', 'Project_Image', 'Attachment']
         widgets = {
             'Project_Name': forms.TextInput(attrs={'class' : 'form-control'}),
             'Student_Name' : forms.TextInput(attrs={'class' : 'form-control'}),
