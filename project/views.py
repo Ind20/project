@@ -4,7 +4,7 @@ from django.contrib import messages
 from django.contrib.auth.models import User, auth
 from django.contrib.auth.decorators import login_required
 from .models import userProfile, projectCategory, project
-from .forms import projectForm, contactusMessageForm, userProfileForm, userUpdateForm, userProfileUpdateForm
+from .forms import projectForm, contactusMessageForm, userProfileForm, userUpdateForm, userProfileUpdateForm, projectEditForm
 from django.views.generic import TemplateView, ListView
 from django.contrib.auth.decorators import user_passes_test
 
@@ -183,6 +183,7 @@ def category_project(request, cat_id, id):
     proj = project.objects.get(id=id)
     return render(request, 'project/project.html', {'proj': proj})
 
+
 @login_required
 def addproject(request):
     form= projectForm(request.POST or None, request.FILES or None)
@@ -193,3 +194,17 @@ def addproject(request):
         return redirect('/addproject')
     else:
         return render(request, 'project/addproject.html', {'form': form})
+
+
+
+@login_required
+def editproject(request, id):
+    proj = project.objects.get(id=id)
+    form= projectEditForm(request.POST or None, request.FILES or None, instance=proj)
+    if request.method=='POST':
+        if form.is_valid():
+            form.save()
+        messages.info(request,'Project edited successfully')
+        return redirect('/')
+    else:
+        return render(request, 'project/editproject.html', {'form': form, 'proj': proj})
