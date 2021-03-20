@@ -13,11 +13,9 @@ from django.contrib.auth.decorators import user_passes_test
 def home(request):
     categories   = projectCategory.objects.all().order_by('id')[:4]
     projects     = project.objects.all().order_by('-id')[:4]
-    announcements = announcement.objects.all().order_by('-id')[:10]
     context = {
     'categories': categories,
-    'projects': projects,
-    'announcements': announcements
+    'projects': projects
     }
     return render(request, 'main/home.html', context)
 
@@ -55,7 +53,7 @@ def please_login(request):
 def login(request):
     if request.user.is_authenticated:
         messages.info(request,'You are alredy logged in.')
-        return redirect('/')
+        return redirect('profile')
     else:
         if request.method=='POST':
             username = request.POST['username']
@@ -75,7 +73,7 @@ def login(request):
 def register(request):
     if request.user.is_authenticated:
         messages.info(request,'You are alredy registered.')
-        return redirect('/')
+        return redirect('profile')
     if request.method =='POST':
         first_name = request.POST['first_name']
         last_name = request.POST['last_name']
@@ -259,13 +257,13 @@ def createannouncement(request):
         if form.is_valid():
             form.save()
         messages.info(request,'Announcement submitted successfully')
-        return redirect('dashboard')
+        return redirect('announcements')
     else:
         return render(request, 'dashboard/createannouncement.html', {'form': form})
 
 
 def announcements(request):
-    announcements = announcement.objects.all()
+    announcements = announcement.objects.all().order_by('-id')[:10]
     return render(request, 'main/announcements.html', {'announcements': announcements})
 
 

@@ -44,7 +44,7 @@ class project(models.Model):
     Project_Description     = models.CharField( max_length=10000)
     Project_Image           = models.ImageField(default='assets/project.png', upload_to='images/project/images', null='true', blank='true')
     Attachment              = models.FileField(upload_to='images/project/attachments', null='true', blank='true')
-    user                    = models.ForeignKey(User, on_delete=models.CASCADE
+    user                    = models.ForeignKey(User, on_delete=models.CASCADE)
     
     def __str__(self):
         return self.Project_Name
