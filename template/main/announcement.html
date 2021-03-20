@@ -1,0 +1,14 @@
+{% include 'main/header.html' %}
+<div class="container pt-3 pb-3">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">Home</a></li>
+            <li class="breadcrumb-item"><a href="#">Anouncement</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{anounce.title}}</li>
+        </ol>
+    </nav>
+    <h1>{{anounce.title}}</h1>
+    <p>{{anounce.date_ceated}}</p>
+    <h3>{{anounce.description}}</h3>
+</div>
+{% include 'main/footer.html' %}

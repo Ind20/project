@@ -35,6 +35,30 @@
     <p class="quote center">With the dynamic game-based teaching simulator you can choose the way you want to learn
         anywhere at any time.
         Made available in both English and Bahasa.</p>
+    <div class="table-responsive">
+        <h1 class="Heading center">Announcements</h1>
+        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <thead>
+                <tr class="d-flex">
+                    <th class="col-3">Date</th>
+                    <th class="col-7">Title</th>
+                    <th class="col-2">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for ana in announcements %}
+                <tr class="d-flex">
+                    <td class="col-3">{{ana.date_created}}</td>
+                    <td class="col-7">{{ana.title}} <span class="label label-danger">New</span></td>
+                    <td class="col-2"><a href="announcement/{{ana.id}}" class="btn btn-info btn-md">DETAILS</a> <a href="/static/{{ana.attachment}}" target="_blank" class="btn btn-info btn-md">PDF</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <div>
+            <a href="announcements" class="btn submit-btn btn-primary">See All Anouncements</a>
+        </div>
+    </div>
     <h1 class="Heading center">Project Categories</h1>
     <p class="desc center">These are the lessons available for your professional field. Below are the basis of each game
         and informative video.</p>
