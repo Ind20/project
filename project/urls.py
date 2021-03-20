@@ -23,5 +23,5 @@ urlpatterns =[
     path('project/<int:id>', views.project_detail, name='project_detail'),
     path('addproject', views.addproject, name="addproject"),
     path('editproject/<int:id>', views.editproject, name="editproject"),
-    path('accounts/login', views.please_login, name='please_login')
+    path('accounts/login/', views.please_login, name='please_login')
 ]
