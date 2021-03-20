@@ -9,6 +9,7 @@ html, body {
     width: 100%;
     height: 100%;
     background-color: #c6d3da !important;
+    font-family: "Lucida Grande";
 }
 
 .container {
@@ -223,6 +224,11 @@ div .nav-link {
 
 .footer-link {
     color: white !important;
+    text-decoration: none;
+}
+
+.footer-address{
+    color: white;
     text-decoration: none;
 }
 

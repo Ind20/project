@@ -1,3 +1,4 @@
+{% load static %}
 {% include 'main/header.html' %}
 {%for message in messages%}
 <div class="message alert alert-success alert-dismissible fade show" role="alert">
@@ -15,13 +16,10 @@
     </ul>
     <div class="carousel-inner">
         <div class="carousel-item active">
-            <img src="https://www.w3schools.com/bootstrap4/la.jpg" alt="Los Angeles" width="1100" height="500">
+            <img src="{% static 'assets/gedung-fpmipa.jpeg'%}" alt="Los Angeles" width="1100" height="500">
         </div>
         <div class="carousel-item">
-            <img src="https://www.w3schools.com/bootstrap4/chicago.jpg" alt="Chicago" width="1100" height="500">
-        </div>
-        <div class="carousel-item">
-            <img src="https://www.w3schools.com/bootstrap4/ny.jpg" alt="New York" width="1100" height="500">
+            <img src="{% static 'assets/gerbang-upi.jpeg'%}" alt="Chicago" width="1100" height="500">
         </div>
     </div>
     <a class="carousel-control-prev" href="#demo" data-slide="prev">
@@ -32,33 +30,10 @@
     </a>
 </div>
 <div class="container pt-3 pb-3">
-    <p class="quote center">With the dynamic game-based teaching simulator you can choose the way you want to learn
-        anywhere at any time.
-        Made available in both English and Bahasa.</p>
-    <div class="table-responsive">
-        <h1 class="Heading center">Announcements</h1>
-        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-            <thead>
-                <tr class="d-flex">
-                    <th class="col-3">Date</th>
-                    <th class="col-7">Title</th>
-                    <th class="col-2">Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for ana in announcements %}
-                <tr class="d-flex">
-                    <td class="col-3">{{ana.date_created}}</td>
-                    <td class="col-7">{{ana.title}} <span class="label label-danger">New</span></td>
-                    <td class="col-2"><a href="announcement/{{ana.id}}" class="btn btn-info btn-md">DETAILS</a> <a href="/static/{{ana.attachment}}" target="_blank" class="btn btn-info btn-md">PDF</a></td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-        <div>
-            <a href="announcements" class="btn submit-btn btn-primary">See All Anouncements</a>
-        </div>
-    </div>
+    <p class="quote center">MSTR (Mathematics, Science, Technology and Engineering ) is a course for all students in FPMIPA Faculty that aims to build literacy in mathematics, science, technology, and engineering,
+        solve problems in an integrative and multidisciplinary manner, work together in teams,
+        communicate actively and effectively and form awareness of the problems in society.</p>
+
     <h1 class="Heading center">Project Categories</h1>
     <p class="desc center">These are the lessons available for your professional field. Below are the basis of each game
         and informative video.</p>
