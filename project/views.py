@@ -151,11 +151,11 @@ def projects(request):
 
 def project_detail(request, id):
     proj = project.objects.get(id=id)
-    user1 = request.user.id
+    uid = request.user.id
     p_user = proj.user_id
     context = {
         'proj': proj,
-        'user1': user1,
+        'uid': uid,
         'p_user': p_user
     }
     return render(request, 'project/project.html', context)
@@ -168,11 +168,11 @@ def user_projects(request, id):
 
 def user_project(request, u_id, id):
     proj = project.objects.get(id=id)
-    user1 = request.user.id
+    uid = request.user.id
     p_user = proj.user_id
     context = {
         'proj': proj,
-        'user1': user1,
+        'uid': uid,
         'p_user': p_user
     }
     return render(request, 'project/project.html', context)
@@ -208,11 +208,11 @@ def category_projects(request, id):
 
 def category_project(request, cat_id, id):
     proj = project.objects.get(id=id)
-    user1 = request.user.id
+    uid = request.user.id
     p_user = proj.user_id
     context = {
         'proj': proj,
-        'user1': user1,
+        'uid': uid,
         'p_user': p_user
     }
     return render(request, 'project/project.html', context)
@@ -221,13 +221,14 @@ def category_project(request, cat_id, id):
 @login_required
 def addproject(request):
     form= projectForm(request.POST or None, request.FILES or None)
+    uid = request.user.id
     if request.method=='POST':
         if form.is_valid():
            project = form.save(commit=False)
            project.user = request.user
            project.save()
         messages.info(request,'Project submitted successfully')
-        return redirect('/addproject')
+        return redirect('/user/%s/projects' % uid) 
     else:
         return render(request, 'project/addproject.html', {'form': form})
 
@@ -236,17 +237,18 @@ def addproject(request):
 def editproject(request, id):
     proj = project.objects.get(id=id)
     form= projectEditForm(request.POST or None, request.FILES or None, instance=proj)
-    user1 = request.user.id
+    pid = id
+    uid = request.user.id
     p_user = proj.user_id
-    if user1 != p_user:
+    if uid != p_user:
         messages.info(request,'You do not have permisson to edit this item')
-        return redirect('/') 
+        return redirect('/user/%s/projects' % uid) 
     else:
         if request.method=='POST':
             if form.is_valid():
                 form.save()
             messages.info(request,'Project edited successfully')
-            return redirect('/')
+            return redirect('/user/%s/project/%s' %(uid, pid))
         else:
             return render(request, 'project/editproject.html', {'form': form, 'proj': proj})
 

@@ -7,7 +7,15 @@
             <li class="breadcrumb-item active" aria-current="page">{{proj.Project_Name}}</li>
         </ol>
     </nav>
-    {% if user1 == p_user %}
+    {%for message in messages%}
+    <div class="message alert alert-success alert-dismissible fade show" role="alert">
+        <strong>{{ message}}</strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    {%endfor%}
+    {% if uid == p_user %}
     <a class="submit-btn btn btn-info btn-md" href="/editproject/{{proj.id}}">Edit Project</a>
     {% endif %}
     <div class="row img-detail">
