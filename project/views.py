@@ -3,17 +3,23 @@ from django.http import HttpResponse
 from django.contrib import messages
 from django.contrib.auth.models import User, auth
 from django.contrib.auth.decorators import login_required
-from .models import userProfile, projectCategory, project
-from .forms import projectForm, contactusMessageForm, userProfileForm, userUpdateForm, userProfileUpdateForm, projectEditForm
+from .models import userProfile, projectCategory, project, announcement
+from .forms import projectForm, contactusMessageForm, userProfileForm, userUpdateForm, userProfileUpdateForm, projectEditForm, announcementForm
 from django.views.generic import TemplateView, ListView
 from django.contrib.auth.decorators import user_passes_test
 
 
 
 def home(request):
-    categories = projectCategory.objects.all().order_by('id')[:4]
-    projects = project.objects.all().order_by('-id')[:4]
-    return render(request, 'main/home.html', {'categories': categories, 'projects': projects})
+    categories   = projectCategory.objects.all().order_by('id')[:4]
+    projects     = project.objects.all().order_by('-id')[:4]
+    announcements = announcement.objects.all().order_by('-id')[:10]
+    context = {
+    'categories': categories,
+    'projects': projects,
+    'announcements': announcements
+    }
+    return render(request, 'main/home.html', context)
 
 
 def header(request):
@@ -26,7 +32,7 @@ def footer(request):
 
 @user_passes_test(lambda u: u.is_superuser)
 def dashboard(request):
-    return render(request, 'user/dashboard.html')
+    return render(request, 'dashboard/dashboard.html')
 
 
 def contactus(request):
@@ -101,7 +107,6 @@ def register(request):
         return render(request,"user/register.html")
 
 
-
 @login_required
 def profile (request):
     p_form = userProfileForm(instance=request.user.userprofile)
@@ -156,7 +161,6 @@ def project_detail(request, id):
         'p_user': p_user
     }
     return render(request, 'project/project.html', context)
-
 
 
 def user_projects(request, id):
@@ -230,7 +234,6 @@ def addproject(request):
         return render(request, 'project/addproject.html', {'form': form})
 
 
-
 @login_required
 def editproject(request, id):
     proj = project.objects.get(id=id)
@@ -248,3 +251,25 @@ def editproject(request, id):
             return redirect('/')
         else:
             return render(request, 'project/editproject.html', {'form': form, 'proj': proj})
+
+
+def createannouncement(request):
+    form = announcementForm(request.POST or None, request.FILES or None)
+    if request.method=='POST':
+        if form.is_valid():
+            form.save()
+        messages.info(request,'Announcement submitted successfully')
+        return redirect('dashboard')
+    else:
+        return render(request, 'dashboard/createannouncement.html', {'form': form})
+
+
+def announcements(request):
+    announcements = announcement.objects.all()
+    return render(request, 'main/announcements.html', {'announcements': announcements})
+
+
+def announcement_detail(request, id):
+    anounce = announcement.objects.get(id=id)
+    return render(request, 'main/announcement.html', {'anounce': anounce})
+

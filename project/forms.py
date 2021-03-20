@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User
-from .models import contactusMessage, userProfile, project
+from .models import contactusMessage, userProfile, project, announcement
 
 
 class contactusMessageForm(forms.ModelForm):
@@ -93,3 +93,15 @@ class Project_CategorySelect(forms.Select):
         widgets = {
             'Project_Category': Project_CategorySelect
             }
+
+
+
+class announcementForm(forms.ModelForm):
+    class Meta:
+        model   = announcement
+        fields  = ['title', 'description', 'attachment']
+        widgets = {
+            'title': forms.TextInput(attrs={'class' : 'form-control'}),
+            'description': forms.Textarea(attrs={'class' : 'form-control'}),
+            'attachment': forms.FileInput(attrs={'style' : 'margin-top:15px'})
+        }

@@ -9,6 +9,7 @@ html, body {
     width: 100%;
     height: 100%;
     background-color: #c6d3da !important;
+    font-family: "Lucida Grande";
 }
 
 .container {
@@ -226,6 +227,11 @@ div .nav-link {
     text-decoration: none;
 }
 
+.footer-address{
+    color: white;
+    text-decoration: none;
+}
+
 .footer-link:hover {
     color: darkgreen !important;
     text-decoration: none !important;
@@ -325,4 +331,21 @@ div p {
 
 #id_Project_Category {
     margin-top: 15px;
+}
+
+.label-danger {
+    background-color: #d9534f;
+}
+
+.label {
+    display: inline;
+    padding: .2em .6em .3em;
+    font-size: 75%;
+    font-weight: 700;
+    line-height: 1;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25em;
 }

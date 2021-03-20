@@ -1,0 +1,32 @@
+{% include 'main/header.html' %}
+<div class="container pt-3 pb-3">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Anouncements</li>
+        </ol>
+    </nav>
+    <div class="table-responsive">
+        <h3 class="Heading center">All Announcements</h3>
+        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <thead>
+                <tr class="d-flex">
+                    <th class="col-3">Date</th>
+                    <th class="col-7">Title</th>
+                    <th class="col-2">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for ana in announcements %}
+                <tr class="d-flex">
+                    <td class="col-3">{{ana.date_created}}</td>
+                    <td class="col-7">{{ana.title}} <span class="label label-danger">New</span></td>
+                    <td class="col-2"><a href="announcement/{{ana.id}}" class="btn btn-info btn-md">DETAILS</a> <a href="/static/{{ana.attachment}}" target="_blank" class="btn btn-info btn-md">PDF</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+</div>
+{% include 'main/footer.html' %}
