@@ -13,7 +13,7 @@ html, body {
 }
 
 .container {
-    min-height: 65%;
+    min-height: 70vh;
 }
 
 .breadcrumb {
@@ -39,7 +39,7 @@ html, body {
 
 .nav-bar {
     background-color: slategrey;
-    min-height: 5%;
+    height: 70px;
 }
 
 @media screen and (max-width: 600px) {
@@ -48,9 +48,9 @@ html, body {
     }
 }
 
-.logo {
-    height: 75px;
-    width: 75px;
+.logo .logo-img {
+    height: 70px;
+    width: 70px;
     margin-left: 5px;
 }
 
@@ -95,6 +95,7 @@ html, body {
 
 .topnav {
     margin-left: 20%;
+    height: 70px;
 }
 
 .topnav .icon {
@@ -141,7 +142,7 @@ html, body {
 
 .carousel-inner img {
     width: 100%;
-    height: 600px;
+    height: 550px;
 }
 
 @media screen and (max-width: 600px) {
@@ -149,6 +150,11 @@ html, body {
         width: 100%;
         height: 250px !important;
     }
+}
+
+.pr {
+    padding: 20px;
+    border-radius: 50%;
 }
 
 .quote {
@@ -197,7 +203,6 @@ html, body {
 /* - - - - - - - - - - - - - - - - - - - Footer css - - - - - - - - - - - - - - - - - - - - - -  */
 
 .footer {
-    min-height: 25%;
     width: 100%;
     margin-left: 0 !important;
     padding-left: 15%;

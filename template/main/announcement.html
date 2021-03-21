@@ -7,8 +7,9 @@
             <li class="breadcrumb-item active" aria-current="page">{{anounce.title}}</li>
         </ol>
     </nav>
-    <h6>{{anounce.title}}</h6>
-    <p>{{anounce.date_ceated}}</p>
-    <p>{{anounce.description}}</p>
+    <h3>{{anounce.title}}</h3>
+    <br><span><i class="fa fa-calendar" aria-hidden="true"></i></span> {{anounce.date_created}}
+    <br><br><p>{{anounce.description}}</p>
+    Attachment: <a href="/static/{{anounce.attachment}}" download>Download</a>
 </div>
 {% include 'main/footer.html' %}
