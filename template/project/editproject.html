@@ -1,0 +1,23 @@
+{% include 'main/header.html' %}
+<div class="container pt-3 pb-3">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">Home</a></li>
+            <li class="breadcrumb-item"><a href="/">User</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Edit Project</li>
+        </ol>
+    </nav>
+    <div class="row justify-content-center">
+        <div class="col-sm-8 col-12 card shadow-lg border-0 rounded-lg mt-5 profile-box">
+            <h2 class="text-info text-center">Edit Project</h2>
+            <div class="form-group">
+                <form action="/editproject/{{proj.id}}" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form.as_p}}
+                    <br><input class="submit-btn btn btn-info btn-md" type="submit" name="submit" value="Update Project">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% include 'main/footer.html' %}

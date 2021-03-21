@@ -7,6 +7,17 @@
             <li class="breadcrumb-item active" aria-current="page">{{proj.Project_Name}}</li>
         </ol>
     </nav>
+    {%for message in messages%}
+    <div class="message alert alert-success alert-dismissible fade show" role="alert">
+        <strong>{{ message}}</strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    {%endfor%}
+    {% if uid == p_user %}
+    <a class="submit-btn btn btn-info btn-md" href="/editproject/{{proj.id}}">Edit Project</a>
+    {% endif %}
     <div class="row img-detail">
         <div class="col-sm-6">
             <div class="embed-responsive embed-responsive-1by1">
@@ -14,10 +25,10 @@
             </div>
         </div>
         <div class="col-sm-6 p-detail">
-            <div>Project ID:{{proj.id}}</div>
-            <div>Category:{{proj.Project_Category}}</div>
-            <div>Title:{{proj.Project_Name}}</div>
-            <div>By:{{proj.Student_Name}}</div>
+            <div>Project ID: {{proj.id}}</div>
+            <div>Category: {{proj.Project_Category}}</div>
+            <div>Title: {{proj.Project_Name}}</div>
+            <div>Student: {{proj.Student_Name}}</div>
             <div>Mentor:{{proj.Mentor_Name}}</div>
             <div>Attachment: <a href="/static/{{proj.Attachment}}" target="_blank">View </a>OR 
                 <a href="/static/{{proj.Attachment}}" download>Download</a></div>

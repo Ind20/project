@@ -27,12 +27,12 @@
             <div class="card img-fluid col-sm-4 project-block shadow-lg">
                 <img class="card-img-top Card-image" src="{{project.Project_Image.url}}" alt="Card image" style="width:100%">
                 <h4 class="project-title">{{project.Project_Name}}</h4>
-                <a href="project/{{project.id}}" class="btn btn-info btn-md">DETAILS</a>
+                <a href="/category/{{category.id}}/project/{{project.id}}" class="btn btn-info btn-md">DETAILS</a>
             </div>
             {% endfor %}
         </div>
         <div>
-            <a href="projects" class="btn submit-btn btn-primary btn-dark btn-lg">See All Projects in this category</a>
+            <a href="/category/{{category.id}}/projects" class="btn submit-btn btn-dark btn-lg">See All Projects in this category</a>
         </div>
     </div>
 </div>

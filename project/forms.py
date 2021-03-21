@@ -54,7 +54,24 @@ class userUpdateForm(forms.ModelForm):
 class projectForm(forms.ModelForm):
     class Meta:
         model   = project
-        fields  = '__all__'
+        fields  = ['Project_Category', 'Project_Name', 'Student_Name', 'Mentor_Name', 'Project_Video_url', 'Project_Description', 'Project_Image', 'Attachment']
+        widgets = {
+            'Project_Name': forms.TextInput(attrs={'class' : 'form-control'}),
+            'Student_Name' : forms.TextInput(attrs={'class' : 'form-control'}),
+            'Mentor_Name': forms.TextInput(attrs={'class' : 'form-control'}),
+            'Project_Image': forms.FileInput(attrs={'style' : 'margin-top:15px'}),
+            'Project_Video_url': forms.TextInput(attrs={'class' : 'form-control'}),
+            'Project_Description': forms.Textarea(attrs={'class' : 'form-control'}),
+            'Attachment': forms.FileInput(attrs={'style' : 'margin-top:15px'})
+        }
+
+
+
+
+class projectEditForm(forms.ModelForm):
+    class Meta:
+        model   = project
+        fields  = ['Project_Category', 'Project_Name', 'Student_Name', 'Mentor_Name', 'Project_Video_url', 'Project_Description', 'Project_Image', 'Attachment']
         widgets = {
             'Project_Name': forms.TextInput(attrs={'class' : 'form-control'}),
             'Student_Name' : forms.TextInput(attrs={'class' : 'form-control'}),
