@@ -1,6 +1,6 @@
 {% include 'main/header.html' %}
 {%load static%}
-<div class="container pt-3 pb-3">
+<div class="container">
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="/">Home</a></li>
@@ -18,9 +18,10 @@
         </div>
     </div>
     <div class="project-wrapper">
-        <div class="bg-info">
-            <h2>Top Projects in this category</h2>
+        <div class="border shadow">
+            <h4 align="center">Top Projects in this category</h4>
         </div>
+        <p>...<p>
         <div class="row">
             {% for project in projects %}
             <div class="card img-fluid col-sm-4 project-block shadow-lg">
@@ -31,7 +32,7 @@
             {% endfor %}
         </div>
         <div>
-            <a href="projects" class="btn submit-btn btn-primary">See All Projects in this category</a>
+            <a href="projects" class="btn submit-btn btn-primary btn-dark btn-lg">See All Projects in this category</a>
         </div>
     </div>
 </div>
