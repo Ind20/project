@@ -13,13 +13,14 @@ html, body {
 }
 
 .container {
-    min-height: 60%;
+    min-height: 65%;
 }
 
 /* Topnav css */
 
 .nav-bar {
     background-color: slategrey;
+    min-height: 5%;
 }
 
 @media screen and (max-width: 600px) {
@@ -116,6 +117,10 @@ div .nav-link {
     }
 }
 
+.breadcrumb {
+    background-color: #f7f7f7 !important;
+    padding: 0 !important;
+}
 
 .message {
     margin-top: 10px;
@@ -217,7 +222,7 @@ div .nav-link {
 }
 
 .footer {
-    min-height: 30%;
+    min-height: 25%;
     width: 100%;
     margin-left: 0 !important;
     padding-left: 15%;
