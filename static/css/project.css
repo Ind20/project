@@ -1,4 +1,4 @@
-/* Universal css */
+/* - - - - - - - - - - - - - - - - - - - - Universal css - - - - - - - - - - - - - - - - - - - -  */
 
 * {
     margin: 0;
@@ -16,7 +16,26 @@ html, body {
     min-height: 65%;
 }
 
-/* Topnav css */
+.breadcrumb {
+    background-color: #f7f7f7 !important;
+    padding: 0 !important;
+}
+
+.message {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.submit-btn {
+    float: right;
+}
+
+.white {
+    color: white !important;
+}
+
+
+/* - - - - - - - - - - - - - - - - - - - - Header css - - - - - - - - - - - - - - - - - - - -  */
 
 .nav-bar {
     background-color: slategrey;
@@ -42,7 +61,7 @@ html, body {
     }
 }
 
-div .nav-link {
+.nav-link {
     display: inline-block !important;
 }
 
@@ -117,49 +136,29 @@ div .nav-link {
     }
 }
 
-.breadcrumb {
-    background-color: #f7f7f7 !important;
-    padding: 0 !important;
-}
 
-.message {
-    margin-top: 10px;
-    text-align: center;
-}
+/* - - - - - - - - - - - - - - - - - - - - Homepage css - - - - - - - - - - - - - - - - - - - -  */
 
-.slider {
+.carousel-inner img {
     width: 100%;
-    height: 400px;
+    height: 600px;
 }
 
 @media screen and (max-width: 600px) {
-    .slider {
-        height: 180px;
+    .carousel-inner img {
+        width: 100%;
+        height: 250px !important;
     }
 }
 
-.heading {
-    margin: 20px;
-    color: black !important;
-    font-family: WorkSans-ExtraBold, Arial;
-    font-size: 50px;
+.quote {
+    border-bottom: 1px solid black;
+    font-size: 18px;
+    padding-bottom: 50px;
+    color: black;
 }
 
-.title {
-    margin-top: 10px;
-    color: black !important;
-    font-family: WorkSans-Bold, Arial;
-    font-size: 20px;
-}
-.courses {
-    margin: 30px 0 30px 0;
-}
-
-.course-box {
-    margin: 10px 0 10px 0;
-    cursor: pointer;
-}
-
+/* - - - - - - - - - - - - - - - - - - - Login-register css - - - - - - - - - - - - - - - - - - -  */
 
 .login-box, .reg-box {
     margin-bottom: 50px;
@@ -171,55 +170,31 @@ div .nav-link {
     margin-top: 10px;
 }
 
-.submit-btn {
-    float: right;
-}
-
 .form-group {
     margin-bottom: 0rem !important;
 }
 
-.quote {
-    border-bottom: 1px solid black;
-    font-family: "Lucida Grande";
-    font-size: 18px;
-    padding-bottom: 50px;
-    color: black;
-
+.tnc {
+    margin-top: 15px;
 }
 
-.center {
-    text-align: center;
-}
-
-.desc {
-    color: black !important;
-}
-
-.course {
-    cursor: pointer;
-    padding-left: 30px !important;
-}
-
-.copyright {
-    font-size: 10px;
-    padding-bottom: 2px;
-    background-color: slategrey;
-}
-
-.quick-links {
-    margin-bottom: 0;
-    margin-top: 20px;
-}
-
-.pro-box {
-    margin-top: 50px;
-}
+/* - - - - - - - - - - - - - - - - - - - Profile-editprofile css - - - - - - - - - - - - - - - - - - -  */
 
 .profile-box {
     padding: 15px !important;
-    margin-bottom: 50px;
+    margin-bottom: 40px;
 }
+
+.dp {
+    border-radius: 50%;
+}
+
+.pro-head {
+    padding-bottom: 30px !important;
+}
+
+
+/* - - - - - - - - - - - - - - - - - - - Footer css - - - - - - - - - - - - - - - - - - - - - -  */
 
 .footer {
     min-height: 25%;
@@ -235,17 +210,33 @@ div .nav-link {
     }
 }
 
+.quick-links {
+    margin-bottom: 0;
+    margin-top: 20px;
+}
+
 .footer-link {
     color: white !important;
     text-decoration: none;
 }
+
 .footer p {
     color: white;
 }
+
 .footer-link:hover {
     color: darkgreen !important;
     text-decoration: none !important;
 }
+
+.copyright {
+    font-size: 10px;
+    padding-bottom: 2px;
+    background-color: slategrey;
+}
+
+
+/* - - - - - - - - - - - - - - - - - - - Projectspage css - - - - - - - - - - - - - - - - - - - - - -  */
 
 .project-block {
     padding-top: 15px;
@@ -275,6 +266,13 @@ div .nav-link {
     margin: 10px;
 }
 
+.pagination {
+    margin-top: 15px;
+}
+
+
+/* - - - - - - - - - - - - - - - - - - - Project css - - - - - - - - - - - - - - - - - - - - - -  */
+
 .p-description {
     margin-top: 15px;
     color: black !important;
@@ -284,64 +282,32 @@ div .nav-link {
     margin-bottom: 30px;
 }
 
-div p {
-    margin-bottom: 0;
-}
-
 @media screen and (max-width: 600px) {
     .p-detail {
         margin: 13px;
     }
-    .carousel-inner img {
-        width: 100%;
-        height: 250px !important;
-      }
 }
 
-.carousel-inner img {
-    width: 100%;
-    height: 500px;
-  }
 
-  .pagination {
-      margin-top: 15px;
-  }
+/* - - - - - - - - - - - - - - - - - - - Category css - - - - - - - - - - - - - - - - - - - - - -  */
 
-.category-wrapper {
-    width: 100%;
-    height: auto;
-}
 .project-wrapper {
     width: 100%;
     height: auto;
     margin: 50px 0 50px 0;
 }
 
-
-  .cat-img {
-      width: 100%;
-      height: 450px;
-  }
-
-  .tnc {
-      margin-top: 15px;
-  }
-
-.white {
-    color: white !important;
-}
-
-.dp {
-    border-radius: 50%;
-}
-
-.pro-head {
-    padding-bottom: 30px !important;
+.cat-img {
+    width: 100%;
+    height: 450px;
 }
 
 #id_Project_Category {
     margin-top: 15px;
 }
+
+
+/* - - - - - - - - - - - - - - - - - - - Announcement page css - - - - - - - - - - - - - - - - -  */
 
 .label-danger {
     background-color: #d9534f;

@@ -16,10 +16,10 @@
     </ul>
     <div class="carousel-inner">
         <div class="carousel-item">
-            <img src="{% static 'assets/gedung-fpmipa.jpeg'%}" alt="Los Angeles" width="1100" height="500">
+            <img src="{% static 'assets/gedung-fpmipa.jpeg'%}" alt="upi">
         </div>
         <div class="carousel-item active">
-            <img src="{% static 'assets/gerbang-upi.jpeg'%}" alt="Chicago" width="1100" height="500">
+            <img src="{% static 'assets/gerbang-upi.jpeg'%}" alt="upi">
         </div>
     </div>
     <a class="carousel-control-prev" href="#demo" data-slide="prev">
@@ -30,16 +30,16 @@
     </a>
 </div>
 <div class="container pt-3 pb-3">
-    <p class="quote center">MSTR (Mathematics, Science, Technology and Engineering ) is a course for all students in FPMIPA Faculty that aims to build literacy in mathematics, science, technology, and engineering,
+    <p class="quote text-center">MSTR (Mathematics, Science, Technology and Engineering ) is a course for all students in FPMIPA Faculty that aims to build literacy in mathematics, science, technology, and engineering,
         solve problems in an integrative and multidisciplinary manner, work together in teams,
         communicate actively and effectively and form awareness of the problems in society.</p>
-
-    <h1 class="Heading center">Project Categories</h1>
-    <p class="desc center">These are the lessons available for your professional field. Below are the basis of each game
-        and informative video.</p>
-    <div class="row courses">
+    <br>
+    <h1 class="text-center">Project Categories</h1>
+    <p class="text-center">These are the lessons available for your professional field. Below are the basis of each game
+        and informative video.</p><br>
+    <div class="row">
         {% for category in categories %}
-        <div class="col-sm-3 col-12 course-box">
+        <div class="col-sm-3 col-12">
             <a href="category/{{category.id}}">
                 <img src={{category.Category_Image.url}} alt="image" width="100%" height="280">
                 <p class="title center">{{category.Category_Name}}</p>
@@ -47,10 +47,11 @@
         </div>
         {% endfor %}
     </div>
-    <h1 class="Heading center">Latest Projects</h1>
-    <p class="desc center">These are the latest projects for your professional field. Below are the basis of each game
-        and informative video.</p>
-    <div class="row courses">
+    <br>
+    <h1 class="text-center"  style="border-top: 1px solid black;">Latest Projects</h1>
+    <p class="text-center">These are the latest projects for your professional field. Below are the basis of each game
+        and informative video.</p><br>
+    <div class="row">
         {% for project in projects %}
         <div class="card img-fluid col-sm-4 project-block shadow-lg">
             <img class="card-img-top Card-image" src="{{project.Project_Image.url}}" alt="Card image" style="width:100%">
