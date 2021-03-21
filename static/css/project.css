@@ -174,13 +174,6 @@ div .nav-link {
     margin-bottom: 0rem !important;
 }
 
-.footer {
-    min-height: 30%;
-    width: 100%;
-    margin-left: 0 !important;
-    background-color: slategrey;
-}
-
 .quote {
     border-bottom: 1px solid black;
     font-family: "Lucida Grande";
@@ -223,28 +216,27 @@ div .nav-link {
     margin-bottom: 50px;
 }
 
+.footer {
+    min-height: 30%;
+    width: 100%;
+    margin-left: 0 !important;
+    padding-left: 15%;
+    background-color: slategrey;
+}
+
+@media screen and (max-width: 600px) {
+    .footer {
+        padding-left: 0;
+    }
+}
+
 .footer-link {
     color: white !important;
     text-decoration: none;
 }
-
-.footer-address{
+.footer p {
     color: white;
-    text-decoration: none;
-    align:left;
 }
-
-.footer-logo img{
-    padding-top:30px;
-    position:relative;
-    width: 40%;
-}
-.logo-upi{
-    width:35%;
-    float:left;
-}
-
-
 .footer-link:hover {
     color: darkgreen !important;
     text-decoration: none !important;
