@@ -12,6 +12,10 @@ html, body {
     font-family: "Lucida Grande";
 }
 
+.container {
+    min-height: 60%;
+}
+
 /* Topnav css */
 
 .nav-bar {
@@ -202,7 +206,7 @@ div .nav-link {
 .copyright {
     font-size: 10px;
     padding-bottom: 2px;
-    background-color:#f7f7f7;
+    background-color: slategrey;
 }
 
 .quick-links {
