@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'project'
+    'project',
+    'ckeditor'
 ]
 
 
@@ -134,3 +135,9 @@ STATICFILES_DIRS =[
 MEDIA_ROOT = os.path.join(BASE_DIR,'static/')
 
 APPEND_SLASH=False
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'width': '100%'
+    },
+}
