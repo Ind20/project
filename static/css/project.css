@@ -55,7 +55,7 @@ html, body {
 }
 
 @media screen and (max-width: 600px) {
-    .logo {
+    .logo-img {
         height: 40px;
         width: 40px;
     }

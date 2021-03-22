@@ -11,7 +11,7 @@
         {% for announcement in announcements %}
         <a href="announcement/{{announcement.id}}"><strong>{{announcement.title}} </strong><span class="label label-danger">New</span></a>
         <br><span><i class="fa fa-calendar" aria-hidden="true"></i></span> {{announcement.date_created}}
-        <p>{{announcement.description|truncatechars:250}}</p>
+        <p>{{announcement.description|truncatechars:500}}</p>
         {% endfor %}
     </div>
 </div>
