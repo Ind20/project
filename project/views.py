@@ -248,34 +248,6 @@ def editproject(request, id):
             return render(request, 'project/editproject.html', {'form': form, 'proj': proj})
 
 
-
-@user_passes_test(lambda u: u.is_superuser)
-def dashboard(request):
-    projects     = project.objects.all().order_by('-id')[:5]
-    context = {
-    'projects': projects
-    }
-    return render(request, 'dashboard/dashboard.html', context)
-
-
-def dprojects (request):
-    projects     = project.objects.all().order_by('-id')
-    context = {
-    'projects': projects
-    }
-    return render(request, 'dashboard/projects.html', context)
-
-def announce(request):
-    form = announcementForm(request.POST or None, request.FILES or None)
-    if request.method=='POST':
-        if form.is_valid():
-            form.save()
-        messages.info(request,'Announcement submitted successfully')
-        return redirect('announcements')
-    else:
-        return render(request, 'dashboard/announce.html', {'form': form})
-
-
 def announcements(request):
     announcements = announcement.objects.all().order_by('-id')[:10]
     return render(request, 'main/announcements.html', {'announcements': announcements})
@@ -286,5 +258,31 @@ def announcement_detail(request, id):
     return render(request, 'main/announcement.html', {'anounce': anounce})
 
 
+@user_passes_test(lambda u: u.is_superuser)
+def dashboard(request):
+    projects     = project.objects.all().order_by('-id')[:5]
+    context = {
+    'projects': projects
+    }
+    return render(request, 'dashboard/dashboard.html', context)
 
 
+@user_passes_test(lambda u: u.is_superuser)
+def dprojects (request):
+    projects     = project.objects.all().order_by('-id')
+    context = {
+    'projects': projects
+    }
+    return render(request, 'dashboard/projects.html', context)
+
+
+@user_passes_test(lambda u: u.is_superuser)
+def announce(request):
+    form = announcementForm(request.POST or None, request.FILES or None)
+    if request.method=='POST':
+        if form.is_valid():
+            form.save()
+        messages.info(request,'Announcement submitted successfully')
+        return redirect('announcements')
+    else:
+        return render(request, 'dashboard/announce.html', {'form': form})
