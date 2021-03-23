@@ -1,5 +1,6 @@
+{% extends 'main/base.html' %}
 {%load static%}
-{% include 'main/header.html' %}
+{% block content %}
 <title>{{category.Category_Name}}</title>
 <div class="container pt-3 pb-3">
     <nav aria-label="breadcrumb">
@@ -37,4 +38,4 @@
         </div>
     </div>
 </div>
-{% include 'main/footer.html' %}
+{% endblock %}

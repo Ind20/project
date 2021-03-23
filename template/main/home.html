@@ -1,5 +1,6 @@
-{% load static %}
-{% include 'main/header.html' %}
+{% extends 'main/base.html' %}
+{%load static%}
+{% block content %}
 <title>Matematika Sains Teknologi dan Rekayasa</title>
 {%for message in messages%}
 <div class="message alert alert-success alert-dismissible fade show" role="alert">
@@ -61,5 +62,4 @@
         {% endfor %}
     </div>
 </div>
-
-{% include 'main/footer.html' %}
+{% endblock %}
