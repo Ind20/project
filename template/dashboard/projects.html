@@ -17,7 +17,7 @@
         <!-- Navbar Search-->
         <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
             <div class="input-group">
-                <input class="form-control" type="text" placeholder="Search projects..." aria-label="Search"
+                <input class="form-control" type="text" placeholder="Search for..." aria-label="Search"
                     aria-describedby="basic-addon2" />
                 <div class="input-group-append">
                     <button class="btn btn-primary" type="button"><i class="fas fa-search"></i></button>
@@ -49,13 +49,9 @@
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                             Dashboard
                         </a>
-                        <a class="nav-link" href="dashboard/announce">
+                        <a class="nav-link" href="createannouncement">
                             <div class="sb-nav-link-icon"><i class="fa fa-bullhorn"></i></div>
                             Announce
-                        </a>
-                        <a class="nav-link" href="dashboard/projects">
-                            <div class="sb-nav-link-icon"><i class="fa fa-suitcase"></i></div>
-                            Projects
                         </a>
                         <div class="sb-sidenav-menu-heading">Interface</div>
                         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts"
@@ -128,81 +124,41 @@
         </div>
         <div id="layoutSidenav_content">
             <main>
-                <div class="container-fluid pt-3">
-                    <div class="row">
-                        <div class="col-xl-3 col-md-6">
-                            <div class="card bg-primary text-white mb-4">
-                                <div class="card-body">Primary Card</div>
-                                <div class="card-footer d-flex align-items-center justify-content-between">
-                                    <a class="small text-white stretched-link" href="#">View Details</a>
-                                    <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-3 col-md-6">
-                            <div class="card bg-warning text-white mb-4">
-                                <div class="card-body">Warning Card</div>
-                                <div class="card-footer d-flex align-items-center justify-content-between">
-                                    <a class="small text-white stretched-link" href="#">View Details</a>
-                                    <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-3 col-md-6">
-                            <div class="card bg-success text-white mb-4">
-                                <div class="card-body">Success Card</div>
-                                <div class="card-footer d-flex align-items-center justify-content-between">
-                                    <a class="small text-white stretched-link" href="#">View Details</a>
-                                    <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-3 col-md-6">
-                            <div class="card bg-danger text-white mb-4">
-                                <div class="card-body">Danger Card</div>
-                                <div class="card-footer d-flex align-items-center justify-content-between">
-                                    <a class="small text-white stretched-link" href="#">View Details</a>
-                                    <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                                </div>
-                            </div>
-                        </div>
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <i class="fas fa-table mr-1"></i>
+                        Projects
                     </div>
-                    <div class="card mb-4">
-                        <div class="card-header">
-                            <i class="fas fa-table mr-1"></i>
-                            Recently Submitted Projects
-                        </div>
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                    <thead>
-                                        <tr class="d-flex">
-                                            <th class="col-1">ID</th>
-                                            <th class="col-1">Image</th>
-                                            <th class="col-4">Title</th>
-                                            <th class="col-2">Student Name</th>
-                                            <th class="col-2">Mentor Name</th>
-                                            <th class="col-2">Uploaded By</th>
-                                            <th class="col-2">Status</th>
-                                            <th class="col-2">Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {% for project in projects %}
-                                        <tr class="d-flex">
-                                            <td class="col-1">{{project.id}}</td>
-                                            <td class="col-1"><img src="{{project.Project_Image.url}}" alt="Image" width="50" height="50"></th>
-                                            <td class="col-4">{{project.Project_Name}}</td>
-                                            <td class="col-2">{{project.Student_Name}}</td>
-                                            <td class="col-2">{{project.Mentor_Name}}</td>
-                                            <td class="col-2">{{project.user.username}}</td>
-                                            <td class="col-2"><a href="#" class="btn btn-success btn-md">Published</a></td>
-                                            <td class="col-2"><a href="#" class="btn btn-info btn-md">Details</a></td>
-                                        </tr>
-                                        {% endfor %}
-                                    </tbody>
-                                </table>
-                            </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <thead>
+                                    <tr class="d-flex">
+                                        <th class="col-1">ID</th>
+                                        <th class="col-1">Image</th>
+                                        <th class="col-4">Title</th>
+                                        <th class="col-2">Student Name</th>
+                                        <th class="col-2">Mentor Name</th>
+                                        <th class="col-2">Uploaded By</th>
+                                        <th class="col-2">Status</th>
+                                        <th class="col-2">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for project in projects %}
+                                    <tr class="d-flex">
+                                        <td class="col-1">{{project.id}}</td>
+                                        <td class="col-1"><img src="{{project.Project_Image.url}}" alt="Image" width="50" height="50"></th>
+                                        <td class="col-4">{{project.Project_Name}}</td>
+                                        <td class="col-2">{{project.Student_Name}}</td>
+                                        <td class="col-2">{{project.Mentor_Name}}</td>
+                                        <td class="col-2">{{project.user.username}}</td>
+                                        <td class="col-2"><a href="#" class="btn btn-success btn-md">Published</a></td>
+                                        <td class="col-2"><a href="#" class="btn btn-info btn-md">Details</a></td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>

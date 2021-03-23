@@ -28,11 +28,6 @@ def footer(request):
     return render(request, 'main/footer.html')
 
 
-@user_passes_test(lambda u: u.is_superuser)
-def dashboard(request):
-    return render(request, 'dashboard/dashboard.html')
-
-
 def contactus(request):
     form = contactusMessageForm(request.POST or None)
     if request.method=='POST':
@@ -253,7 +248,24 @@ def editproject(request, id):
             return render(request, 'project/editproject.html', {'form': form, 'proj': proj})
 
 
-def createannouncement(request):
+
+@user_passes_test(lambda u: u.is_superuser)
+def dashboard(request):
+    projects     = project.objects.all().order_by('-id')[:5]
+    context = {
+    'projects': projects
+    }
+    return render(request, 'dashboard/dashboard.html', context)
+
+
+def dprojects (request):
+    projects     = project.objects.all().order_by('-id')
+    context = {
+    'projects': projects
+    }
+    return render(request, 'dashboard/projects.html', context)
+
+def announce(request):
     form = announcementForm(request.POST or None, request.FILES or None)
     if request.method=='POST':
         if form.is_valid():
@@ -261,7 +273,7 @@ def createannouncement(request):
         messages.info(request,'Announcement submitted successfully')
         return redirect('announcements')
     else:
-        return render(request, 'dashboard/createannouncement.html', {'form': form})
+        return render(request, 'dashboard/announce.html', {'form': form})
 
 
 def announcements(request):
@@ -272,4 +284,7 @@ def announcements(request):
 def announcement_detail(request, id):
     anounce = announcement.objects.get(id=id)
     return render(request, 'main/announcement.html', {'anounce': anounce})
+
+
+
 
