@@ -11,11 +11,9 @@
                 <thead>
                     <tr class="d-flex">
                         <th class="col-1">ID</th>
-                        <th class="col-1">Image</th>
                         <th class="col-4">Title</th>
                         <th class="col-2">Student Name</th>
                         <th class="col-2">Mentor Name</th>
-                        <th class="col-2">Uploaded By</th>
                         <th class="col-2">Status</th>
                         <th class="col-2">Action</th>
                     </tr>
@@ -24,11 +22,9 @@
                     {% for project in projects %}
                     <tr class="d-flex">
                         <td class="col-1">{{project.id}}</td>
-                        <td class="col-1"><img src="{{project.Project_Image.url}}" alt="Image" width="50" height="50"></th>
                         <td class="col-4">{{project.Project_Name}}</td>
                         <td class="col-2">{{project.Student_Name}}</td>
                         <td class="col-2">{{project.Mentor_Name}}</td>
-                        <td class="col-2">{{project.user.username}}</td>
                         <td class="col-2"><a href="#" class="btn btn-success btn-md">Published</a></td>
                         <td class="col-2"><a href="#" class="btn btn-info btn-md">Details</a></td>
                     </tr>
