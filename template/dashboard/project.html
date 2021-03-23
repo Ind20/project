@@ -1,0 +1,32 @@
+{% extends 'dashboard/base.html' %}
+{% block content %}
+<div class="container pt-3 pb-3">
+    <h3 class="text-info text-center mb-3">Review Project</h3>
+    <div class="row img-detail">
+        <div class="col-sm-6">
+            <div class="embed-responsive embed-responsive-1by1">
+                <iframe class="embed-responsive-item" src="{{proj.Project_Video_url}}"></iframe>
+            </div>
+        </div>
+        <div class="col-sm-6 p-detail">
+            <div>Project ID: {{proj.id}}</div>
+            <div>Category: {{proj.Project_Category}}</div>
+            <div>Title: {{proj.Project_Name}}</div>
+            <div>Student: {{proj.Student_Name}}</div>
+            <div>Mentor:{{proj.Mentor_Name}}</div>
+            <div>Attachment: <a href="/static/{{proj.Attachment}}" target="_blank">View </a>OR
+                <a href="/static/{{proj.Attachment}}" download>Download</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-12">
+        <h3>Project Description</h3>
+        <p class="p-description">{{proj.Project_Description|safe}}</p>
+    </div>
+    <div class="d-flex justify-content-around">
+        <button type="button" class="btn btn-success">Publish</button>
+        <button type="button" class="btn btn-warning">Request Change</button>
+        <button type="button" class="btn btn-danger">Reject</button>
+    </div>
+</div>
+{% endblock %}
