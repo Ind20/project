@@ -130,6 +130,7 @@
                             <form method="post" action="createannouncement" enctype="multipart/form-data">
                                 {% csrf_token %}
                                 <div class="form-group">
+                                    {{ form.media}}
                                     {{ form.as_p }}
                                 </div>
                                 <div class="submit-btn">

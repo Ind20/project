@@ -1,6 +1,5 @@
 from django.contrib import admin
-from .models import project, projectCategory
-from .models import contactusMessage, userProfile
+from .models import project, projectCategory, announcement, contactusMessage, userProfile 
 
 class contactusMessageAdmin(admin.ModelAdmin):
     list_display =('fullname', 'phone_num', 'email', 'message')
@@ -22,4 +21,9 @@ class projectCategoryAdmin(admin.ModelAdmin):
     list_display =('Category_Name', 'Category_Description', 'Category_Image')
 
 admin.site.register(projectCategory, projectCategoryAdmin)
+
+class announcementAdmin(admin.ModelAdmin):
+    list_display =('title', 'description', 'attachment', 'date_created')
+
+admin.site.register(announcement, announcementAdmin)
 

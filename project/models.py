@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from datetime import datetime
+from ckeditor.fields import RichTextField
 
 
 class userProfile(models.Model):
@@ -41,7 +42,7 @@ class project(models.Model):
     Student_Name            = models.CharField(max_length=35)
     Mentor_Name             = models.CharField(max_length=35)
     Project_Video_url       = models.CharField(max_length=2085)
-    Project_Description     = models.CharField( max_length=10000)
+    Project_Description     = RichTextField(null='true', blank='true')
     Project_Image           = models.ImageField(default='assets/project.png', upload_to='images/project/images', null='true', blank='true')
     Attachment              = models.FileField(upload_to='images/project/attachments', null='true', blank='true')
     user                    = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -52,7 +53,7 @@ class project(models.Model):
 
 class announcement(models.Model):
     title           = models.CharField(max_length=350)
-    description     = models.CharField( max_length=10000)
+    description     = RichTextField(null='true', blank='true')
     attachment      = models.FileField(upload_to='images/announcement/attachments', null='true', blank='true')
     date_created    = models.DateTimeField(default=datetime.now)           
     

@@ -22,6 +22,7 @@
             <div class="form-group">
                 <form action="addproject" method="post" enctype="multipart/form-data">
                     {% csrf_token %}
+                    {{ form.media}}
                     {{ form.as_p}}
                     <br><input class="submit-btn btn btn-info btn-md" type="submit" name="submit" value="Add Project">
                 </form>
