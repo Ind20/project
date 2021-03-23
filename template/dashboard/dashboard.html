@@ -174,11 +174,10 @@
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <table class="table" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr class="d-flex">
                                             <th class="col-1">ID</th>
-                                            <th class="col-1">Image</th>
                                             <th class="col-4">Title</th>
                                             <th class="col-2">Student Name</th>
                                             <th class="col-2">Mentor Name</th>
@@ -191,7 +190,6 @@
                                         {% for project in projects %}
                                         <tr class="d-flex">
                                             <td class="col-1">{{project.id}}</td>
-                                            <td class="col-1"><img src="{{project.Project_Image.url}}" alt="Image" width="50" height="50"></th>
                                             <td class="col-4">{{project.Project_Name}}</td>
                                             <td class="col-2">{{project.Student_Name}}</td>
                                             <td class="col-2">{{project.Mentor_Name}}</td>
