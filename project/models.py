@@ -53,7 +53,7 @@ class project(models.Model):
 
 class announcement(models.Model):
     title           = models.CharField(max_length=350)
-    description     = models.CharField( max_length=10000)
+    description     = RichTextField(null='true', blank='true')
     attachment      = models.FileField(upload_to='images/announcement/attachments', null='true', blank='true')
     date_created    = models.DateTimeField(default=datetime.now)           
     

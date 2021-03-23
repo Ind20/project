@@ -10,7 +10,7 @@
     </nav>
     <h3>{{anounce.title}}</h3>
     <br><span><i class="fa fa-calendar" aria-hidden="true"></i></span> {{anounce.date_created}}
-    <br><br><p>{{anounce.description}}</p>
+    <br><br><p>{{anounce.description|safe}}</p>
     Attachment: <a href="/static/{{anounce.attachment}}" download>Download</a>
 </div>
 {% include 'main/footer.html' %}
