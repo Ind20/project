@@ -20,14 +20,6 @@ def home(request):
     return render(request, 'main/home.html', context)
 
 
-def header(request):
-    return render(request, 'main/header.html')
-
-
-def footer(request):
-    return render(request, 'main/footer.html')
-
-
 def contactus(request):
     form = contactusMessageForm(request.POST or None)
     if request.method=='POST':
@@ -274,6 +266,16 @@ def dprojects (request):
     'projects': projects
     }
     return render(request, 'dashboard/projects.html', context)
+
+
+@user_passes_test(lambda u: u.is_superuser)
+def dproject (request, id):
+    proj = project.objects.get(id=id)
+    context = {
+        'proj': proj
+    }
+    return render(request, 'dashboard/project.html', context)
+
 
 
 @user_passes_test(lambda u: u.is_superuser)
