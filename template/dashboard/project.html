@@ -2,10 +2,17 @@
 {% block content %}
 <div class="container pt-3 pb-3">
     <h3 class="text-info text-center mb-3">Review Project</h3>
-    <div class="d-flex justify-content-end">
-        <p>Startus:</P> <span class="label label-warning">Pending</span>
-        <p>Action: </p><button type="button" class="btn btn-success">Publish</button>
-        <button type="button" class="btn btn-danger">Unpublish</button>
+    <div class="row">
+        {% if proj.status == 1 %}
+        <div class="col-6"><p>Status: <span class="bg-warning p-1">Pending</span></p></div>
+        <div class="col-6"><button type="button" class="btn-right btn btn-success">Publish</button></div>
+        {% elif proj.status == 2 %}
+        <div class="col-6"><p>Status: <span class="bg-success p-1">Published</span></p></div>
+        <div class="col-6"><button type="button" class="btn-right btn btn-danger">Unpublish</button></div>
+        {% else %}
+        <div class="col-6"><p>Status: <span class="bg-danger p-1">Unpublished</span></p></div>
+        <div class="col-6"><button type="button" class="btn-right btn btn-success">Publish</button></div>
+        {% endif %}
     </div>
     <div class="row img-detail">
         <div class="col-sm-6">
