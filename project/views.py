@@ -3,8 +3,8 @@ from django.http import HttpResponse
 from django.contrib import messages
 from django.contrib.auth.models import User, auth
 from django.contrib.auth.decorators import login_required
-from .models import userProfile, projectCategory, project, announcement
-from .forms import projectForm, contactusMessageForm, userProfileForm, userUpdateForm, userProfileUpdateForm, projectEditForm, announcementForm
+from .models import userProfile, projectCategory, project, announcement, blog
+from .forms import projectForm, contactusMessageForm, userProfileForm, userUpdateForm, userProfileUpdateForm, projectEditForm, announcementForm, blogForm
 from django.views.generic import TemplateView, ListView
 from django.contrib.auth.decorators import user_passes_test
 
@@ -112,6 +112,45 @@ def editprofile(request):
         u_form = userUpdateForm(instance=request.user)
         p_form = userProfileUpdateForm(instance=request.user.userprofile)
         return render(request, 'user/editprofile.html', {'u_form': u_form, 'p_form': p_form})
+
+
+
+@login_required
+def createblog(request):
+    form= blogForm(request.POST or None, request.FILES or None)
+    uid = request.user.id
+    if request.method=='POST':
+        if form.is_valid():
+           blog = form.save(commit=False)
+           blog.user = request.user
+           blog.save()
+        messages.info(request,'Blog submitted successfully')
+        return redirect('/user/%s/myblogs' % uid) 
+    else:
+        return render(request, 'user/createblog.html', {'form': form})
+
+
+
+@login_required
+def editblog(request):
+    form= blogForm(request.POST or None, request.FILES or None)
+    uid = request.user.id
+    if request.method=='POST':
+        if form.is_valid():
+           blog = form.save(commit=False)
+           blog.user = request.user
+           blog.save()
+        messages.info(request,'Blog edited successfully')
+        return redirect('/user/%s/myblogs' % uid) 
+    else:
+        return render(request, 'user/createblog.html', {'form': form})
+
+
+
+def myblogs(request, id):
+    blogs = blog.objects.filter(user_id=id)
+    return render(request,'user/myblogs.html', {'blogs': blogs})
+
 
 
 def logout(request):

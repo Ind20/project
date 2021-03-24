@@ -14,6 +14,9 @@ urlpatterns =[
     path('contactus', views.contactus, name='contactus'),
     path('announcements', views.announcements, name='announcements'),
     path('announcement/<int:id>', views.announcement_detail, name='announcement_detail'),
+    path('createblog', views.createblog, name='createblog'),
+    path('editblog', views.editblog, name='editblog'),
+    path('user/<int:id>/blogs', views.myblogs, name='myblogs'),
 
     path('projects', views.projects, name='projects'),
     path('project/<int:id>', views.project_detail, name='project_detail'),
