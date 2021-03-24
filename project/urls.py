@@ -30,5 +30,8 @@ urlpatterns =[
     path('dashboard/projects', views.dprojects, name='dprojects'),
     path('dashboard/project/<int:id>', views.dproject, name='dproject'),
     path('announcements', views.announcements, name='announcements'),
-    path('announcement/<int:id>', views.announcement_detail, name='announcement_detail')
+    path('announcement/<int:id>', views.announcement_detail, name='announcement_detail'),
+    
+    path('publish/<int:id>', views.publish, name='publish'),
+    path('unpublish/<int:id>', views.unpublish, name='unpublish')
 ]

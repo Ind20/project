@@ -288,3 +288,22 @@ def announce(request):
         return redirect('announcements')
     else:
         return render(request, 'dashboard/announce.html', {'form': form})
+
+
+    
+@user_passes_test(lambda u: u.is_superuser)
+def publish(request, id):
+    pid = id
+    proj = project.objects.get(id=id)
+    proj.status = 2
+    proj.save()
+    return redirect('/dashboard/project/%s' %pid)
+
+
+@user_passes_test(lambda u: u.is_superuser)
+def unpublish(request, id):
+    pid = id
+    proj = project.objects.get(id=id)
+    proj.status = 0
+    proj.save()
+    return redirect('/dashboard/project/%s' %pid)
