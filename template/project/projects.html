@@ -1,4 +1,5 @@
-{% include 'main/header.html' %}
+{% extends 'main/base.html' %}
+{% block content %}
 <title>Projects</title>
 <div class="container pt-3 pb-3">
     <nav aria-label="breadcrumb">
@@ -48,4 +49,4 @@
         <li class="page-item"><a class="page-link" href="javascript:void(0);">Next</a></li>
     </ul>
 </div>
-{% include 'main/footer.html' %}
+{% endblock %}

@@ -1,4 +1,5 @@
-{% include 'main/header.html' %}
+{% extends 'main/base.html' %}
+{% block content %}
 <title>Login</title>
 <div class="container pt-3 pb-3">
     <nav aria-label="breadcrumb">
@@ -69,4 +70,4 @@
         }, false);
     })();
 </script>
-{% include 'main/footer.html' %}
+{% endblock %}

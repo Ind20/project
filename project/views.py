@@ -20,19 +20,6 @@ def home(request):
     return render(request, 'main/home.html', context)
 
 
-def header(request):
-    return render(request, 'main/header.html')
-
-
-def footer(request):
-    return render(request, 'main/footer.html')
-
-
-@user_passes_test(lambda u: u.is_superuser)
-def dashboard(request):
-    return render(request, 'dashboard/dashboard.html')
-
-
 def contactus(request):
     form = contactusMessageForm(request.POST or None)
     if request.method=='POST':
@@ -253,17 +240,6 @@ def editproject(request, id):
             return render(request, 'project/editproject.html', {'form': form, 'proj': proj})
 
 
-def createannouncement(request):
-    form = announcementForm(request.POST or None, request.FILES or None)
-    if request.method=='POST':
-        if form.is_valid():
-            form.save()
-        messages.info(request,'Announcement submitted successfully')
-        return redirect('announcements')
-    else:
-        return render(request, 'dashboard/createannouncement.html', {'form': form})
-
-
 def announcements(request):
     announcements = announcement.objects.all().order_by('-id')[:10]
     return render(request, 'main/announcements.html', {'announcements': announcements})
@@ -273,3 +249,76 @@ def announcement_detail(request, id):
     anounce = announcement.objects.get(id=id)
     return render(request, 'main/announcement.html', {'anounce': anounce})
 
+
+@user_passes_test(lambda u: u.is_superuser)
+def dashboard(request):
+    projects     = project.objects.all().order_by('-id')[:5]
+    announcements = announcement.objects.all().order_by('-id')[:5]
+    context = {
+    'projects': projects,
+    'announcements': announcements
+    }
+    return render(request, 'dashboard/dashboard.html', context)
+
+
+@user_passes_test(lambda u: u.is_superuser)
+def dprojects (request):
+    projects     = project.objects.all().order_by('-id')
+    context = {
+    'projects': projects
+    }
+    return render(request, 'dashboard/projects.html', context)
+
+
+@user_passes_test(lambda u: u.is_superuser)
+def dproject (request, id):
+    proj = project.objects.get(id=id)
+    context = {
+        'proj': proj
+    }
+    return render(request, 'dashboard/project.html', context)
+
+
+
+@user_passes_test(lambda u: u.is_superuser)
+def announce(request):
+    form = announcementForm(request.POST or None, request.FILES or None)
+    if request.method=='POST':
+        if form.is_valid():
+            form.save()
+        messages.info(request,'Announcement submitted successfully')
+        return redirect('announcements')
+    else:
+        return render(request, 'dashboard/announce.html', {'form': form})
+
+
+    
+@user_passes_test(lambda u: u.is_superuser)
+def publish(request, id):
+    pid = id
+    proj = project.objects.get(id=id)
+    proj.status = 2
+    proj.save()
+    return redirect('/dashboard/project/%s' %pid)
+
+
+@user_passes_test(lambda u: u.is_superuser)
+def unpublish(request, id):
+    pid = id
+    proj = project.objects.get(id=id)
+    proj.status = 0
+    proj.save()
+    return redirect('/dashboard/project/%s' %pid)
+
+
+@user_passes_test(lambda u: u.is_superuser)
+def dannouncements(request):
+    announcements = announcement.objects.all().order_by('-id')
+    return render(request, 'dashboard/announcements.html', {'announcements': announcements})
+
+
+
+
+def dannouncement(request, id):
+    anounce = announcement.objects.get(id=id)
+    return render(request, 'dashboard/announcement.html', {'anounce': anounce})

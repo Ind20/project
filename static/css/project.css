@@ -39,7 +39,7 @@ html, body {
 
 .nav-bar {
     background-color: slategrey;
-    height: 90px;
+    height: 70px;
 }
 
 @media screen and (max-width: 600px) {
@@ -49,8 +49,8 @@ html, body {
 }
 
 .logo .logo-img {
-    height: 90px;
-    width: 230px;
+    height: 70px;
+    width: 200px;
     margin-left: 5px;
 }
 
@@ -95,8 +95,8 @@ html, body {
 
 .topnav {
     margin-left: 10%;
-    height: 80px;
-    margin-top: 10px;
+    height: 67px;
+    margin-top: 3px;
 }
 
 .topnav .icon {

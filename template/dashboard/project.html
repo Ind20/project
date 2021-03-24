@@ -1,0 +1,50 @@
+{% extends 'dashboard/base.html' %}
+{% block content %}
+<div class="container pt-3 pb-3">
+    <h3 class="text-info text-center mb-3">Review Project</h3>
+    <div class="row">
+        {% if proj.status == 1 %}
+        <div class="col-6"><p>Status: <span class="bg-warning p-1">Pending</span></p></div>
+        <div class="col-6">
+            <form action="/publish/{{proj.id}}" method="post">
+                {% csrf_token %}
+                <button type="submit" class="btn-right btn btn-success">Publish</button>
+            </form>
+        </div>
+        {% elif proj.status == 2 %}
+        <div class="col-6"><p>Status: <span class="bg-success p-1">Published</span></p></div>
+        <div class="col-6"><form action="/unpublish/{{proj.id}}" method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn-right btn btn-danger">Unublish</button>
+        </form></div>
+        {% else %}
+        <div class="col-6"><p>Status: <span class="bg-danger p-1">Unpublished</span></p></div>
+        <div class="col-6"><form action="/publish/{{proj.id}}" method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn-right btn btn-success">Publish</button>
+        </form></div>
+        {% endif %}
+    </div>
+    <div class="row img-detail">
+        <div class="col-sm-6">
+            <div class="embed-responsive embed-responsive-1by1">
+                <iframe class="embed-responsive-item" src="{{proj.Project_Video_url}}"></iframe>
+            </div>
+        </div>
+        <div class="col-sm-6 p-detail">
+            <div>Project ID: {{proj.id}}</div>
+            <div>Category: {{proj.Project_Category}}</div>
+            <div>Title: {{proj.Project_Name}}</div>
+            <div>Student: {{proj.Student_Name}}</div>
+            <div>Mentor:{{proj.Mentor_Name}}</div>
+            <div>Attachment: <a href="/static/{{proj.Attachment}}" target="_blank">View </a>OR
+                <a href="/static/{{proj.Attachment}}" download>Download</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-12">
+        <h3>Project Description</h3>
+        <p class="p-description">{{proj.Project_Description|safe}}</p>
+    </div>
+</div>
+{% endblock %}
