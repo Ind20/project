@@ -15,7 +15,7 @@
                         <th class="col-2">Student Name</th>
                         <th class="col-2">Mentor Name</th>
                         <th class="col-2">Status</th>
-                        <th class="col-2">Action</th>
+                        <th class="col-1">Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -26,7 +26,7 @@
                         <td class="col-2">{{project.Student_Name}}</td>
                         <td class="col-2">{{project.Mentor_Name}}</td>
                         <td class="col-2">{% if project.status == 1 %}<span class="bg-warning p-1">Pending</span>{% elif project.status == 2 %}<span class="bg-success p-1">Published</span>{% else %}<span class="bg-danger p-1">Unpublished</span>{% endif %}
-                        <td class="col-2"><a href="/dashboard/project/{{project.id}}" class="btn btn-info btn-md">Details</a></td>
+                        <td class="col-1"><a href="/dashboard/project/{{project.id}}" class="btn btn-info btn-md">Details</a></td>
                     </tr>
                     {% endfor %}
                 </tbody>

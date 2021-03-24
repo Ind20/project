@@ -43,6 +43,7 @@
         <div class="card-header">
             <i class="fas fa-table mr-1"></i>
             Recently Submitted Projects
+            <a href="/dashboard/projects" class="btn btn-right btn-info btn-md">See All</a>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -54,7 +55,7 @@
                             <th class="col-2">Student Name</th>
                             <th class="col-2">Mentor Name</th>
                             <th class="col-2">Status</th>
-                            <th class="col-2">Action</th>
+                            <th class="col-1">Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -64,8 +65,39 @@
                             <td class="col-4">{{project.Project_Name}}</td>
                             <td class="col-2">{{project.Student_Name}}</td>
                             <td class="col-2">{{project.Mentor_Name}}</td>
-                            <td class="col-2"><a href="#" class="btn btn-success btn-md">Published</a></td>
-                            <td class="col-2"><a href="/dashboard/project/{{project.id}}" class="btn btn-info btn-md">Details</a></td>
+                            <td class="col-2">{% if project.status == 1 %}<span class="bg-warning p-1">Pending</span>{% elif project.status == 2 %}<span class="bg-success p-1">Published</span>{% else %}<span class="bg-danger p-1">Unpublished</span>{% endif %}
+                            <td class="col-1"><a href="/dashboard/project/{{project.id}}" class="btn btn-info btn-md">Details</a></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="card mb-4">
+        <div class="card-header">
+            <i class="fas fa-table mr-1"></i>
+            Recent Announcements
+            <a href="/dashboard/announcements" class="btn btn-right btn-info btn-md">See All</a>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr class="d-flex">
+                            <th class="col-1">ID</th>
+                            <th class="col-3">Date</th>
+                            <th class="col-7">Title</th>
+                            <th class="col-1">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for da in announcements %}
+                        <tr class="d-flex">
+                            <td class="col-1">{{da.id}}</td>
+                            <td class="col-3">{{da.date_created}}</td>
+                            <td class="col-7">{{da.title}}</td>
+                            <td class="col-1"><a href="/dashboard/announcement/{{da.id}}" class="btn btn-info btn-md">Details</a></td>
                         </tr>
                         {% endfor %}
                     </tbody>

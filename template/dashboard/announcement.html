@@ -1,0 +1,17 @@
+{% extends 'dashboard/base.html' %}
+{% block content %}
+<title>Anouncement</title>
+<div class="container pt-3 pb-3">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">Home</a></li>
+            <li class="breadcrumb-item"><a href="#">Anouncement</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{anounce.title}}</li>
+        </ol>
+    </nav>
+    <h3>{{anounce.title}}</h3>
+    <br><span><i class="fa fa-calendar" aria-hidden="true"></i></span> {{anounce.date_created}}
+    <br><br><p>{{anounce.description|safe}}</p>
+    Attachment: <a href="/static/{{anounce.attachment}}" download>Download</a>
+</div>
+{% endblock %}

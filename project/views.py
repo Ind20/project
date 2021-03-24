@@ -253,8 +253,10 @@ def announcement_detail(request, id):
 @user_passes_test(lambda u: u.is_superuser)
 def dashboard(request):
     projects     = project.objects.all().order_by('-id')[:5]
+    announcements = announcement.objects.all().order_by('-id')[:5]
     context = {
-    'projects': projects
+    'projects': projects,
+    'announcements': announcements
     }
     return render(request, 'dashboard/dashboard.html', context)
 
@@ -307,3 +309,16 @@ def unpublish(request, id):
     proj.status = 0
     proj.save()
     return redirect('/dashboard/project/%s' %pid)
+
+
+@user_passes_test(lambda u: u.is_superuser)
+def dannouncements(request):
+    announcements = announcement.objects.all().order_by('-id')
+    return render(request, 'dashboard/announcements.html', {'announcements': announcements})
+
+
+
+
+def dannouncement(request, id):
+    anounce = announcement.objects.get(id=id)
+    return render(request, 'dashboard/announcement.html', {'anounce': anounce})

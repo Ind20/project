@@ -8,8 +8,8 @@
             <li class="breadcrumb-item active" aria-current="page">Anouncements</li>
         </ol>
     </nav>
-    <div class="table-responsive">
-        <h1 class="text-center">Announcements</h1>
+    <div>
+        <h1 class="text-center mb-2">Announcements</h1>
         {% for announcement in announcements %}
         <a href="announcement/{{announcement.id}}"><strong>{{announcement.title}} </strong><span class="label label-danger">New</span></a>
         <br><span><i class="fa fa-calendar" aria-hidden="true"></i></span> {{announcement.date_created}}

@@ -12,6 +12,8 @@ urlpatterns =[
     path('profile', views.profile, name="profile"),
     path('editprofile', views.editprofile, name="editprofile"),
     path('contactus', views.contactus, name='contactus'),
+    path('announcements', views.announcements, name='announcements'),
+    path('announcement/<int:id>', views.announcement_detail, name='announcement_detail'),
 
     path('projects', views.projects, name='projects'),
     path('project/<int:id>', views.project_detail, name='project_detail'),
@@ -29,8 +31,8 @@ urlpatterns =[
     path('dashboard/announce', views.announce, name='announce'),
     path('dashboard/projects', views.dprojects, name='dprojects'),
     path('dashboard/project/<int:id>', views.dproject, name='dproject'),
-    path('announcements', views.announcements, name='announcements'),
-    path('announcement/<int:id>', views.announcement_detail, name='announcement_detail'),
+    path('dashboard/announcements', views.dannouncements, name='dannouncements'),
+    path('dashboard/announcement/<int:id>', views.dannouncement, name='dannouncement'),
     
     path('publish/<int:id>', views.publish, name='publish'),
     path('unpublish/<int:id>', views.unpublish, name='unpublish')
