@@ -4,19 +4,23 @@ from . import views
 
 urlpatterns =[
     path('', views.home, name='djlogin/home'),
+    path('contactus', views.contactus, name='contactus'),
+    path('announcements', views.announcements, name='announcements'),
+    path('announcement/<int:id>', views.announcement_detail, name='announcement_detail'),
     path('accounts/login/', views.please_login, name='please_login'),
+
 
     path('login', views.login, name='login'),
     path('register', views.register, name='register'),
     path('logout', views.logout, name='logout'),
     path('profile', views.profile, name="profile"),
     path('editprofile', views.editprofile, name="editprofile"),
-    path('contactus', views.contactus, name='contactus'),
-    path('announcements', views.announcements, name='announcements'),
-    path('announcement/<int:id>', views.announcement_detail, name='announcement_detail'),
+
     path('createblog', views.createblog, name='createblog'),
-    path('editblog', views.editblog, name='editblog'),
+    path('editblog/<int:id>', views.editblog, name='editblog'),
     path('user/<int:id>/blogs', views.myblogs, name='myblogs'),
+    path('blog/<int:id>', views.blog_detail, name='blog_detail'),
+    path('blogs', views.blogs, name='blogs'),
 
     path('projects', views.projects, name='projects'),
     path('project/<int:id>', views.project_detail, name='project_detail'),

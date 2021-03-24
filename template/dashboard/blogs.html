@@ -39,11 +39,11 @@
                             <td class="col-1">{{blog.id}}</td>
                             <td class="col-1"><img class="" src="{{blog.image.url}}" width="40" height="40"></td>
                             <td class="col-7">{{blog.title}}</td>
-                            <td class="col-2">{% if blog.status == 1 %}<span class="bg-warning p-1">Pending</span>{% elif blog.status == 2 %}<span class="bg-success p-1">Published</span>{% else %}<span class="bg-danger p-1">Unpublished</span>{% endif %}
-                            {% if blog.status == 2 %}
-                            <td class="col-1"><a href="/blog/{{blog.id}}" class="btn btn-info btn-md">View</a></td>
-                            {% elif blog.status == 1 %}
-                            <td class="col-1"><a href="/editblog/{{blog.id}}" class="btn btn-info btn-md">Edit</a></td>
+                            <td class="col-2">{% if blog.status == 1 %}<span class="bg-warning p-1">Pending</span>{%
+                                elif blog.status == 2 %}<span class="bg-success p-1">Published</span>{% else %}<span
+                                    class="bg-danger p-1">Unpublished</span>{% endif %}
+                                {% if blog.status == 2 %}
+                            <td class="col-1"><a href="#" class="btn btn-info btn-md">View</a></td>
                             {% endif %}
                         </tr>
                         {% endfor %}

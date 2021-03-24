@@ -4,7 +4,7 @@ from django.contrib import messages
 from django.contrib.auth.models import User, auth
 from django.contrib.auth.decorators import login_required
 from .models import userProfile, projectCategory, project, announcement, blog
-from .forms import projectForm, contactusMessageForm, userProfileForm, userUpdateForm, userProfileUpdateForm, projectEditForm, announcementForm, blogForm
+from .forms import projectForm, contactusMessageForm, userProfileForm, userUpdateForm, userProfileUpdateForm, projectEditForm, announcementForm, blogForm, blogEditForm
 from django.views.generic import TemplateView, ListView
 from django.contrib.auth.decorators import user_passes_test
 
@@ -124,27 +124,47 @@ def createblog(request):
            blog = form.save(commit=False)
            blog.user = request.user
            blog.save()
-        messages.info(request,'Blog submitted successfully')
-        return redirect('/user/%s/myblogs' % uid) 
+        messages.info(request,'Blog submitted successfully, it will show after published by admin')
+        return redirect('/user/%s/blogs' % uid) 
     else:
         return render(request, 'user/createblog.html', {'form': form})
 
 
 
 @login_required
-def editblog(request):
-    form= blogForm(request.POST or None, request.FILES or None)
+def editblog(request, id):
+    userblog = blog.objects.get(id=id)
     uid = request.user.id
-    if request.method=='POST':
-        if form.is_valid():
-           blog = form.save(commit=False)
-           blog.user = request.user
-           blog.save()
-        messages.info(request,'Blog edited successfully')
-        return redirect('/user/%s/myblogs' % uid) 
+    b_user = userblog.user_id
+    if uid != b_user:
+        messages.info(request,'You do not have permisson to edit this item')
+        return redirect('/user/%s/blogs' % uid) 
     else:
-        return render(request, 'user/createblog.html', {'form': form})
+        form= blogEditForm(request.POST or None, request.FILES or None, instance=userblog)
+        if request.method=='POST':
+            if form.is_valid():
+                form.save()
+            messages.info(request,'Blog edited successfully, it will show after published by admin')
+            return redirect('/user/%s/blogs' % uid) 
+        else:
+            return render(request, 'user/editblog.html', {'form': form, 'userblog': userblog})
 
+
+def blogs(request):
+    blogs = blog.objects.all()
+    return render(request,'main/blogs.html', {'blogs': blogs})
+
+
+def blog_detail(request, id):
+    blg = blog.objects.get(id=id)
+    uid = request.user.id
+    b_user = blg.user_id
+    context = {
+        'blg': blg,
+        'uid': uid,
+        'b_user': b_user
+    }
+    return render(request, 'main/blog.html', context)
 
 
 def myblogs(request, id):
