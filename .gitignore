@@ -1,14 +1,8 @@
 db.sqlite3
-__init__.py
-drf_react_blog/__pycache__/__init__.cpython-38.pyc
-drf_react_blog/__pycache__/settings.cpython-38.pyc
-manage.py
 .vscode/settings.json
-cpython
 __pycache__
 migrations
 images/
 .idea
 phpliteadmin.php
-core/settings.py
 ngrok
