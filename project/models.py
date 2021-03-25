@@ -56,7 +56,8 @@ class announcement(models.Model):
     title           = models.CharField(max_length=350)
     description     = RichTextField(null='true', blank='true')
     attachment      = models.FileField(upload_to='images/announcement/attachments', null='true', blank='true')
-    date_created    = models.DateTimeField(default=datetime.now)           
+    date_created    = models.DateTimeField(default=datetime.now)
+    status          = models.IntegerField(default=2)          
     
     def __str__(self):
         return self.title

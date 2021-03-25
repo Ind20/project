@@ -1,5 +1,13 @@
 {% extends 'dashboard/base.html' %}
 {% block content %}
+{%for message in messages%}
+<div class="message alert alert-success alert-dismissible fade show" role="alert">
+    <strong>{{ message}}</strong>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+{%endfor%}
 <div class="card mb-4">
     <div class="card-header">
         <i class="fas fa-table mr-1"></i>
@@ -13,7 +21,8 @@
                     <tr class="d-flex">
                         <th class="col-1">ID</th>
                         <th class="col-3">Date</th>
-                        <th class="col-7">Title</th>
+                        <th class="col-5">Title</th>
+                        <th class="col-2">Status</th>
                         <th class="col-1">Action</th>
                     </tr>
                 </thead>
@@ -22,7 +31,8 @@
                     <tr class="d-flex">
                         <td class="col-1">{{da.id}}</td>
                         <td class="col-3">{{da.date_created}}</td>
-                        <td class="col-7">{{da.title}}</td>
+                        <td class="col-5">{{da.title}}</td>
+                        <td class="col-2">{% if da.status == 1 %}<span class="bg-warning p-1">Pending</span>{%elif da.status == 2 %}<span class="bg-success p-1">Published</span>{% else %}<span class="bg-danger p-1">Unpublished</span>{% endif %}
                         <td class="col-1"><a href="/dashboard/announcement/{{da.id}}" class="btn btn-info btn-md">Details</a></td>
                     </tr>
                     {% endfor %}

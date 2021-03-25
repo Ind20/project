@@ -265,7 +265,7 @@ def category_project(request, cat_id, id):
 
 
 @login_required
-def addproject(request):
+def createproject(request):
     form= projectForm(request.POST or None, request.FILES or None)
     uid = request.user.id
     if request.method=='POST':
@@ -386,11 +386,44 @@ def dannouncement(request, id):
 
 @user_passes_test(lambda u: u.is_superuser)
 def dblogs(request):
-    blogs = blog.objects.all()
+    blogs = blog.objects.all().order_by('-id')
     return render(request,'dashboard/blogs.html', {'blogs': blogs})
 
 
 @user_passes_test(lambda u: u.is_superuser)
 def dblog(request, id):
-    dblog = blog.objects.get(id=id)
-    return render(request, 'dashboard/blog.html', context)
+    blg = blog.objects.get(id=id)
+    return render(request, 'dashboard/blog.html', {'blg': blg})
+
+
+
+@user_passes_test(lambda u: u.is_superuser)
+def addproject(request):
+    form= projectForm(request.POST or None, request.FILES or None)
+    uid = request.user.id
+    if request.method=='POST':
+        if form.is_valid():
+           project = form.save(commit=False)
+           project.user = request.user
+           project.status = 2
+           project.save()
+        messages.info(request,'Blog submitted successfully')
+        return redirect('/dashboard/projects') 
+    else:
+        return render(request, 'dashboard/addproject.html', {'form': form})
+
+
+@user_passes_test(lambda u: u.is_superuser)
+def addblog(request):
+    form= blogForm(request.POST or None, request.FILES or None)
+    uid = request.user.id
+    if request.method=='POST':
+        if form.is_valid():
+           blog = form.save(commit=False)
+           blog.user = request.user
+           blog.status = 2
+           blog.save()
+        messages.info(request,'Blog submitted successfully')
+        return redirect('/dashboard/blogs') 
+    else:
+        return render(request, 'dashboard/addblog.html', {'form': form})

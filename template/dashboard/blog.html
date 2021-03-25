@@ -1,17 +1,7 @@
-{% extends 'main/base.html' %}
+{% extends 'dashboard/base.html' %}
 {% block content %}
 <title>{{blg.title}}</title>
 <div class="container pt-3 pb-3">
-    <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="/">Home</a></li>
-            <li class="breadcrumb-item"><a href="#">Blogs</a></li>
-            <li class="breadcrumb-item active" aria-current="page">{{blg.title|truncatechars:25}}</li>
-        </ol>
-    </nav>
-    {% if uid == b_user %}
-    <a href="/editblog/{{blg.id}}" class="btn submit-btn btn-info btn-md">Edit Blog</a>
-    {% endif %}
     <div class="row">
         <div class="col-sm-12">
             <h3>{{blg.title}}</h3>
