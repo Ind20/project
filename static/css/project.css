@@ -67,7 +67,7 @@ html, body {
 
 .link {
     font-size: 20px;
-    margin: 10px 10px 0 10px;
+    margin: 10px 10px 0 5px;
     color: white;
 }
 
@@ -96,7 +96,6 @@ html, body {
 .topnav {
     margin-left: 10%;
     height: 67px;
-    margin-top: 3px;
 }
 
 .topnav .icon {
@@ -279,7 +278,7 @@ html, body {
 
 /* - - - - - - - - - - - - - - - - - - - Project css - - - - - - - - - - - - - - - - - - - - - -  */
 
-.p-description {
+.p-desc .b-desc {
     margin-top: 15px;
     color: black !important;
 }

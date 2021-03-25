@@ -56,7 +56,18 @@ class announcement(models.Model):
     title           = models.CharField(max_length=350)
     description     = RichTextField(null='true', blank='true')
     attachment      = models.FileField(upload_to='images/announcement/attachments', null='true', blank='true')
-    date_created    = models.DateTimeField(default=datetime.now)           
+    date_created    = models.DateTimeField(default=datetime.now)
+    status          = models.IntegerField(default=2)          
     
     def __str__(self):
         return self.title
+
+
+class blog(models.Model):
+    category        = models.CharField(max_length=35)
+    title           = models.CharField(max_length=350)
+    date_created    = models.DateTimeField(default=datetime.now)
+    image           = models.ImageField(default='assets/blog.png', upload_to='images/blog/images', null='true', blank='true')
+    description     = RichTextField(null='true', blank='true')
+    status          = models.IntegerField(default=1)
+    user            = models.ForeignKey(User, on_delete=models.CASCADE)
