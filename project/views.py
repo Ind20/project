@@ -311,11 +311,13 @@ def announcement_detail(request, id):
 
 @user_passes_test(lambda u: u.is_superuser)
 def dashboard(request):
-    projects     = project.objects.all().order_by('-id')[:5]
+    projects      = project.objects.all().order_by('-id')[:5]
     announcements = announcement.objects.all().order_by('-id')[:5]
+    blogs         = blog.objects.all().order_by('-id')[:5]
     context = {
     'projects': projects,
-    'announcements': announcements
+    'announcements': announcements,
+    'blogs': blogs
     }
     return render(request, 'dashboard/dashboard.html', context)
 
@@ -376,8 +378,19 @@ def dannouncements(request):
     return render(request, 'dashboard/announcements.html', {'announcements': announcements})
 
 
-
-
+@user_passes_test(lambda u: u.is_superuser)
 def dannouncement(request, id):
     anounce = announcement.objects.get(id=id)
     return render(request, 'dashboard/announcement.html', {'anounce': anounce})
+
+
+@user_passes_test(lambda u: u.is_superuser)
+def dblogs(request):
+    blogs = blog.objects.all()
+    return render(request,'dashboard/blogs.html', {'blogs': blogs})
+
+
+@user_passes_test(lambda u: u.is_superuser)
+def dblog(request, id):
+    dblog = blog.objects.get(id=id)
+    return render(request, 'dashboard/blog.html', context)

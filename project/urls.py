@@ -40,6 +40,8 @@ urlpatterns =[
     path('dashboard/project/<int:id>', views.dproject, name='dproject'),
     path('dashboard/announcements', views.dannouncements, name='dannouncements'),
     path('dashboard/announcement/<int:id>', views.dannouncement, name='dannouncement'),
+    path('dashboard/blogs', views.dblogs, name='dblogs'),
+    path('dashboard/dblog/<int:id>', views.dblog, name='dblog'),
     
     path('publish/<int:id>', views.publish, name='publish'),
     path('unpublish/<int:id>', views.unpublish, name='unpublish')
