@@ -427,3 +427,48 @@ def addblog(request):
         return redirect('/dashboard/blogs') 
     else:
         return render(request, 'dashboard/addblog.html', {'form': form})
+
+
+
+@user_passes_test(lambda u: u.is_superuser)
+def deditproject(request, id):
+    proj = project.objects.get(id=id)
+    form= projectEditForm(request.POST or None, request.FILES or None, instance=proj)
+    pid = id
+    if request.method=='POST':
+        if form.is_valid():
+            form.save()
+        messages.info(request,'Project edited successfully')
+        return redirect('/dashboard/project/%s' %pid)
+    else:
+        return render(request, 'dashboard/editproject.html', {'form': form, 'proj': proj})
+
+
+
+@user_passes_test(lambda u: u.is_superuser)
+def deditblog(request, id):
+    blg = blog.objects.get(id=id)
+    bid = id
+    form= blogEditForm(request.POST or None, request.FILES or None, instance=blg)
+    if request.method=='POST':
+        if form.is_valid():
+            form.save()
+        messages.info(request,'Blog edited successfully')
+        return redirect('/dashboard/blog/%s' % bid) 
+    else:
+        return render(request, 'dashboard/editblog.html', {'form': form, 'blg': blg})
+
+
+
+@user_passes_test(lambda u: u.is_superuser)
+def editannouncement(request, id):
+    ann = announcement.objects.get(id=id)
+    form = announcementForm(request.POST or None, request.FILES or None, instance=ann)
+    aid = id
+    if request.method=='POST':
+        if form.is_valid():
+            form.save()
+        messages.info(request,'Announcement edited successfully')
+        return redirect('/dashboard/announcement/%s' %aid)
+    else:
+        return render(request, 'dashboard/editannouncement.html', {'form': form, 'ann': ann})

@@ -35,7 +35,6 @@ urlpatterns =[
     path('category/<int:id>/projects', views.category_projects, name='category_projects'),
 
     path('dashboard', views.dashboard, name='dashboard'),
-    path('dashboard/announce', views.announce, name='announce'),
     path('dashboard/projects', views.dprojects, name='dprojects'),
     path('dashboard/project/<int:id>', views.dproject, name='dproject'),
     path('dashboard/announcements', views.dannouncements, name='dannouncements'),
@@ -44,6 +43,11 @@ urlpatterns =[
     path('dashboard/blog/<int:id>', views.dblog, name='dblog'),
     path('dashboard/addblog', views.addblog, name='addblog'),
     path('dashboard/addproject', views.addproject, name='addproject'),
+    path('dashboard/announce', views.announce, name='announce'),
+    path('dashboard/blog/<int:id>', views.dblog, name='dblog'),
+    path('dashboard/editproject/<int:id>', views.deditproject, name='deditproject'),
+    path('dashboard/editblog/<int:id>', views.deditblog, name='deditblog'),
+    path('dashboard/editannouncement/<int:id>', views.editannouncement, name='editannouncement'),
     
     path('publish/<int:id>', views.publish, name='publish'),
     path('unpublish/<int:id>', views.unpublish, name='unpublish')

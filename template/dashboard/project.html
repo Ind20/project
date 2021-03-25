@@ -1,29 +1,45 @@
 {% extends 'dashboard/base.html' %}
 {% block content %}
+{%for message in messages%}
+<div class="message alert alert-success alert-dismissible fade show" role="alert">
+    <strong>{{ message}}</strong>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+{%endfor%}
 <div class="container pt-3 pb-3">
     <h3 class="text-info text-center mb-3">Review Project</h3>
     <div class="row">
         {% if proj.status == 1 %}
-        <div class="col-6"><p>Status: <span class="bg-warning p-1">Pending</span></p></div>
-        <div class="col-6">
+        <div class="col-9"><p>Status: <span class="bg-warning p-1">Pending</span></p></div>
+        <div class="col-1">
             <form action="/publish/{{proj.id}}" method="post">
                 {% csrf_token %}
                 <button type="submit" class="btn-right btn btn-success">Publish</button>
             </form>
         </div>
         {% elif proj.status == 2 %}
-        <div class="col-6"><p>Status: <span class="bg-success p-1">Published</span></p></div>
-        <div class="col-6"><form action="/unpublish/{{proj.id}}" method="post">
+        <div class="col-9"><p>Status: <span class="bg-success p-1">Published</span></p></div>
+        <div class="col-1"><form action="/unpublish/{{proj.id}}" method="post">
             {% csrf_token %}
             <button type="submit" class="btn-right btn btn-danger">Unublish</button>
         </form></div>
         {% else %}
-        <div class="col-6"><p>Status: <span class="bg-danger p-1">Unpublished</span></p></div>
-        <div class="col-6"><form action="/publish/{{proj.id}}" method="post">
+        <div class="col-9"><p>Status: <span class="bg-danger p-1">Unpublished</span></p></div>
+        <div class="col-1"><form action="/publish/{{proj.id}}" method="post">
             {% csrf_token %}
             <button type="submit" class="btn-right btn btn-success">Publish</button>
         </form></div>
         {% endif %}
+        <div class="col-1">
+            {% csrf_token %}
+            <a type="submit" class="btn-right btn btn-warning" href="/dashboard/editproject/{{proj.id}}">Edit</a>
+        </div>
+        <div class="col-1">
+            {% csrf_token %}
+            <button type="submit" class="btn-right btn btn-danger">Delete</button>
+        </div>
     </div>
     <div class="row img-detail">
         <div class="col-sm-6">
