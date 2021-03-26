@@ -1,0 +1,16 @@
+{% extends 'dashboard/base.html' %}
+{% block content %}
+<title>Edit Category</title>
+<div class="row justify-content-center">
+    <div class="col-sm-8 col-12 card shadow-lg border-0 rounded-lg mt-5 profile-box">
+        <h2 class="text-info text-center pt-2">Edit Category</h2>
+        <div class="form-group">
+            <form action="/dashboard/editcategory/{{cat.id}}" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.as_p}}
+                <br><input class="btn-right btn btn-info btn-md" type="submit" name="submit" value="Update">
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

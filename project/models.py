@@ -30,6 +30,7 @@ class projectCategory(models.Model):
     Category_Name           = models.CharField(max_length=35)
     Category_Description    = models.CharField( max_length=2000)
     Category_Image          = models.ImageField(default='assets/category.png', upload_to='images/category/', null='true', blank='true')
+    status                  = models.IntegerField(default=1)
 
     def __str__(self):
         return self.Category_Name

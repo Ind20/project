@@ -11,7 +11,7 @@
 {%endfor%}
 <div class="container pt-3 pb-3">
     <div class="row">
-        {% if proj.status == 1 %}
+        {% if blg.status == 1 %}
         <div class="col-9"><p>Status: <span class="bg-warning p-1">Pending</span></p></div>
         <div class="col-1">
             <form action="/publish/{{proj.id}}" method="post">
@@ -19,7 +19,7 @@
                 <button type="submit" class="btn-right btn btn-success">Publish</button>
             </form>
         </div>
-        {% elif proj.status == 2 %}
+        {% elif blg.status == 2 %}
         <div class="col-9"><p>Status: <span class="bg-success p-1">Published</span></p></div>
         <div class="col-1"><form action="/unpublish/{{proj.id}}" method="post">
             {% csrf_token %}

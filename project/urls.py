@@ -48,6 +48,10 @@ urlpatterns =[
     path('dashboard/editproject/<int:id>', views.deditproject, name='deditproject'),
     path('dashboard/editblog/<int:id>', views.deditblog, name='deditblog'),
     path('dashboard/editannouncement/<int:id>', views.editannouncement, name='editannouncement'),
+    path('dashboard/categories', views.dcategories, name='dcategories'),
+    path('dashboard/category/<int:id>', views.dcategory, name='dcategory'),
+    path('dashboard/addcategory', views.addcategory, name='addcategory'),
+    path('dashboard/editcategory/<int:id>', views.editcategory, name='editcategory'),
     
     path('publish/<int:id>', views.publish, name='publish'),
     path('unpublish/<int:id>', views.unpublish, name='unpublish')

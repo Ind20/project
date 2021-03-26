@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User
-from .models import contactusMessage, userProfile, project, announcement, blog
+from .models import contactusMessage, userProfile, project, announcement, blog, projectCategory
 
 
 class contactusMessageForm(forms.ModelForm):
@@ -129,4 +129,16 @@ class blogEditForm(forms.ModelForm):
             'title': forms.TextInput(attrs={'class' : 'form-control'}),
             'description': forms.Textarea(attrs={'class' : 'form-control'}),
             'image': forms.FileInput(attrs={'style' : 'margin-top:15px'})
+        }
+
+
+
+class projectCategoryForm(forms.ModelForm):
+    class Meta:
+        model   = projectCategory
+        fields  = ['Category_Name', 'Category_Description', 'Category_Image']
+        widgets = {
+            'Category_Name': forms.TextInput(attrs={'class' : 'form-control'}),
+            'Category_Description': forms.Textarea(attrs={'class' : 'form-control'}),
+            'Category_Image': forms.FileInput(attrs={'style' : 'margin-top:15px'})
         }

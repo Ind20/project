@@ -4,7 +4,7 @@ from django.contrib import messages
 from django.contrib.auth.models import User, auth
 from django.contrib.auth.decorators import login_required
 from .models import userProfile, projectCategory, project, announcement, blog
-from .forms import projectForm, contactusMessageForm, userProfileForm, userUpdateForm, userProfileUpdateForm, projectEditForm, announcementForm, blogForm, blogEditForm
+from .forms import projectForm, contactusMessageForm, userProfileForm, userUpdateForm, userProfileUpdateForm, projectEditForm, announcementForm, blogForm, blogEditForm, projectCategoryForm
 from django.views.generic import TemplateView, ListView
 from django.contrib.auth.decorators import user_passes_test
 
@@ -311,13 +311,15 @@ def announcement_detail(request, id):
 
 @user_passes_test(lambda u: u.is_superuser)
 def dashboard(request):
+    categories    = projectCategory.objects.all().order_by('-id')[:5]
     projects      = project.objects.all().order_by('-id')[:5]
     announcements = announcement.objects.all().order_by('-id')[:5]
     blogs         = blog.objects.all().order_by('-id')[:5]
     context = {
     'projects': projects,
     'announcements': announcements,
-    'blogs': blogs
+    'blogs': blogs,
+    'categories': categories
     }
     return render(request, 'dashboard/dashboard.html', context)
 
@@ -400,7 +402,6 @@ def dblog(request, id):
 @user_passes_test(lambda u: u.is_superuser)
 def addproject(request):
     form= projectForm(request.POST or None, request.FILES or None)
-    uid = request.user.id
     if request.method=='POST':
         if form.is_valid():
            project = form.save(commit=False)
@@ -416,7 +417,6 @@ def addproject(request):
 @user_passes_test(lambda u: u.is_superuser)
 def addblog(request):
     form= blogForm(request.POST or None, request.FILES or None)
-    uid = request.user.id
     if request.method=='POST':
         if form.is_valid():
            blog = form.save(commit=False)
@@ -472,3 +472,43 @@ def editannouncement(request, id):
         return redirect('/dashboard/announcement/%s' %aid)
     else:
         return render(request, 'dashboard/editannouncement.html', {'form': form, 'ann': ann})
+
+
+@user_passes_test(lambda u: u.is_superuser)
+def dcategories(request):
+    categories = projectCategory.objects.all().order_by('-id')
+    return render(request,'dashboard/categories.html', {'categories': categories})
+
+
+@user_passes_test(lambda u: u.is_superuser)
+def addcategory(request):
+    form = projectCategoryForm(request.POST or None, request.FILES or None)
+    if request.method=='POST':
+        if form.is_valid():
+           cat = form.save(commit=False)
+           cat.status = 2
+           cat.save()
+        messages.info(request,'Category added successfully')
+        return redirect('/dashboard/categories') 
+    else:
+        return render(request, 'dashboard/addcategory.html', {'form': form})
+
+
+def dcategory(request, id):
+    category = projectCategory.objects.get(id=id)
+    return render(request, 'dashboard/category.html', {'category':category})
+
+
+def editcategory(request, id):
+    cat = projectCategory.objects.get(id=id)
+    cid = id
+    form= projectCategoryForm(request.POST or None, request.FILES or None, instance=cat)
+    if request.method=='POST':
+        if form.is_valid():
+           cate = form.save(commit=False)
+           cate.status = 2
+           cate.save()
+        messages.info(request,'Category edited successfully')
+        return redirect('/dashboard/category/%s' % cid) 
+    else:
+        return render(request, 'dashboard/editcategory.html', {'form': form, 'cat': cat})

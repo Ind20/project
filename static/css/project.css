@@ -38,7 +38,7 @@ html, body {
 /* - - - - - - - - - - - - - - - - - - - - Header css - - - - - - - - - - - - - - - - - - - -  */
 
 .nav-bar {
-    background-color: slategrey;
+    background-color: red;
     height: 70px;
 }
 
@@ -51,7 +51,7 @@ html, body {
 .logo .logo-img {
     height: 70px;
     width: 200px;
-    margin-left: 5px;
+    margin-left: 15px;
 }
 
 @media screen and (max-width: 600px) {
@@ -66,13 +66,13 @@ html, body {
 }
 
 .link {
-    font-size: 20px;
+    font-size: 15px;
     margin: 10px 10px 0 5px;
     color: white;
 }
 
 .drop-link {
-    font-size: 20px;
+    font-size: 15px;
     margin: 10px 10px 15px 10px;
     color: white;
 }
