@@ -53,6 +53,16 @@ urlpatterns =[
     path('dashboard/addcategory', views.addcategory, name='addcategory'),
     path('dashboard/editcategory/<int:id>', views.editcategory, name='editcategory'),
     
-    path('publish/<int:id>', views.publish, name='publish'),
-    path('unpublish/<int:id>', views.unpublish, name='unpublish')
+    path('publishp/<int:id>', views.publishp, name='publishp'),
+    path('unpublishp/<int:id>', views.unpublishp, name='unpublishp'),
+    path('deletep/<int:id>', views.deletep, name='detelep'),
+    path('publishb/<int:id>', views.publishb, name='publishb'),
+    path('unpublishb/<int:id>', views.unpublishb, name='unpublishb'),
+    path('deleteb/<int:id>', views.deleteb, name='deteleb'),
+    path('publisha/<int:id>', views.publisha, name='publisha'),
+    path('unpublisha/<int:id>', views.unpublisha, name='unpublisha'),
+    path('deletea/<int:id>', views.deletea, name='detelea'),
+    path('publishc/<int:id>', views.publishc, name='publishc'),
+    path('unpublishc/<int:id>', views.unpublishc, name='unpublishc'),
+    path('deletec/<int:id>', views.deletec, name='detelec')
 ]

@@ -15,7 +15,7 @@
             <p>Status: <span class="bg-warning p-1">Pending</span></p>
         </div>
         <div class="col-1">
-            <form action="/publish/{{proj.id}}" method="post">
+            <form action="/publishc/{{category.id}}" method="post">
                 {% csrf_token %}
                 <button type="submit" class="btn-right btn btn-success">Publish</button>
             </form>
@@ -25,7 +25,7 @@
             <p>Status: <span class="bg-success p-1">Published</span></p>
         </div>
         <div class="col-1">
-            <form action="/unpublish/{{proj.id}}" method="post">
+            <form action="/unpublishc/{{category.id}}" method="post">
                 {% csrf_token %}
                 <button type="submit" class="btn-right btn btn-danger">Unublish</button>
             </form>
@@ -35,7 +35,7 @@
             <p>Status: <span class="bg-danger p-1">Unpublished</span></p>
         </div>
         <div class="col-1">
-            <form action="/publish/{{proj.id}}" method="post">
+            <form action="/publishc/{{category.id}}" method="post">
                 {% csrf_token %}
                 <button type="submit" class="btn-right btn btn-success">Publish</button>
             </form>
@@ -47,7 +47,9 @@
         </div>
         <div class="col-1">
             {% csrf_token %}
-            <button type="submit" class="btn-right btn btn-danger">Delete</button>
+            <form action="/deletec/{{category.id}}">
+                <button type="submit" class="btn-right btn btn-danger" onclick="return confirm('Permanently Delete this category?')">Delete</button>
+            </form>
         </div>
     </div>
     <div class="row category-wrapper">

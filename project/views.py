@@ -355,9 +355,34 @@ def announce(request):
         return render(request, 'dashboard/announce.html', {'form': form})
 
 
-    
+
 @user_passes_test(lambda u: u.is_superuser)
-def publish(request, id):
+def publishc(request, id):
+    cid = id
+    cat = projectCategory.objects.get(id=id)
+    cat.status = 2
+    cat.save()
+    return redirect('/dashboard/category/%s' %cid)
+
+
+@user_passes_test(lambda u: u.is_superuser)
+def unpublishc(request, id):
+    cid = id
+    cat = projectCategory.objects.get(id=id)
+    cat.status = 0
+    cat.save()
+    return redirect('/dashboard/category/%s' %cid)
+
+
+@user_passes_test(lambda u: u.is_superuser)
+def deletec(request, id):
+    cat = projectCategory.objects.get(id=id)
+    cat.delete()
+    return redirect('/dashboard/categories')
+
+
+@user_passes_test(lambda u: u.is_superuser)
+def publishp(request, id):
     pid = id
     proj = project.objects.get(id=id)
     proj.status = 2
@@ -366,12 +391,72 @@ def publish(request, id):
 
 
 @user_passes_test(lambda u: u.is_superuser)
-def unpublish(request, id):
+def unpublishp(request, id):
     pid = id
     proj = project.objects.get(id=id)
     proj.status = 0
     proj.save()
     return redirect('/dashboard/project/%s' %pid)
+
+
+@user_passes_test(lambda u: u.is_superuser)
+def deletep(request, id):
+    proj = project.objects.get(id=id)
+    proj.delete()
+    return redirect('/dashboard/projects')
+
+
+
+@user_passes_test(lambda u: u.is_superuser)
+def publishb(request, id):
+    bid = id
+    blg = blog.objects.get(id=id)
+    blg.status = 2
+    blg.save()
+    return redirect('/dashboard/blog/%s' %bid)
+
+
+@user_passes_test(lambda u: u.is_superuser)
+def unpublishb(request, id):
+    bid = id
+    blg = blog.objects.get(id=id)
+    blg.status = 0
+    blg.save()
+    return redirect('/dashboard/blog/%s' %bid)
+
+
+@user_passes_test(lambda u: u.is_superuser)
+def deleteb(request, id):
+    blg = blog.objects.get(id=id)
+    blg.delete()
+    return redirect('/dashboard/blogs')
+
+
+
+@user_passes_test(lambda u: u.is_superuser)
+def publisha(request, id):
+    aid = id
+    ann = announcement.objects.get(id=id)
+    ann.status = 2
+    ann.save()
+    return redirect('/dashboard/announcement/%s' %aid)
+
+
+@user_passes_test(lambda u: u.is_superuser)
+def unpublisha(request, id):
+    aid = id
+    ann = announcement.objects.get(id=id)
+    ann.status = 0
+    ann.save()
+    return redirect('/dashboard/announcement/%s' %aid)
+
+
+@user_passes_test(lambda u: u.is_superuser)
+def deletea(request, id):
+    ann = announcement.objects.get(id=id)
+    ann.delete()
+    return redirect('/dashboard/announcements')
+
 
 
 @user_passes_test(lambda u: u.is_superuser)

@@ -9,3 +9,7 @@
     width: 100%;
     height: 450px;
 }
+
+.sb-nav-link-icon {
+    font-size: 1.0rem !important;
+}

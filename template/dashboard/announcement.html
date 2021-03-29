@@ -14,20 +14,20 @@
         {% if anounce.status == 1 %}
         <div class="col-9"><p>Status: <span class="bg-warning p-1">Pending</span></p></div>
         <div class="col-1">
-            <form action="/publish/{{proj.id}}" method="post">
+            <form action="/publisha/{{anounce.id}}" method="post">
                 {% csrf_token %}
                 <button type="submit" class="btn-right btn btn-success">Publish</button>
             </form>
         </div>
         {% elif anounce.status == 2 %}
         <div class="col-9"><p>Status: <span class="bg-success p-1">Published</span></p></div>
-        <div class="col-1"><form action="/unpublish/{{proj.id}}" method="post">
+        <div class="col-1"><form action="/unpublisha/{{anounce.id}}" method="post">
             {% csrf_token %}
             <button type="submit" class="btn-right btn btn-danger">Unublish</button>
         </form></div>
         {% else %}
         <div class="col-9"><p>Status: <span class="bg-danger p-1">Unpublished</span></p></div>
-        <div class="col-1"><form action="/publish/{{proj.id}}" method="post">
+        <div class="col-1"><form action="/publisha/{{anounce.id}}" method="post">
             {% csrf_token %}
             <button type="submit" class="btn-right btn btn-success">Publish</button>
         </form></div>
@@ -38,7 +38,9 @@
         </div>
         <div class="col-1">
             {% csrf_token %}
-            <button type="submit" class="btn-right btn btn-danger">Delete</button>
+            <form action="/deletea/{{anounce.id}}">
+                <button type="submit" class="btn-right btn btn-danger" onclick="return confirm('Permanently Delete this anouncement?')">Delete</button>
+            </form>
         </div>
     </div>
     <h3>{{anounce.title}}</h3>
