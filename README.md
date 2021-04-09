@@ -1,5 +1,5 @@
 # Djlogin
-Django user login project 
+Collage project management system 
 
 To run project follow these steps-
 
