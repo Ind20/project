@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User
-from .models import contactusMessage, userProfile, project, announcement, blog, projectCategory
+from .models import contactusMessage, userProfile, project, announcement, projectCategory
 
 
 class contactusMessageForm(forms.ModelForm):
@@ -104,31 +104,6 @@ class announcementForm(forms.ModelForm):
             'title': forms.TextInput(attrs={'class' : 'form-control'}),
             'description': forms.Textarea(attrs={'class' : 'form-control'}),
             'attachment': forms.FileInput(attrs={'style' : 'margin-top:15px'})
-        }
-
-
-
-class blogForm(forms.ModelForm):
-    class Meta:
-        model   = blog
-        fields  = ['category', 'title', 'description', 'image']
-        widgets = {
-            'category': forms.TextInput(attrs={'class' : 'form-control'}),
-            'title': forms.TextInput(attrs={'class' : 'form-control'}),
-            'description': forms.Textarea(attrs={'class' : 'form-control'}),
-            'image': forms.FileInput(attrs={'style' : 'margin-top:15px'})
-        }
-
-
-class blogEditForm(forms.ModelForm):
-    class Meta:
-        model   = blog
-        fields  = ['category', 'title', 'description', 'image']
-        widgets = {
-            'category': forms.TextInput(attrs={'class' : 'form-control'}),
-            'title': forms.TextInput(attrs={'class' : 'form-control'}),
-            'description': forms.Textarea(attrs={'class' : 'form-control'}),
-            'image': forms.FileInput(attrs={'style' : 'margin-top:15px'})
         }
 
 

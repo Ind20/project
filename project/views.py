@@ -3,8 +3,8 @@ from django.http import HttpResponse
 from django.contrib import messages
 from django.contrib.auth.models import User, auth
 from django.contrib.auth.decorators import login_required
-from .models import userProfile, projectCategory, project, announcement, blog
-from .forms import projectForm, contactusMessageForm, userProfileForm, userUpdateForm, userProfileUpdateForm, projectEditForm, announcementForm, blogForm, blogEditForm, projectCategoryForm
+from .models import userProfile, projectCategory, project, announcement
+from .forms import projectForm, contactusMessageForm, userProfileForm, userUpdateForm, userProfileUpdateForm, projectEditForm, announcementForm, projectCategoryForm
 from django.views.generic import TemplateView, ListView
 from django.contrib.auth.decorators import user_passes_test
 
@@ -112,64 +112,6 @@ def editprofile(request):
         u_form = userUpdateForm(instance=request.user)
         p_form = userProfileUpdateForm(instance=request.user.userprofile)
         return render(request, 'user/editprofile.html', {'u_form': u_form, 'p_form': p_form})
-
-
-
-@login_required
-def createblog(request):
-    form= blogForm(request.POST or None, request.FILES or None)
-    uid = request.user.id
-    if request.method=='POST':
-        if form.is_valid():
-           blog = form.save(commit=False)
-           blog.user = request.user
-           blog.save()
-        messages.info(request,'Blog submitted successfully, it will show after published by admin')
-        return redirect('/user/%s/blogs' % uid) 
-    else:
-        return render(request, 'user/createblog.html', {'form': form})
-
-
-
-@login_required
-def editblog(request, id):
-    userblog = blog.objects.get(id=id)
-    uid = request.user.id
-    b_user = userblog.user_id
-    if uid != b_user:
-        messages.info(request,'You do not have permisson to edit this item')
-        return redirect('/user/%s/blogs' % uid) 
-    else:
-        form= blogEditForm(request.POST or None, request.FILES or None, instance=userblog)
-        if request.method=='POST':
-            if form.is_valid():
-                form.save()
-            messages.info(request,'Blog edited successfully, it will show after published by admin')
-            return redirect('/user/%s/blogs' % uid) 
-        else:
-            return render(request, 'user/editblog.html', {'form': form, 'userblog': userblog})
-
-
-def blogs(request):
-    blogs = blog.objects.all()
-    return render(request,'main/blogs.html', {'blogs': blogs})
-
-
-def blog_detail(request, id):
-    blg = blog.objects.get(id=id)
-    uid = request.user.id
-    b_user = blg.user_id
-    context = {
-        'blg': blg,
-        'uid': uid,
-        'b_user': b_user
-    }
-    return render(request, 'main/blog.html', context)
-
-
-def myblogs(request, id):
-    blogs = blog.objects.filter(user_id=id)
-    return render(request,'user/myblogs.html', {'blogs': blogs})
 
 
 
@@ -314,11 +256,9 @@ def dashboard(request):
     categories    = projectCategory.objects.all().order_by('-id')[:5]
     projects      = project.objects.all().order_by('-id')[:5]
     announcements = announcement.objects.all().order_by('-id')[:5]
-    blogs         = blog.objects.all().order_by('-id')[:5]
     context = {
     'projects': projects,
     'announcements': announcements,
-    'blogs': blogs,
     'categories': categories
     }
     return render(request, 'dashboard/dashboard.html', context)
@@ -406,33 +346,6 @@ def deletep(request, id):
     return redirect('/dashboard/projects')
 
 
-
-@user_passes_test(lambda u: u.is_superuser)
-def publishb(request, id):
-    bid = id
-    blg = blog.objects.get(id=id)
-    blg.status = 2
-    blg.save()
-    return redirect('/dashboard/blog/%s' %bid)
-
-
-@user_passes_test(lambda u: u.is_superuser)
-def unpublishb(request, id):
-    bid = id
-    blg = blog.objects.get(id=id)
-    blg.status = 0
-    blg.save()
-    return redirect('/dashboard/blog/%s' %bid)
-
-
-@user_passes_test(lambda u: u.is_superuser)
-def deleteb(request, id):
-    blg = blog.objects.get(id=id)
-    blg.delete()
-    return redirect('/dashboard/blogs')
-
-
-
 @user_passes_test(lambda u: u.is_superuser)
 def publisha(request, id):
     aid = id
@@ -472,19 +385,6 @@ def dannouncement(request, id):
 
 
 @user_passes_test(lambda u: u.is_superuser)
-def dblogs(request):
-    blogs = blog.objects.all().order_by('-id')
-    return render(request,'dashboard/blogs.html', {'blogs': blogs})
-
-
-@user_passes_test(lambda u: u.is_superuser)
-def dblog(request, id):
-    blg = blog.objects.get(id=id)
-    return render(request, 'dashboard/blog.html', {'blg': blg})
-
-
-
-@user_passes_test(lambda u: u.is_superuser)
 def addproject(request):
     form= projectForm(request.POST or None, request.FILES or None)
     if request.method=='POST':
@@ -493,25 +393,10 @@ def addproject(request):
            project.user = request.user
            project.status = 2
            project.save()
-        messages.info(request,'Blog submitted successfully')
+        messages.info(request,'Project submitted successfully')
         return redirect('/dashboard/projects') 
     else:
         return render(request, 'dashboard/addproject.html', {'form': form})
-
-
-@user_passes_test(lambda u: u.is_superuser)
-def addblog(request):
-    form= blogForm(request.POST or None, request.FILES or None)
-    if request.method=='POST':
-        if form.is_valid():
-           blog = form.save(commit=False)
-           blog.user = request.user
-           blog.status = 2
-           blog.save()
-        messages.info(request,'Blog submitted successfully')
-        return redirect('/dashboard/blogs') 
-    else:
-        return render(request, 'dashboard/addblog.html', {'form': form})
 
 
 
@@ -530,18 +415,6 @@ def deditproject(request, id):
 
 
 
-@user_passes_test(lambda u: u.is_superuser)
-def deditblog(request, id):
-    blg = blog.objects.get(id=id)
-    bid = id
-    form= blogEditForm(request.POST or None, request.FILES or None, instance=blg)
-    if request.method=='POST':
-        if form.is_valid():
-            form.save()
-        messages.info(request,'Blog edited successfully')
-        return redirect('/dashboard/blog/%s' % bid) 
-    else:
-        return render(request, 'dashboard/editblog.html', {'form': form, 'blg': blg})
 
 
 
