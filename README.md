@@ -1,5 +1,5 @@
 # Djlogin
-Collage project management system 
+College project management system 
 
 To run project follow these steps-
 
