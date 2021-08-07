@@ -9,20 +9,14 @@
         </ol>
     </nav>
     <!-- Search Start -->
-    <div class="jumbotron border shadow">
-        <div class="row">
-            <div class="col-md-8 offset-2">
-                <form>
-                    <div class="input-group">
-                        <input name="key" type="text" placeholder="Search Project" class="form-control form-control-lg" required/>
-                        <div class="input-group-append">
-                            <button class="btn btn-dark btn-lg">Search</button>
-                        </div>
-                    </div>
-                </form>
+    <form>
+        <div class="input-group">
+            <input name="key" type="text" placeholder="Search Project" class="form-control form-control-lg" required/>
+            <div class="input-group-append">
+                <button class="btn btn-dark">Search</button>
             </div>
         </div>
-    </div>
+    </form>
     <!-- End Search -->
     {%for message in messages%}
     <div class="message alert alert-danger alert-dismissible fade show" role="alert">

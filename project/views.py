@@ -5,7 +5,6 @@ from django.contrib.auth.models import User, auth
 from django.contrib.auth.decorators import login_required
 from .models import userProfile, projectCategory, project, announcement
 from .forms import projectForm, contactusMessageForm, userProfileForm, userUpdateForm, userProfileUpdateForm, projectEditForm, announcementForm, projectCategoryForm
-from django.views.generic import TemplateView, ListView
 from django.contrib.auth.decorators import user_passes_test
 
 
